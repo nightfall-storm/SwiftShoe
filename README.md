@@ -1,3 +1,6 @@
+In Developing ... 
+
+
 Advanced Flutter E-Commerce Application
 
 This repository houses a sophisticated Flutter-based e-commerce application tailored for a seamless and engaging user experience. Designed with scalability and modular architecture in mind, the app integrates key features and functionalities essential for a modern e-commerce platform:
