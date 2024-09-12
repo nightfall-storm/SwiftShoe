@@ -1,10 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shoes_store/common/styles/spacing_style.dart';
 import 'package:shoes_store/common/widgets/login_signup/form_divider.dart';
 import 'package:shoes_store/common/widgets/login_signup/social_buttons.dart';
 import 'package:shoes_store/features/authentication/screens/login/login.dart';
-import '../../../../common/widgets/login_signup/appbar_arrow.dart';
 import '../../../../common/widgets/login_signup/not_a_member_section.dart';
 import '../../../../utils/constants/sizes.dart';
 import 'widgets/signup_form.dart';
@@ -16,7 +16,16 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(leading: const AppBarArrow()),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: const Icon(CupertinoIcons.clear),
+            onPressed: () {
+              Get.offAll(() => const LoginScreen());
+            },
+          )
+        ],
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: AkSpacingStyle.paddingWithAppBarHeight,
@@ -44,6 +53,3 @@ class SignupScreen extends StatelessWidget {
     );
   }
 }
-
-
-

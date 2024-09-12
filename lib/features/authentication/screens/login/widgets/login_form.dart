@@ -72,7 +72,8 @@ class LoginForm extends StatelessWidget {
                     foregroundColor: dark ? AkColors.black : Colors.white,
                     side: BorderSide.none,
                   ),
-                  child: const Text(AkTexts.signIn)),
+                  child: const Text(AkTexts.signIn)
+              ),
             ),
           ],
         ),

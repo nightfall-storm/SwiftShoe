@@ -22,6 +22,7 @@ class SignupHeader extends StatelessWidget {
           image:
               AssetImage(dark ? AkImages.darkAppLogo : AkImages.lightAppLogo),
         ),
+        const SizedBox(height: AkSizes.spaceBtwSections),
         Text(AkTexts.signupTitle,
             style: Theme.of(context).textTheme.headlineMedium),
         Text(AkTexts.signupSubTitle,
@@ -29,6 +30,5 @@ class SignupHeader extends StatelessWidget {
         const SizedBox(height: AkSizes.spaceBtwSections / 2),
       ],
     );
-    
   }
 }

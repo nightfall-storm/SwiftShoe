@@ -1,9 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shoes_store/features/authentication/screens/signup/signup.dart';
 import 'package:shoes_store/utils/constants/sizes.dart';
 import '../../../../common/styles/spacing_style.dart';
-import '../../../../common/widgets/login_signup/appbar_arrow.dart';
 import '../../../../common/widgets/login_signup/form_divider.dart';
 import 'widgets/login_header.dart';
 import '../../../../common/widgets/login_signup/not_a_member_section.dart';
@@ -16,7 +16,15 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        leading: const AppBarArrow()
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            icon: const Icon(CupertinoIcons.clear),
+            onPressed: () {
+              Get.offAll(() => const LoginScreen());
+            },
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(

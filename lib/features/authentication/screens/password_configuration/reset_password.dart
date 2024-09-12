@@ -1,6 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shoes_store/common/widgets/login_signup/appbar_arrow.dart';
 import 'package:shoes_store/features/authentication/screens/login/login.dart';
 import 'package:shoes_store/utils/constants/image_strings.dart';
 import 'package:shoes_store/utils/constants/text_strings.dart';
@@ -17,7 +17,14 @@ class ResetPassword extends StatelessWidget {
     final dark = AkHelperFunctions.isDarkMode(context);
     return Scaffold(
       appBar: AppBar(
-        leading: const AppBarArrow(),
+        actions: [
+          IconButton(
+            icon: const Icon(CupertinoIcons.clear),
+            onPressed: () {
+              Get.offAll(() => const LoginScreen());
+            },
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(

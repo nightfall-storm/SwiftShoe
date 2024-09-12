@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/helpers/helper_functions.dart';
+import '../../../utils/constants/colors.dart';
 
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen({
@@ -20,6 +21,7 @@ class SuccessScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = AkHelperFunctions.isDarkMode(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -46,7 +48,15 @@ class SuccessScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: onPressed, child: const Text(AkTexts.tContinue)),
+                  onPressed: onPressed,
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    backgroundColor: dark ? AkColors.grey : AkColors.black,
+                    foregroundColor: dark ? AkColors.black : Colors.white,
+                    side: BorderSide.none,
+                  ),
+                  child: const Text(AkTexts.tContinue),
+                ),
               ),
             ],
           ),
