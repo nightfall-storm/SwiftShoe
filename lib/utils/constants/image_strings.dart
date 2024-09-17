@@ -8,6 +8,10 @@ class AkImages {
   static const String darkAppLogo = "assets/logos/splash-dark.png";
   static const String lightAppLogo = "assets/logos/splash-light.png";
 
+  // -- App Logos
+  static const String lightAppBarLogo = "assets/logos/lightAppBar-logo.png";
+  static const String darkAppBarLogo = "assets/logos/darkAppBar-logo.png";
+
   // -- Social Logos
   static const String google = "assets/logos/google-icon.png";
   static const String facebook = "assets/logos/facebook-icon.png";
@@ -139,6 +143,7 @@ class AkImages {
   static const String promoBanner1 = "assets/images/products/promo-banner-1.png";
   static const String promoBanner2 = "assets/images/products/promo-banner-2.png";
   static const String promoBanner3 = "assets/images/products/promo-banner-3.png";
+  static const String homeBanner = "assets/images/banners/home_banner.png";
   static const String banner1 = "assets/images/banners/banner_1.jpg";
   static const String banner2 = "assets/images/banners/banner_2.jpg";
   static const String banner3 = "assets/images/banners/banner_3.jpg";
