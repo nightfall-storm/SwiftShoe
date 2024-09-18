@@ -18,6 +18,8 @@ class App extends StatelessWidget {
       theme: AkAppTheme.lightTheme,
       darkTheme: AkAppTheme.darkTheme,
       home: const OnBoaridngScreen(),
+      debugShowCheckedModeBanner: false,
+      
     );
   }
 }
