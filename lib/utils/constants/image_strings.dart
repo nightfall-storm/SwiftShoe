@@ -30,14 +30,10 @@ class AkImages {
   // -- Brand Icons
   static const String nikeLogo = "assets/icons/brands/nike.png";
   static const String adidasLogo = "assets/icons/brands/adidas-logo.png";
-  static const String appleLogo = "assets/icons/brands/apple-logo.png";
   static const String jordanLogo = "assets/icons/brands/jordan-logo.png";
   static const String pumaLogo = "assets/icons/brands/puma-logo.png";
-  static const String zaraLogo = "assets/icons/brands/zara-logo.png";
-  static const String kenwoodLogo = "assets/icons/brands/kenwood-logo.png";
-  static const String hermanMillerLogo = "assets/icons/brands/herman-miller-logo.png";
-  static const String ikeaLogo = "assets/icons/brands/ikea_logo.png";
-  static const String acerlogo = "assets/icons/brands/acer_logo.png";
+  static const String crocsLogo = "assets/icons/brands/crocs-logo.png";
+  static const String brooksLogo = "assets/icons/brands/brooks-logo.png";
 
   // -- Animations
   static const String productsIllustration = "assets/images/animations/sammy-line-workout.gif";
