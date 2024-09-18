@@ -21,7 +21,7 @@ class AkCartCounterIcon extends StatelessWidget {
           icon: Icon(Iconsax.shopping_bag, color: darkMode ? AkColors.white : AkColors.black),
         ),
         Positioned(
-          right: 0,
+          right: 2,
           top: 0,
           child: Container(
             width: 18,
