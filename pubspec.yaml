@@ -46,6 +46,8 @@ dependencies:
   smooth_page_indicator: ^1.2.0+3
   flutter_native_splash: ^2.4.1
   iconsax: ^0.0.8
+  carousel_slider_x: ^6.0.2
+
   
 dev_dependencies:
   flutter_test:
