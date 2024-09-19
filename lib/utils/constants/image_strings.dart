@@ -136,10 +136,9 @@ class AkImages {
   static const String userProfileImage3 = "assets/images/reviews/review_profile_image_3.jpeg";
 
   //Banners
-  static const String promoBanner1 = "assets/images/products/promo-banner-1.png";
-  static const String promoBanner2 = "assets/images/products/promo-banner-2.png";
-  static const String promoBanner3 = "assets/images/products/promo-banner-3.png";
-  static const String homeBanner = "assets/images/banners/home_banner.png";
+  static const String homeBanner1 = "assets/images/banners/home_banner1.png";
+  static const String homeBanner2 = "assets/images/banners/home_banner2.png";
+  static const String homeBanner3 = "assets/images/banners/home_banner3.png";
   static const String banner1 = "assets/images/banners/banner_1.jpg";
   static const String banner2 = "assets/images/banners/banner_2.jpg";
   static const String banner3 = "assets/images/banners/banner_3.jpg";

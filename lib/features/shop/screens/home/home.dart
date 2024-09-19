@@ -2,13 +2,19 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:shoes_store/common/widgets/appbar/appbar.dart';
+import 'package:shoes_store/common/widgets/custom_shapes/containers/circular_container.dart';
+import 'package:shoes_store/features/shop/controllers/home_controller.dart';
 import 'package:shoes_store/utils/constants/sizes.dart';
 
-import '../../../../common/widgets/containers/header_container.dart';
+import '../../../../common/widgets/images/round_images.dart';
 import '../../../../common/widgets/containers/seaction_cotainer.dart';
 import '../../../../common/widgets/containers/search_container.dart';
+import '../../../../utils/constants/colors.dart';
+import '../../../../utils/constants/image_strings.dart';
+import 'widgets/banner_slider.dart';
 import 'widgets/home_categories.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -26,22 +32,30 @@ class HomeScreen extends StatelessWidget {
           children: [
             // * SearchBar
             const AkSearchContainer(text: 'Search in Store'),
-            // * Header HomeBanner
-            const AkHeaderContainer(),
+            // * SliderBanner
+            const Padding(
+              padding: EdgeInsets.zero,
+              child: AkBannerSlider(
+                banners: [
+                  AkImages.homeBanner1,
+                  AkImages.homeBanner2,
+                  AkImages.homeBanner3,
+                ],
+              ),
+            ),
             const SizedBox(height: AkSizes.spaceBtwSections),
             // * Categories
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: AkSizes.defaultSpace / 2),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // ? Heading
-                  const AkSectionHeading(
+                  AkSectionHeading(
                       title: 'Top Brands', showActionButton: false),
-                  const SizedBox(height: AkSizes.spaceBtwItems),
+                  SizedBox(height: AkSizes.spaceBtwItems),
                   // ? Categories Section
-                  const AkHomeCategories(),
-
+                  AkHomeCategories(),
                 ],
               ),
             ),
@@ -51,4 +65,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
