@@ -25,7 +25,7 @@ class AkBannerSlider extends StatelessWidget {
             viewportFraction: 1,
             autoPlay: true,
           ),
-          items: banners.map((url) => AkRoundImages(imageUrl: url)).toList(),
+          items: banners.map((url) => AkRoundedImage(imageUrl: url)).toList(),
           onPageChanged: (index, _) => controller.updatePageIndicator(index),
         ),
         const SizedBox(height: AkSizes.spaceBtwItems),

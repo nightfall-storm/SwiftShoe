@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
 
-class AkRoundImages extends StatelessWidget {
-  const AkRoundImages({
+class AkRoundedImage extends StatelessWidget {
+  const AkRoundedImage({
     super.key,
     this.border,
     this.padding,
