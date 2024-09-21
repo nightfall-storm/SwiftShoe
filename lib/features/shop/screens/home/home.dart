@@ -2,17 +2,14 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'package:shoes_store/common/widgets/appbar/appbar.dart';
-import 'package:shoes_store/common/widgets/custom_shapes/containers/circular_container.dart';
-import 'package:shoes_store/features/shop/controllers/home_controller.dart';
+import 'package:shoes_store/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:shoes_store/utils/constants/sizes.dart';
 
-import '../../../../common/widgets/images/round_images.dart';
-import '../../../../common/widgets/containers/seaction_cotainer.dart';
+import '../../../../common/widgets/containers/section_cotainer.dart';
 import '../../../../common/widgets/containers/search_container.dart';
-import '../../../../utils/constants/colors.dart';
+import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../utils/constants/image_strings.dart';
 import 'widgets/banner_slider.dart';
 import 'widgets/home_categories.dart';
@@ -45,17 +42,20 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: AkSizes.spaceBtwSections),
             // * Categories
-            const Padding(
-              padding: EdgeInsets.only(left: AkSizes.defaultSpace / 2),
+            Padding(
+              padding: const EdgeInsets.only(left: AkSizes.defaultSpace / 2, right: AkSizes.defaultSpace / 2),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // ? Heading
-                  AkSectionHeading(
+                  const AkSectionHeading(
                       title: 'Top Brands', showActionButton: false),
-                  SizedBox(height: AkSizes.spaceBtwItems),
+                  const SizedBox(height: AkSizes.spaceBtwItems),
                   // ? Categories Section
-                  AkHomeCategories(),
+                  const AkHomeCategories(),
+
+                  AkGridLayout(itemCount: 2, itemBuilder: (_, index) => const AkProductCardVertical()),
+                  
                 ],
               ),
             ),
@@ -65,3 +65,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
