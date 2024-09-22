@@ -18,6 +18,7 @@ class AkSectionHeading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           title,
@@ -25,11 +26,12 @@ class AkSectionHeading extends StatelessWidget {
               .textTheme
               .headlineSmall!
               .apply(color: textColor),
+          
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
         if (showActionButton)
-          TextButton(onPressed: () {}, child: Text(buttonTitle)),
+          TextButton(onPressed: onPressed, child: Text(buttonTitle, style: Theme.of(context).textTheme.bodyMedium!.apply(decoration: TextDecoration.underline))),
       ],
     );
   }
