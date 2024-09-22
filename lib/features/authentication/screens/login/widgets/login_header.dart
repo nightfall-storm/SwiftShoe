@@ -25,7 +25,7 @@ class LoginHeader extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineMedium),
         Text(AkTexts.loginSubTitle,
             style: Theme.of(context).textTheme.bodyLarge),
-        const SizedBox(height: AkSizes.spaceBtwSections / 2),
+        const SizedBox(height: AkSizes.spaceBtwItems),
       ],
     );
   }

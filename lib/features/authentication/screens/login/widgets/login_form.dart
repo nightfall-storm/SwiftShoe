@@ -66,7 +66,7 @@ class LoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () => Get.to(() => const NavigationMenu()),
+                  onPressed: () => Get.off(() => const NavigationMenu()),
                   style: ElevatedButton.styleFrom(
                     elevation: 0,
                     backgroundColor: dark ? AkColors.grey : AkColors.black,

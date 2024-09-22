@@ -15,17 +15,6 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            icon: const Icon(CupertinoIcons.clear),
-            onPressed: () {
-              Get.offAll(() => const LoginScreen());
-            },
-          )
-        ],
-      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: AkSpacingStyle.paddingWithAppBarHeight,

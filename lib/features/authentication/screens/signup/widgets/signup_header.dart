@@ -22,12 +22,11 @@ class SignupHeader extends StatelessWidget {
           image:
               AssetImage(dark ? AkImages.darkAppLogo : AkImages.lightAppLogo),
         ),
-        const SizedBox(height: AkSizes.spaceBtwSections),
         Text(AkTexts.signupTitle,
             style: Theme.of(context).textTheme.headlineMedium),
         Text(AkTexts.signupSubTitle,
             style: Theme.of(context).textTheme.bodyMedium),
-        const SizedBox(height: AkSizes.spaceBtwSections / 2),
+        const SizedBox(height: AkSizes.spaceBtwItems),
       ],
     );
   }

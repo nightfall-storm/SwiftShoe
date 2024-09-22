@@ -18,7 +18,7 @@ class SignupForm extends StatelessWidget {
     final dark = AkHelperFunctions.isDarkMode(context);
     return Form(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: AkSizes.spaceBtwSections), // Updated spacing for consistency
+        padding: const EdgeInsets.symmetric(vertical: AkSizes.spaceBtwSections),
         child: Column(
           children: [
             // * Name

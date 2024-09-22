@@ -17,6 +17,7 @@ class SignupScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: true,
         actions: [
           IconButton(
             icon: const Icon(CupertinoIcons.clear),
@@ -28,7 +29,11 @@ class SignupScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: AkSpacingStyle.paddingWithAppBarHeight,
+          padding: const EdgeInsets.only(
+            left: AkSizes.defaultSpace,
+            bottom: AkSizes.defaultSpace,
+            right: AkSizes.defaultSpace,
+          ),
           child: Column(
             children: [
               // * Signup Header
