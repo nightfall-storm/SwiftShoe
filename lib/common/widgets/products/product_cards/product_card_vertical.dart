@@ -39,6 +39,7 @@ class AkProductCardVertical extends StatelessWidget {
                 const AkRoundedImage(
                   imageUrl: AkImages.productImage1,
                   height: 180,
+                  backgroundColor: AkColors.lightContainer,
                 ),
                 // * Discount TAG
                 Positioned(
@@ -59,7 +60,7 @@ class AkProductCardVertical extends StatelessWidget {
                         vertical: AkSizes.xs,
                       ),
                       child: Text(
-                        '30% OFF',                        
+                        '30% OFF',
                         style: Theme.of(context)
                             .textTheme
                             .labelLarge!
@@ -81,7 +82,7 @@ class AkProductCardVertical extends StatelessWidget {
               ],
             ),
             const SizedBox(height: AkSizes.spaceBtwItems / 2),
-            // Details Section
+            // * Details Section
             Padding(
               padding: const EdgeInsets.only(left: AkSizes.sm),
               child: Column(
@@ -103,35 +104,40 @@ class AkProductCardVertical extends StatelessWidget {
                           color: AkColors.primary, size: AkSizes.iconXs),
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const AkProductPriceText(
-                        price: '35.0',
-                        isLarge: true,
-                      ),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: AkColors.dark,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(AkSizes.cardRadiusMd),
-                            bottomRight:
-                                Radius.circular(AkSizes.productImageRadius),
-                          ),
-                        ),
-                        child: const SizedBox(
-                          width: AkSizes.iconLg * 1.1,
-                          height: AkSizes.iconLg * 1.1,
-                          child: Center(
-                            child: Icon(Iconsax.add, color: AkColors.white),
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
                 ],
               ),
             ),
+            // ? Spacer to keep the height of each box same in case 1 or 2 heading lines
+            const Spacer(),
+            // ? Price Row
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(left: AkSizes.sm),
+                  child: AkProductPriceText(
+                    price: '35.0',
+                    isLarge: true,
+                  ),
+                ),
+                Container(
+                  decoration: const BoxDecoration(
+                    color: AkColors.dark,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(AkSizes.cardRadiusMd),
+                      bottomRight: Radius.circular(AkSizes.productImageRadius),
+                    ),
+                  ),
+                  child: const SizedBox(
+                    width: AkSizes.iconLg * 1.1,
+                    height: AkSizes.iconLg * 1.1,
+                    child: Center(
+                      child: Icon(Iconsax.add, color: AkColors.white),
+                    ),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),
