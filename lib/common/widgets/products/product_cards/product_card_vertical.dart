@@ -1,18 +1,15 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
 import 'package:shoes_store/common/styles/shadows_style.dart';
 import 'package:shoes_store/common/widgets/containers/rounded_container.dart';
 import 'package:shoes_store/common/widgets/images/round_image.dart';
-import 'package:shoes_store/utils/constants/enums.dart';
 import 'package:shoes_store/utils/constants/image_strings.dart';
 import 'package:shoes_store/utils/helpers/helper_functions.dart';
 
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../Icon/circular_icon.dart';
-import '../../texts/brand_title_text.dart';
 import '../../texts/brand_title_verified_icon.dart';
 import '../../texts/product_price_text.dart';
 import '../../texts/product_title_text.dart';
@@ -72,10 +69,10 @@ class AkProductCardVertical extends StatelessWidget {
                     ),
                   ),
                 ),
-                // Favorite icon Button
+                // ? Favorite icon Button
                 const Positioned(
-                  top: 3, // Adjust the position to align better
-                  right: 8, // Add some spacing from the edge
+                  top: 3, 
+                  right: 8, 
                   child: AkCircularIcon(
                     icon: Iconsax.heart5,
                     iconColor: Colors.red,

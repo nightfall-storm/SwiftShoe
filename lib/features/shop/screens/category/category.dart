@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shoes_store/common/widgets/appbar/appbar.dart';
-import 'package:shoes_store/common/widgets/containers/categories_horizontal.dart';
 import 'package:shoes_store/common/widgets/containers/rounded_container.dart';
 import 'package:shoes_store/common/widgets/layouts/grid_layout.dart';
 import 'package:shoes_store/common/widgets/texts/brand_title_verified_icon.dart';
