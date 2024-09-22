@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:shoes_store/features/shop/screens/category/category.dart';
 import 'package:shoes_store/utils/constants/colors.dart';
 import 'package:shoes_store/utils/helpers/helper_functions.dart';
 
@@ -44,7 +45,7 @@ class NavigationController extends GetxController {
     const HomeScreen(),
     Container(color: Colors.red),
     Container(color: Colors.black),
-    Container(color: Colors.green),
+    const CategoryScreen(),
     Container(color: Colors.blue)
   ];
 }
