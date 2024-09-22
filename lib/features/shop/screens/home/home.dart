@@ -9,7 +9,7 @@ import '../../../../common/widgets/containers/search_container.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../utils/constants/image_strings.dart';
 import 'widgets/banner_slider.dart';
-import 'widgets/home_categories.dart';
+import '../../../../common/widgets/containers/categories_horizontal.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                       title: 'Top Brands', showActionButton: false),
                   const SizedBox(height: AkSizes.spaceBtwItems),
                   // ? Categories Section
-                  const AkHomeCategories(),
+                  const AkCategoriesHorizontal(),
 
                   AkGridLayout(
                       itemCount: 2,
