@@ -1,6 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first, prefer_const_literals_to_create_immutables
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
 import 'package:shoes_store/common/widgets/appbar/appbar.dart';
@@ -43,7 +40,9 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: AkSizes.spaceBtwSections),
             // * Categories
             Padding(
-              padding: const EdgeInsets.only(left: AkSizes.defaultSpace / 2, right: AkSizes.defaultSpace / 2),
+              padding: const EdgeInsets.only(
+                  left: AkSizes.defaultSpace / 2,
+                  right: AkSizes.defaultSpace / 2),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -54,8 +53,9 @@ class HomeScreen extends StatelessWidget {
                   // ? Categories Section
                   const AkHomeCategories(),
 
-                  AkGridLayout(itemCount: 2, itemBuilder: (_, index) => const AkProductCardVertical()),
-                  
+                  AkGridLayout(
+                      itemCount: 2,
+                      itemBuilder: (_, index) => const AkProductCardVertical()),
                 ],
               ),
             ),
@@ -65,4 +65,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
