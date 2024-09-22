@@ -15,13 +15,11 @@ class AkAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.showBackArrow = false,
     this.leadingOnPressed,
     this.actions,
-    this.isSearchScreen = false,
   });
 
   final String? title;
   final bool isHomeScreen;
   final bool showBackArrow;
-  final bool isSearchScreen;
   final List<Widget>? actions;
   final VoidCallback? leadingOnPressed;
 
