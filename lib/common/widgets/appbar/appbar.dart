@@ -18,7 +18,7 @@ class AkAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.isSearchScreen = false,
   });
 
-  final Widget? title;
+  final String? title;
   final bool isHomeScreen;
   final bool showBackArrow;
   final bool isSearchScreen;
@@ -51,14 +51,17 @@ class AkAppBar extends StatelessWidget implements PreferredSizeWidget {
                   darkMode ? AkImages.lightAppBarLogo : AkImages.darkAppBarLogo,
                   height: 70), // Adjust height as needed
             )
-          : Text(
-              'Page Title',
-              style: TextStyle(
-                color: darkMode ? AkColors.white : AkColors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+          : Align(
+            alignment: Alignment.center,
+            child: Text(
+                title!,
+                style: TextStyle(
+                  color: darkMode ? AkColors.white : AkColors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
+          ),
       actions: isHomeScreen
           ? [
               AkCartCounterIcon(darkMode: darkMode),
@@ -66,9 +69,7 @@ class AkAppBar extends StatelessWidget implements PreferredSizeWidget {
           : [
               IconButton(
                 onPressed: () {},
-                icon: isSearchScreen
-                    ? Icon(Iconsax.search_favorite, color: darkMode ? AkColors.white : AkColors.black)
-                    : Icon(Iconsax.shopping_bag, color: darkMode ? AkColors.white : AkColors.black),
+                icon: Icon(Iconsax.search_normal, color: darkMode ? AkColors.white : AkColors.black),
               ),
               ...?actions,
             ],
