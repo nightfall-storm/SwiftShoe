@@ -29,7 +29,7 @@ class AkBrandShowcase extends StatelessWidget {
         children: [
           // * Brand with products counts
           const AkBrandCard(showBorder: false),
-
+          const SizedBox(height: AkSizes.spaceBtwItems),
           // * Brand Top 3 Products Images
           Row(
             children: images
