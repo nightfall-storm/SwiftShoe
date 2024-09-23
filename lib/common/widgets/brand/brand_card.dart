@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../../utils/constants/enums.dart';
-import '../../../../utils/constants/image_strings.dart';
-import '../../../../utils/constants/sizes.dart';
-import '../../containers/rounded_container.dart';
-import '../../images/circular_image.dart';
-import '../../texts/brand_title_verified_icon.dart';
+import '../../../utils/constants/enums.dart';
+import '../../../utils/constants/image_strings.dart';
+import '../../../utils/constants/sizes.dart';
+import '../containers/rounded_container.dart';
+import '../images/circular_image.dart';
+import '../texts/brand_title_verified_icon.dart';
 
 class AkBrandCard extends StatelessWidget {
   const AkBrandCard({
