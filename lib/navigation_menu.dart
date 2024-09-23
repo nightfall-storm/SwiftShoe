@@ -20,20 +20,24 @@ class NavigationMenu extends StatelessWidget {
           height: 80,
           elevation: 0,
           backgroundColor: dark ? AkColors.black : AkColors.white,
-          indicatorColor: dark ? AkColors.white.withOpacity(0.1) : AkColors.black.withOpacity(0.1),
+          indicatorColor: dark
+              ? AkColors.white.withOpacity(0.1)
+              : AkColors.black.withOpacity(0.1),
           selectedIndex: controller.selectedIndex.value,
           onDestinationSelected: (index) =>
               controller.selectedIndex.value = index,
           destinations: const [
             NavigationDestination(icon: Icon(Iconsax.home), label: 'Home'),
             NavigationDestination(icon: Icon(Iconsax.heart), label: 'WishList'),
-            NavigationDestination(icon: Icon(Iconsax.shopping_cart), label: 'Cart'),
-            NavigationDestination(icon: Icon(Iconsax.category), label: 'Category'),
+            NavigationDestination(
+                icon: Icon(Iconsax.shopping_cart), label: 'Cart'),
+            NavigationDestination(
+                icon: Icon(Iconsax.category), label: 'Category'),
             NavigationDestination(icon: Icon(Iconsax.user), label: 'Profile'),
           ],
         ),
       ),
-      body: Obx ( () => controller.screens[controller.selectedIndex.value]),
+      body: Obx(() => controller.screens[controller.selectedIndex.value]),
     );
   }
 }
