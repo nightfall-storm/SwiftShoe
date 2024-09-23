@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shoes_store/utils/constants/colors.dart';
 
+import '../../../navigation_menu.dart';
 import '../../../utils/constants/image_strings.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import '../products/cart/cart_menu_icon.dart';
@@ -40,7 +42,16 @@ class AkAppBar extends StatelessWidget implements PreferredSizeWidget {
             )
           : showBackArrow
               ? IconButton(
-                  onPressed: onPressed,
+                  onPressed: onPressed ??
+                      () {
+                        // Set the selected index to 0 (HomeScreen)
+                        final navigationController =
+                            Get.find<NavigationController>();
+                        navigationController.selectedIndex.value = 0;
+
+                        // Navigate back to NavigationMenu
+                        Get.offAll(() => const NavigationMenu());
+                      },
                   icon: Icon(
                     Iconsax.arrow_left,
                     color: isDarkMode ? AkColors.white : AkColors.black,

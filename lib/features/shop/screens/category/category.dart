@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:shoes_store/common/widgets/appbar/appbar.dart';
 import 'package:shoes_store/common/widgets/containers/rounded_container.dart';
 import 'package:shoes_store/common/widgets/layouts/grid_layout.dart';
@@ -24,7 +23,7 @@ class CategoryScreen extends StatelessWidget {
       appBar: AkAppBar(
         showBackArrow: true,
         title: 'Category',
-        onPressed: () => Get.back(),
+       
       ),
       body: NestedScrollView(
           headerSliverBuilder: (_, innerBoxIsScrolled) {
