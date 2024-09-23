@@ -15,7 +15,12 @@ import '../../texts/product_price_text.dart';
 import '../../texts/product_title_text.dart';
 
 class AkProductCardVertical extends StatelessWidget {
-  const AkProductCardVertical({super.key});
+  const AkProductCardVertical(
+      {super.key, this.height = 180, this.width = 180, this.imageHeight = 180});
+
+  final double height;
+  final double imageHeight;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +28,8 @@ class AkProductCardVertical extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        width: 180,
-        height: 180,
+        width: width,
+        height: height,
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
           boxShadow: [AkShadowStyle.verticalProductShadow],
@@ -36,9 +41,9 @@ class AkProductCardVertical extends StatelessWidget {
             Stack(
               children: [
                 // * Thumbnail Image
-                const AkRoundedImage(
+                AkRoundedImage(
                   imageUrl: AkImages.productImage1,
-                  height: 180,
+                  height: imageHeight,
                   backgroundColor: AkColors.lightContainer,
                 ),
                 // * Discount TAG
@@ -71,8 +76,8 @@ class AkProductCardVertical extends StatelessWidget {
                 ),
                 // ? Favorite icon Button
                 const Positioned(
-                  top: 3, 
-                  right: 8, 
+                  top: 3,
+                  right: 8,
                   child: AkCircularIcon(
                     icon: Iconsax.heart5,
                     iconColor: Colors.red,
@@ -91,7 +96,10 @@ class AkProductCardVertical extends StatelessWidget {
                   AkProductTitleText(
                       title: 'Green Nike Air Shoes', smallSize: true),
                   SizedBox(height: AkSizes.spaceBtwItems / 2),
-                  AkBrandTitleWithVerifiedIcon(title: 'Nike',textAlign: TextAlign.start,mainAxisSize: MainAxisSize.max),
+                  AkBrandTitleWithVerifiedIcon(
+                      title: 'Nike',
+                      textAlign: TextAlign.start,
+                      mainAxisSize: MainAxisSize.max),
                 ],
               ),
             ),
@@ -132,4 +140,3 @@ class AkProductCardVertical extends StatelessWidget {
     );
   }
 }
-
