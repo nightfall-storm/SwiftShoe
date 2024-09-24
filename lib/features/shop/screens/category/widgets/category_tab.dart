@@ -4,7 +4,6 @@ import 'package:shoes_store/common/widgets/products/product_cards/product_card_v
 
 import '../../../../../common/widgets/brand/brand_show_case.dart';
 import '../../../../../common/widgets/containers/section_cotainer.dart';
-import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
 
 class AkCategoryTab extends StatelessWidget {

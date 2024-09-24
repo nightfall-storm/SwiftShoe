@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_store/common/widgets/images/round_image.dart';
 
 import '../../../utils/constants/colors.dart';
-import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import '../containers/rounded_container.dart';
