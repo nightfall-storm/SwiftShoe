@@ -26,7 +26,7 @@ class CategoryScreen extends StatelessWidget {
     return DefaultTabController(
       length: 6,
       child: Scaffold(
-        appBar: AkAppBar(showBackArrow: true, title: 'Category'),
+        appBar: AkAppBar(title: 'Category'),
         body: NestedScrollView(
             headerSliverBuilder: (_, innerBoxIsScrolled) {
               return [
@@ -71,44 +71,44 @@ class CategoryScreen extends StatelessWidget {
                 ),
               ];
             },
-            body: TabBarView(children: const [
-              AkCategoryTab(
-                images: [
+            body: TabBarView(
+              children: const [
+                AkCategoryTab(
+                  images: [
+                    AkImages.productImage2,
+                    AkImages.productImage3,
+                    AkImages.productImage4
+                  ],
+                ),
+                AkCategoryTab(
+                  images: [
+                    AkImages.productImage11,
+                    AkImages.productImage10,
+                    AkImages.productImage9,
+                  ],
+                ),
+                AkCategoryTab(images: [
+                  AkImages.productImage5,
+                  AkImages.productImage6,
+                  AkImages.productImage7
+                ]),
+                AkCategoryTab(images: [
+                  AkImages.productImage2,
+                  AkImages.productImage8,
+                  AkImages.productImage9
+                ]),
+                AkCategoryTab(images: [
                   AkImages.productImage2,
                   AkImages.productImage3,
                   AkImages.productImage4
-                ],
-              ),
-              AkCategoryTab(
-                images: [
+                ]),
+                AkCategoryTab(images: [
+                  AkImages.productImage1,
                   AkImages.productImage11,
-                  AkImages.productImage10,
-                  AkImages.productImage9,
-                ],
-              ),
-              AkCategoryTab(images: [
-                AkImages.productImage5,
-                AkImages.productImage6,
-                AkImages.productImage7
-              ]),
-              AkCategoryTab(images: [
-                AkImages.productImage2,
-                AkImages.productImage8,
-                AkImages.productImage9
-              ]),
-              AkCategoryTab(images: [
-                AkImages.productImage2,
-                AkImages.productImage3,
-                AkImages.productImage4
-              ]),
-              AkCategoryTab(images: [
-                AkImages.productImage1,
-                AkImages.productImage11,
-                AkImages.productImage7
-              ]), 
-            ],
-            
-          )),
+                  AkImages.productImage7
+                ]),
+              ],
+            )),
       ),
     );
   }
