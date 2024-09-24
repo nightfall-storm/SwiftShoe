@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:shoes_store/common/widgets/appbar/appbar.dart';
 import 'package:shoes_store/common/widgets/layouts/grid_layout.dart';
-import 'package:shoes_store/navigation_menu.dart';
 
 import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../utils/constants/sizes.dart';

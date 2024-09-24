@@ -2,17 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:shoes_store/common/widgets/appbar/appbar.dart';
-import 'package:shoes_store/common/widgets/containers/rounded_container.dart';
 import 'package:shoes_store/common/widgets/layouts/grid_layout.dart';
-import 'package:shoes_store/common/widgets/texts/brand_title_verified_icon.dart';
-import 'package:shoes_store/utils/constants/enums.dart';
 import 'package:shoes_store/utils/constants/sizes.dart';
 import 'package:shoes_store/utils/helpers/helper_functions.dart';
 
 import '../../../../common/widgets/appbar/tabbar.dart';
-import '../../../../common/widgets/brand/brand_show_case.dart';
 import '../../../../common/widgets/containers/section_cotainer.dart';
-import '../../../../common/widgets/images/circular_image.dart';
 import '../../../../common/widgets/brand/brand_card.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_strings.dart';
