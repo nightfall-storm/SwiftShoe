@@ -6,6 +6,7 @@ import 'package:shoes_store/utils/constants/colors.dart';
 import 'package:shoes_store/utils/helpers/helper_functions.dart';
 
 import 'features/shop/screens/home/home.dart';
+import 'features/shop/screens/wishlist/wishlist.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
@@ -47,7 +48,7 @@ class NavigationController extends GetxController {
 
   final screens = [
     const HomeScreen(),
-    Container(color: Colors.red),
+    const WishListScreen(),
     Container(color: Colors.black),
     const CategoryScreen(),
     Container(color: Colors.blue)
