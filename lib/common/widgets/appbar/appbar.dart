@@ -13,10 +13,12 @@ class AkAppBar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     this.title,
     this.isHomeScreen = false,
-    this.showBackArrow = false,
+    this.showBackArrow = true,
+    this.isWishListScreen = false,
     this.leadingOnPressed,
     this.actions,
     this.onPressed,
+    this.onAction,
   });
 
   final String? title;
@@ -25,6 +27,8 @@ class AkAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final VoidCallback? leadingOnPressed;
   final VoidCallback? onPressed;
+  final bool isWishListScreen;
+  final VoidCallback? onAction;
 
   @override
   Widget build(BuildContext context) {
@@ -83,8 +87,17 @@ class AkAppBar extends StatelessWidget implements PreferredSizeWidget {
             ]
           : [
               IconButton(
-                onPressed: () {},
-                icon: Icon(Iconsax.search_normal,
+                onPressed: onAction ??
+                    () {
+                      final navigationController =
+                          Get.find<NavigationController>();
+                      navigationController.selectedIndex.value = 0;
+
+                      // ? Navigate back to NavigationMenu
+                      Get.offAll(() => const NavigationMenu());
+                    },
+                icon: Icon(
+                    isWishListScreen ? Iconsax.add : Iconsax.search_normal,
                     color: isDarkMode ? AkColors.white : AkColors.black),
               ),
               ...?actions,
