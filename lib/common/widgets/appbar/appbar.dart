@@ -34,7 +34,7 @@ class AkAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: isHomeScreen
           ? IconButton(
               onPressed:
-                  leadingOnPressed ?? () {}, // Ensure menu icon is functional
+                  leadingOnPressed ?? () {}, // ! Ensure menu icon is functional
               icon: Icon(
                 Iconsax.menu,
                 color: isDarkMode ? AkColors.white : AkColors.black,
@@ -44,12 +44,12 @@ class AkAppBar extends StatelessWidget implements PreferredSizeWidget {
               ? IconButton(
                   onPressed: onPressed ??
                       () {
-                        // Set the selected index to 0 (HomeScreen)
+                        // ? Set the selected index to 0 (HomeScreen)
                         final navigationController =
                             Get.find<NavigationController>();
                         navigationController.selectedIndex.value = 0;
 
-                        // Navigate back to NavigationMenu
+                        // ? Navigate back to NavigationMenu
                         Get.offAll(() => const NavigationMenu());
                       },
                   icon: Icon(
@@ -65,7 +65,7 @@ class AkAppBar extends StatelessWidget implements PreferredSizeWidget {
                   isDarkMode
                       ? AkImages.lightAppBarLogo
                       : AkImages.darkAppBarLogo,
-                  height: 70), // Adjust height as needed
+                  height: 70),
             )
           : Align(
               alignment: Alignment.center,
