@@ -15,9 +15,12 @@ class AkBannerSlider extends StatelessWidget {
   });
 
   final List<String> banners;
+
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(HomeController());
+    final isDarkMode = MediaQuery.of(context).platformBrightness == Brightness.dark;
+
     return Column(
       children: [
         CarouselSlider(
@@ -36,13 +39,13 @@ class AkBannerSlider extends StatelessWidget {
               children: [
                 for (int i = 0; i < banners.length; i++)
                   AkCircularContainer(
-                      width: 20,
-                      height: 4,
-                      margin: const EdgeInsets.only(right: 10),
-                      backgroundColor:
-                          controller.carouselCurrentIndex.value == i
-                              ? AkColors.darkerGrey
-                              : AkColors.grey),
+                    width: 20,
+                    height: 4,
+                    margin: const EdgeInsets.only(right: 10),
+                    backgroundColor: controller.carouselCurrentIndex.value == i
+                        ? isDarkMode ? AkColors.white : AkColors.darkerGrey
+                        : isDarkMode ? AkColors.grey.withOpacity(0.5) : AkColors.grey,
+                  ),
               ],
             ),
           ),
