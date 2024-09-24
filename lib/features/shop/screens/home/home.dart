@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                   const AkCategoriesHorizontal(),
 
                   AkGridLayout(
-                      itemCount: 2,
+                      itemCount: 4,
                       itemBuilder: (_, index) => const AkProductCardVertical()),
                 ],
               ),
