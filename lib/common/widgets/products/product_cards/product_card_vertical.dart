@@ -32,7 +32,7 @@ class AkProductCardVertical extends StatelessWidget {
         height: height,
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
-          boxShadow: [AkShadowStyle.verticalProductShadow],
+          boxShadow: isDarkMode ? null : [AkShadowStyle.verticalProductShadow],
           borderRadius: BorderRadius.circular(AkSizes.productImageRadius),
           color: isDarkMode ? AkColors.darkContainer : AkColors.white,
         ),
