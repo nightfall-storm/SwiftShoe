@@ -19,6 +19,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       // * Reusable AppBar
       appBar: const AkAppBar(
+        showBackArrow: false,
         isHomeScreen: true,
       ),
       body: SingleChildScrollView(
