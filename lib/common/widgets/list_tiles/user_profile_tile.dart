@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:shoes_store/features/personalization/screens/profile/profile.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/image_strings.dart';
@@ -37,7 +39,7 @@ class AkUserProfileTile extends StatelessWidget {
                 : AkColors.black),
       ),
       trailing: IconButton(
-          onPressed: () {},
+          onPressed: () => Get.to(const ProfileScreen()),
           icon: Icon(
             Iconsax.edit,
             color: AkHelperFunctions.isDarkMode(context)
