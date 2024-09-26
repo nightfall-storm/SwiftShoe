@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import 'package:shoes_store/common/styles/shadows_style.dart';
 import 'package:shoes_store/common/widgets/containers/rounded_container.dart';
 import 'package:shoes_store/common/widgets/images/round_image.dart';
+import 'package:shoes_store/features/shop/screens/product_detail/product_detail.dart';
 import 'package:shoes_store/utils/constants/image_strings.dart';
 import 'package:shoes_store/utils/helpers/helper_functions.dart';
 
@@ -26,7 +28,7 @@ class AkProductCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDarkMode = AkHelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Get.to(() => const ProductDetail()),
       child: Container(
         width: width,
         height: height,
