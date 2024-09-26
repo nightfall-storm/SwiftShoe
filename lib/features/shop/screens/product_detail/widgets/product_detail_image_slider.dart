@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../common/widgets/Icon/circular_icon.dart';
@@ -58,9 +59,9 @@ class AkProductImageSlider extends StatelessWidget {
               ),
             ),
           ),
-          const AkAppBar(
-            showBackArrow: true,
-            actions: [
+          AkAppBar(
+            onPressed: () => Get.back(),
+            actions: const [
               Padding(
                   padding: EdgeInsets.only(right: AkSizes.md),
                   child: AkCircularIcon(
