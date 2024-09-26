@@ -59,7 +59,7 @@ class AkProductMetaData extends StatelessWidget {
 
         // * Stock Status
         Row(children: [
-          const AkProductTitleText(title: 'Status'),
+          const AkProductTitleText(title: 'Status :'),
           const SizedBox(width: AkSizes.spaceBtwItems),
           Text('In Stock', style: Theme.of(context).textTheme.titleMedium),
         ]),
@@ -73,7 +73,7 @@ class AkProductMetaData extends StatelessWidget {
                 height: 32,
                 width: 32,
                 overlayColor: isDarkMode ? AkColors.white : AkColors.black),
-            const AkBrandTitleWithVerifiedIcon(title: 'Nike', brandTextSize: TextSizes.medium),
+            const AkBrandTitleWithVerifiedIcon(title: 'Nike ', brandTextSize: TextSizes.medium),
           ],
         ),
       ],
