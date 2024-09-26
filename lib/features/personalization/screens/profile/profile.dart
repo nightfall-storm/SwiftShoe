@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shoes_store/common/widgets/appbar/appbar.dart';
 import 'package:shoes_store/common/widgets/containers/section_cotainer.dart';
@@ -15,6 +16,7 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AkAppBar(
         onAction: () {},
+        onPressed: () => Get.back(),
         title: 'Profile',
       ),
       body: SingleChildScrollView(
