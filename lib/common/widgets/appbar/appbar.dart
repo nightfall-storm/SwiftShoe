@@ -18,7 +18,8 @@ class AkAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.leadingOnPressed,
     this.actions,
     this.onPressed,
-    this.onAction, this.icon,
+    this.onAction,
+    this.icon,
   });
 
   final String? title;
@@ -74,34 +75,39 @@ class AkAppBar extends StatelessWidget implements PreferredSizeWidget {
           : Align(
               alignment: Alignment.center,
               child: Text(
-                title!,
+                title ?? '',
                 style: Theme.of(context)
                     .textTheme
                     .headlineMedium!
                     .apply(color: isDarkMode ? AkColors.white : AkColors.black),
               ),
             ),
-      actions: isHomeScreen
-          ? [
-              AkCartCounterIcon(darkMode: isDarkMode),
-            ]
-          : [
-              IconButton(
-                onPressed: onAction ??
-                    () {
-                      final navigationController =
-                          Get.find<NavigationController>();
-                      navigationController.selectedIndex.value = 0;
+      actions: actions ??
+          (isHomeScreen
+              ? [
+                  AkCartCounterIcon(darkMode: isDarkMode),
+                ]
+              : [
+                  IconButton(
+                    onPressed: onAction ??
+                        () {
+                          final navigationController =
+                              Get.find<NavigationController>();
+                          navigationController.selectedIndex.value = 0;
 
-                      // ? Navigate back to NavigationMenu
-                      Get.offAll(() => const NavigationMenu());
-                    },
-                icon: Icon(
-                    isWishListScreen ?  icon ?? Iconsax.add : Iconsax.search_normal,
-                    color: isDarkMode ? AkColors.white : AkColors.black),
-              ),
-              ...?actions,
-            ],
+                          // Navigate back to NavigationMenu
+                          Get.offAll(() => const NavigationMenu());
+                        },
+                    icon: Icon(
+                      icon ??
+                          (isWishListScreen
+                              ? Iconsax.add
+                              : Iconsax.search_normal),
+                      color: isDarkMode ? AkColors.white : AkColors.black,
+                    ),
+                  ),
+                  ...?actions, // Only spreads actions if not null
+                ]),
     );
   }
 
