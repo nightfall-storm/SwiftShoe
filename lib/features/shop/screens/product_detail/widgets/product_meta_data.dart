@@ -69,7 +69,7 @@ class AkProductMetaData extends StatelessWidget {
         Row(
           children: [
             AkCircularImage(
-                image: AkImages.shoeIcon,
+                image: AkImages.nikeLogo,
                 height: 32,
                 width: 32,
                 overlayColor: isDarkMode ? AkColors.white : AkColors.black),
