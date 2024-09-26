@@ -18,7 +18,7 @@ class AkAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.leadingOnPressed,
     this.actions,
     this.onPressed,
-    this.onAction,
+    this.onAction, this.icon,
   });
 
   final String? title;
@@ -29,7 +29,7 @@ class AkAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onPressed;
   final bool isWishListScreen;
   final VoidCallback? onAction;
-
+  final IconData? icon;
   @override
   Widget build(BuildContext context) {
     final bool isDarkMode = AkHelperFunctions.isDarkMode(context);
@@ -97,7 +97,7 @@ class AkAppBar extends StatelessWidget implements PreferredSizeWidget {
                       Get.offAll(() => const NavigationMenu());
                     },
                 icon: Icon(
-                    isWishListScreen ? Iconsax.add : Iconsax.search_normal,
+                    isWishListScreen ?  icon ?? Iconsax.add : Iconsax.search_normal,
                     color: isDarkMode ? AkColors.white : AkColors.black),
               ),
               ...?actions,
