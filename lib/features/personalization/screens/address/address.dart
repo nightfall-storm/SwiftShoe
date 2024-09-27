@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoes_store/common/widgets/appbar/appbar.dart';
-import 'package:shoes_store/common/widgets/containers/rounded_container.dart';
-import 'package:shoes_store/features/personalization/screens/address/widgets/single_address.dart';
 
+import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import 'add_new_address.dart';
+import 'widgets/single_address.dart';
 
 class UserAddressScreen extends StatelessWidget {
   const UserAddressScreen({super.key});

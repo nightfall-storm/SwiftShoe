@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoes_store/utils/constants/sizes.dart';
 
-import '../../../../common/styles/spacing_style.dart';
 import '../../../../common/widgets/appbar/appbar.dart';
+import '../../../../utils/constants/sizes.dart';
 
 class AddNewAddressScreen extends StatelessWidget {
   const AddNewAddressScreen({super.key});
@@ -51,7 +50,7 @@ class AddNewAddressScreen extends StatelessWidget {
                   const SizedBox(height: AkSizes.spaceBtwInputFields),
                   TextFormField(decoration: const InputDecoration(prefixIcon: Icon(Iconsax.global), labelText: 'Country')),
                   const SizedBox(height: AkSizes.defaultSpace),
-                  SizedBox(width: double.infinity,child: ElevatedButton(onPressed: (){}, child: Text('Save')),)
+                  SizedBox(width: double.infinity,child: ElevatedButton(onPressed: (){}, child: const Text('Save')),)
         
                 ],
               ),
