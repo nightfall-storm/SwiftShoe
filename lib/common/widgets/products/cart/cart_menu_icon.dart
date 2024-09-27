@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:shoes_store/features/shop/screens/cart/cart.dart';
 
 import '../../../../../utils/constants/colors.dart';
+
 class AkCartCounterIcon extends StatelessWidget {
   const AkCartCounterIcon({
     super.key,
@@ -16,9 +19,9 @@ class AkCartCounterIcon extends StatelessWidget {
       clipBehavior: Clip.none, // Allows overflow of the container
       children: [
         IconButton(
-          onPressed:
-              () {}, // Implement action for the shopping bag icon
-          icon: Icon(Iconsax.shopping_bag, color: darkMode ? AkColors.white : AkColors.black),
+          onPressed: () => Get.to(() => const CartScreen()),
+          icon: Icon(Iconsax.shopping_bag,
+              color: darkMode ? AkColors.white : AkColors.black),
         ),
         Positioned(
           right: 2,
@@ -33,10 +36,9 @@ class AkCartCounterIcon extends StatelessWidget {
             child: Center(
                 child: Text(
               '2',
-              style: Theme.of(context)
-                  .textTheme
-                  .labelLarge!
-                  .apply(color: darkMode ? AkColors.black : AkColors.white, fontSizeFactor: 0.8),
+              style: Theme.of(context).textTheme.labelLarge!.apply(
+                  color: darkMode ? AkColors.black : AkColors.white,
+                  fontSizeFactor: 0.8),
             )),
           ),
         ),
