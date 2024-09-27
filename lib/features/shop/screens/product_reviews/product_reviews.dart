@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:shoes_store/common/widgets/appbar/appbar.dart';
-import 'package:shoes_store/utils/device/device_utility.dart';
 
-import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
-import 'widgets/progress_indicator_rating.dart';
 import '../../../../common/widgets/products/ratings/rating_indicator.dart';
 import 'widgets/rating_progress_indicator.dart';
 import 'widgets/user_review_card.dart';
