@@ -5,6 +5,7 @@ import 'package:readmore/readmore.dart';
 
 import '../../../../common/widgets/containers/section_cotainer.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../cart/cart.dart';
 import '../product_reviews/product_reviews.dart';
 import 'widgets/bottom_product_to_cart.dart';
 import 'widgets/product_attributes.dart';
@@ -49,7 +50,7 @@ class ProductDetail extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                          onPressed: () {}, child: const Text('Checkout')),
+                          onPressed: () => Get.to(() => const CartScreen()), child: const Text('Checkout')),
                     ),
                     const SizedBox(height: AkSizes.spaceBtwSections),
       
