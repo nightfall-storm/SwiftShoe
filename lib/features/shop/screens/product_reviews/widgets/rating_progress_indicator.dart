@@ -13,7 +13,7 @@ class AkOverallProductRating extends StatelessWidget {
       children: [
         Expanded(
             flex: 3,
-            child: Text('4.8',
+            child: Text('4.5',
                 style: Theme.of(context).textTheme.displayLarge)),
         const Expanded(
           flex: 7,
