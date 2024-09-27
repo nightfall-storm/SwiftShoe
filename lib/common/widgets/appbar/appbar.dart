@@ -20,6 +20,7 @@ class AkAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.onPressed,
     this.onAction,
     this.icon,
+    this.appBarSize = 64
   });
 
   final String? title;
@@ -31,6 +32,8 @@ class AkAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isWishListScreen;
   final VoidCallback? onAction;
   final IconData? icon;
+  final double appBarSize;
+  
   @override
   Widget build(BuildContext context) {
     final bool isDarkMode = AkHelperFunctions.isDarkMode(context);
@@ -112,5 +115,5 @@ class AkAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(64);
+  Size get preferredSize => Size.fromHeight(appBarSize);
 }
