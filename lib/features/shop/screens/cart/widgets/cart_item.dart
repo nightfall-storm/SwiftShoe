@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../../../common/widgets/images/round_image.dart';
-import '../../../../common/widgets/texts/brand_title_verified_icon.dart';
-import '../../../../common/widgets/texts/product_title_text.dart';
-import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/image_strings.dart';
-import '../../../../utils/constants/sizes.dart';
-import '../../../../utils/helpers/helper_functions.dart';
+import '../../../../../common/widgets/images/round_image.dart';
+import '../../../../../common/widgets/texts/brand_title_verified_icon.dart';
+import '../../../../../common/widgets/texts/product_title_text.dart';
+import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/image_strings.dart';
+import '../../../../../utils/constants/sizes.dart';
+import '../../../../../utils/helpers/helper_functions.dart';
 
 class AkCartItem extends StatelessWidget {
   const AkCartItem({

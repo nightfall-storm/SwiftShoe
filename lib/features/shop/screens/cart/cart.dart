@@ -7,7 +7,7 @@ import '../../../../common/widgets/products/cart/add_remove_button.dart';
 import '../../../../common/widgets/texts/product_price_text.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/navigation_helper.dart';
-import 'cart_item.dart';
+import 'widgets/cart_item.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
