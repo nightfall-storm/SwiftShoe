@@ -73,7 +73,7 @@ class AkAppBar extends StatelessWidget implements PreferredSizeWidget {
                   height: 70),
             )
           : Align(
-              alignment: Alignment.center,
+              alignment: actions != null ? Alignment.centerLeft : Alignment.center,
               child: Text(
                 title ?? '',
                 style: Theme.of(context)
