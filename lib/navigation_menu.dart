@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoes_store/features/personalization/screens/settings/settings.dart';
-import 'package:shoes_store/features/shop/screens/category/category.dart';
-import 'package:shoes_store/utils/constants/colors.dart';
-import 'package:shoes_store/utils/helpers/helper_functions.dart';
 
+
+import 'features/personalization/screens/settings/settings.dart';
+import 'features/shop/screens/cart/cart.dart';
+import 'features/shop/screens/category/category.dart';
 import 'features/shop/screens/home/home.dart';
 import 'features/shop/screens/wishlist/wishlist.dart';
+import 'utils/constants/colors.dart';
+import 'utils/helpers/helper_functions.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
@@ -50,7 +52,7 @@ class NavigationController extends GetxController {
   final screens = [
     const HomeScreen(),
     const WishListScreen(),
-    Container(color: Colors.black),
+    const CartScreen(),
     const CategoryScreen(),
     const SettingsScreen(),
   ];
