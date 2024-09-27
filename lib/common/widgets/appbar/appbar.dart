@@ -55,7 +55,7 @@ class AkAppBar extends StatelessWidget implements PreferredSizeWidget {
                         navigationController.selectedIndex.value = 0;
 
                         // ? Navigate back to NavigationMenu
-                        Get.offAll(() => const NavigationMenu());
+                        Get.to(() => const NavigationMenu());
                       },
                   icon: Icon(
                     Iconsax.arrow_left,
