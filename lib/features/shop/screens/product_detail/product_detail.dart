@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
-import 'package:shoes_store/common/widgets/containers/section_cotainer.dart';
-import 'package:shoes_store/features/shop/screens/product_detail/widgets/product_attributes.dart';
-import 'package:shoes_store/features/shop/screens/product_detail/widgets/product_meta_data.dart';
-import 'package:shoes_store/utils/constants/sizes.dart';
 
+import '../../../../common/widgets/containers/section_cotainer.dart';
+import '../../../../utils/constants/sizes.dart';
+import '../product_reviews/product_reviews.dart';
 import 'widgets/bottom_product_to_cart.dart';
+import 'widgets/product_attributes.dart';
 import 'widgets/product_detail_image_slider.dart';
+import 'widgets/product_meta_data.dart';
 import 'widgets/rating_share.dart';
+
+
 
 class ProductDetail extends StatelessWidget {
   const ProductDetail({super.key});
@@ -76,7 +80,7 @@ class ProductDetail extends StatelessWidget {
                         showActionButton: false,
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () => Get.to(() => const ProductReviewsScreen()),
                         icon: const Icon(Iconsax.arrow_right_3, size: 18),
                       )
                     ],
