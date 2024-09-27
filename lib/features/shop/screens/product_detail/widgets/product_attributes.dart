@@ -67,8 +67,7 @@ class AkProductAttributes extends StatelessWidget {
 
               // * Variation Description
               const AkProductTitleText(
-                  title:
-                      '- Zoom Air cushioning for responsive comfort \n- Breathable mesh upper for lightweight ventilation \n- Durable outsole with superior traction \n- Stylish green colorway for a bold look.',
+                  title: '',
                   smallSize: true,
                   maxLines: 4),
             ],
