@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../../features/shop/screens/brand/brand_products.dart';
 import '../image_text_widgets/vertical_image_text.dart';
 import '../../../utils/constants/image_strings.dart';
 
@@ -20,7 +22,7 @@ class AkCategoriesHorizontal extends StatelessWidget {
             title: 'Nike',
             image: AkImages.nikeLogo,
             backgroundColor: null,
-            onTap: () {},
+            onTap: () => Get.to(() => const BrandProducts()),
           );
         },
       ),
