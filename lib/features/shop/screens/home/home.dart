@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import 'package:shoes_store/common/widgets/appbar/appbar.dart';
-import 'package:shoes_store/common/widgets/products/product_cards/product_card_vertical.dart';
-import 'package:shoes_store/utils/constants/sizes.dart';
 
+
+import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/containers/section_cotainer.dart';
 import '../../../../common/widgets/containers/search_container.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';
+import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../utils/constants/image_strings.dart';
+import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/navigation_helper.dart';
+import '../all_products/all_products.dart';
+import '../brand/all_brand.dart';
 import 'widgets/banner_slider.dart';
 import '../../../../common/widgets/containers/categories_horizontal.dart';
 
@@ -55,14 +59,21 @@ class HomeScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // ? Heading
-                    const AkSectionHeading(
+                    AkSectionHeading(
                       title: 'Top Brands',
-                      showActionButton: false,
+                      showActionButton: true,
+                      onPressed: () => Get.to(() => const AllBrandsScreen()),
                     ),
                     const SizedBox(height: AkSizes.spaceBtwItems),
                     // ? Categories Section
                     const AkCategoriesHorizontal(),
-
+                    // ? Heading Popular Products
+                    AkSectionHeading(
+                      title: 'Popular Products',
+                      showActionButton: true,
+                      onPressed: () => Get.to(() => const AllProducts()),
+                    ),
+                    const SizedBox(height: AkSizes.spaceBtwItems),
                     AkGridLayout(
                       itemCount: 4,
                       itemBuilder: (_, index) => const AkProductCardVertical(),
