@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoes_store/common/widgets/containers/section_cotainer.dart';
-import 'package:shoes_store/common/widgets/list_tiles/settings_menu_tile.dart';
-import 'package:shoes_store/features/personalization/screens/address/address.dart';
-import 'package:shoes_store/features/shop/screens/cart/cart.dart';
-import 'package:shoes_store/features/shop/screens/order/order.dart';
+
 
 import '../../../../common/widgets/appbar/appbar.dart';
+import '../../../../common/widgets/containers/section_cotainer.dart';
+import '../../../../common/widgets/list_tiles/settings_menu_tile.dart';
 import '../../../../common/widgets/list_tiles/user_profile_tile.dart';
 import '../../../../navigation_menu.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/navigation_helper.dart';
+import '../../../shop/screens/order/order.dart';
+import '../address/address.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
