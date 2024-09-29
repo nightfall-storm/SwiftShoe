@@ -12,6 +12,7 @@
 /android/app/google-services.json
 /ios/Runner/GoogleService-Info.plist
 /firebase.json
+lib/firebase_options.dart
 
 # Android Studio build artifacts
 /android/app/debug
