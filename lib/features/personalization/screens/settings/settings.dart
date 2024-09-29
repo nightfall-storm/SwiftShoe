@@ -57,7 +57,7 @@ class SettingsScreen extends StatelessWidget {
                           // ? Set the selected index to 2 (CartScreen)
                           final navigationController =
                               Get.find<NavigationController>();
-                          navigationController.selectedIndex.value = 0;
+                          navigationController.selectedIndex.value = 2;
 
                           // ? Navigate back to NavigationMenu
                           Get.to(() => const NavigationMenu());
