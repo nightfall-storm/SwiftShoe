@@ -55,8 +55,7 @@ class SettingsScreen extends StatelessWidget {
                         subtitle: 'Add, remove products and move to checkout',
                         onTap: () {
                           // ? Set the selected index to 2 (CartScreen)
-                          final navigationController =
-                              Get.find<NavigationController>();
+                          final navigationController = Get.find<NavigationController>();
                           navigationController.selectedIndex.value = 2;
 
                           // ? Navigate back to NavigationMenu
