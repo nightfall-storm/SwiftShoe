@@ -1,7 +1,7 @@
-import 'package:shoes_store/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:shoes_store/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 
 
 void main() {
@@ -17,7 +17,8 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: AkAppTheme.lightTheme,
       darkTheme: AkAppTheme.darkTheme,
-      home: const OnBoaridngScreen(),
+      // * Show loader or circular progress indicator until authentication repository decides to show relevant screen
+      home: const Scaffold(body: Center(child: CircularProgressIndicator(color: Colors.white))),
       debugShowCheckedModeBanner: false,
       
     );
