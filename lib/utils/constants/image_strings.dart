@@ -96,5 +96,8 @@ class AkImages {
   static const String paystack = "assets/icons/payment_methods/paystack.png";
   static const String paytm = "assets/icons/payment_methods/paytm.png";
   static const String successfulPaymentIcon = "assets/icons/payment_methods/successful_payment_icon.png";
+
+  // animation
+  static const String dockerAnimation = "assets/images/animations/loader-animation.json";
 }
 
