@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:shoes_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:shoes_store/features/authentication/controllers/signup/signup_controller.dart';
 import 'package:shoes_store/utils/validators/validation.dart';
 
@@ -8,6 +9,7 @@ import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
+import 'terms_conditions_checkbox.dart';
 
 class SignupForm extends StatelessWidget {
   const SignupForm({
@@ -58,53 +60,26 @@ class SignupForm extends StatelessWidget {
             ),
             const SizedBox(height: AkSizes.spaceBtwInputFields),
             // * password
-            TextFormField(
-              controller: controller.password,
-              validator: (value) => AkValidator.validatePassword(value),
-              decoration: const InputDecoration(
-                  prefixIcon: Icon(Iconsax.lock_1),
-                  border: OutlineInputBorder(),
-                  labelText: AkTexts.password),
+            Obx(
+              () => TextFormField(
+                controller: controller.password,
+                validator: (value) => AkValidator.validatePassword(value),
+                obscureText: controller.hidePassword.value,
+                decoration: InputDecoration(
+                    prefixIcon: const Icon(Iconsax.lock_1),
+                    suffixIcon: IconButton(onPressed: () => controller.hidePassword.value = !controller.hidePassword.value,
+                                          icon: Icon(controller.hidePassword.value ? Iconsax.eye_slash : Iconsax.eye)),
+                    border: const OutlineInputBorder(),
+                    labelText: AkTexts.password),
+              ),
             ),
             const SizedBox(
                 height: AkSizes
                     .spaceBtwInputFields), // Added spacing here to match the login form
             // * Terms and Privacy
-            Row(
-              children: [
-                Row(
-                  children: [
-                    Checkbox(value: false, onChanged: (value) => {}),
-                    Text.rich(TextSpan(children: [
-                      TextSpan(
-                          text: '${AkTexts.iAgreeTo} ',
-                          style: Theme.of(context).textTheme.bodySmall),
-                      TextSpan(
-                          text: '${AkTexts.privacyPolicy} ',
-                          style: Theme.of(context).textTheme.bodyMedium!.apply(
-                                color: dark ? AkColors.grey : AkColors.black,
-                                decoration: TextDecoration.underline,
-                                decorationColor:
-                                    dark ? AkColors.grey : AkColors.black,
-                              )),
-                      TextSpan(
-                          text: ' ${AkTexts.and} ',
-                          style: Theme.of(context).textTheme.bodySmall),
-                      TextSpan(
-                          text: '${AkTexts.termsOfUse}.',
-                          style: Theme.of(context).textTheme.bodyMedium!.apply(
-                                color: dark ? AkColors.grey : AkColors.black,
-                                decoration: TextDecoration.underline,
-                                decorationColor:
-                                    dark ? AkColors.grey : AkColors.black,
-                              )),
-                    ])),
-                  ],
-                )
-              ],
-            ),
-            const SizedBox(
-                height: AkSizes.spaceBtwItems), // Ensuring same size box
+            const TermsConditionsCheckbox(),
+            const SizedBox(height: AkSizes.spaceBtwItems), // Ensuring same size box
+            // * Create Account Button
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -123,3 +98,4 @@ class SignupForm extends StatelessWidget {
     );
   }
 }
+
