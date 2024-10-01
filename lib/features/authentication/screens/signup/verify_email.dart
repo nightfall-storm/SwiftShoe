@@ -45,12 +45,6 @@ class VerifyEmailScreen extends StatelessWidget {
                       subTitle: AkTexts.yourAccountCreatedSubTitle,
                       image: AkImages.staticSuccessIllustration,
                       onPressed: () => Get.to(() => const LoginScreen()))),
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    backgroundColor: dark ? AkColors.grey : AkColors.black,
-                    foregroundColor: dark ? AkColors.black : Colors.white,
-                    side: BorderSide.none,
-                  ),
                   child: const Text(AkTexts.tContinue),
                 ),
               ),
