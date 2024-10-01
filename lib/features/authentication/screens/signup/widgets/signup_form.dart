@@ -79,17 +79,11 @@ class SignupForm extends StatelessWidget {
             // * Terms and Privacy
             const TermsConditionsCheckbox(),
             const SizedBox(height: AkSizes.spaceBtwItems), // Ensuring same size box
-            // * Create Account Button
+            // * Create Account 
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                   onPressed: () => controller.signup(),
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    backgroundColor: dark ? AkColors.grey : AkColors.black,
-                    foregroundColor: dark ? AkColors.black : Colors.white,
-                    side: BorderSide.none,
-                  ),
                   child: const Text(AkTexts.createAccount)),
             ),
           ],
