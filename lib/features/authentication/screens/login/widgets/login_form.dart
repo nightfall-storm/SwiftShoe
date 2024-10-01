@@ -55,7 +55,7 @@ class LoginForm extends StatelessWidget {
                     child: Text(
                       AkTexts.forgetPassword,
                       style: TextStyle(
-                          color: dark ? AkColors.grey : Colors.black,
+                          color: dark ? AkColors.white : AkColors.primary,
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
                           decoration: TextDecoration.underline),
@@ -67,12 +67,6 @@ class LoginForm extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                   onPressed: () => Get.off(() => const NavigationMenu()),
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    backgroundColor: dark ? AkColors.grey : AkColors.black,
-                    foregroundColor: dark ? AkColors.black : Colors.white,
-                    side: BorderSide.none,
-                  ),
                   child: const Text(AkTexts.signIn)),
             ),
           ],
