@@ -1,3 +1,4 @@
+import 'package:shoes_store/bindings/general_bindings.dart';
 import 'package:shoes_store/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,6 +18,7 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: AkAppTheme.lightTheme,
       darkTheme: AkAppTheme.darkTheme,
+      initialBinding: GeneralBindings(),
       // * Show loader or circular progress indicator until authentication repository decides to show relevant screen
       home: const Scaffold(body: Center(child: CircularProgressIndicator(color: Colors.white))),
       debugShowCheckedModeBanner: false,
