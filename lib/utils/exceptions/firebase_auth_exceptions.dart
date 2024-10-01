@@ -1,10 +1,10 @@
 /// Custom exception class to handle various Firebase authentication-related errors.
-class TFirebaseAuthException implements Exception {
+class AkFirebaseAuthException implements Exception {
   /// The error code associated with the exception.
   final String code;
 
   /// Constructor that takes an error code.
-  TFirebaseAuthException(this.code);
+  AkFirebaseAuthException(this.code);
 
   /// Get the corresponding error message based on the error code.
   String get message {

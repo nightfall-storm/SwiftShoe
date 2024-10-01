@@ -1,10 +1,10 @@
 /// Custom exception class to handle various Firebase-related errors.
-class TFirebaseException implements Exception {
+class AkFirebaseException implements Exception {
   /// The error code associated with the exception.
   final String code;
 
   /// Constructor that takes an error code.
-  TFirebaseException(this.code);
+  AkFirebaseException(this.code);
 
   /// Get the corresponding error message based on the error code.
   String get message {
