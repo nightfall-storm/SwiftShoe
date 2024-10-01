@@ -11,6 +11,7 @@ class SignupController extends GetxController {
 
   // * Variables
   final hidePassword = true.obs; // Observable for hiding/showing password
+  final privacyPolicy = false.obs; // Observable for privacy policy acceptance
   final name = TextEditingController(); // controller for the name input
   final email = TextEditingController(); // controller for the email input
   final phoneNumber = TextEditingController(); // controller for the phone number input
@@ -27,11 +28,22 @@ class SignupController extends GetxController {
       if (!isConnected) return;
 
       // * form validation
-      if(!signupFormKey.currentState!.validate()) return;
+      if (!signupFormKey.currentState!.validate()) return;
+
+      // * Privacy Policy Check
+      if (!privacyPolicy.value) {
+        AkLoaders.warningSnackBar(
+            title: 'Accept Privacy Policy',
+            message: 'In order to create your account, you must read and accept the Privacy Policy & Terms of use');
+        return;
+      }
+
+      // * Register user in Firebase authentication & Save user data
+
 
     } catch (e) {
       AkLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-    }finally{
+    } finally {
       AkFullScreenLoader.stopLoading();
     }
   }
