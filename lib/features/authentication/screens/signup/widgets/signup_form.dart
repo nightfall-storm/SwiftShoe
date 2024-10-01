@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoes_store/features/authentication/screens/signup/verify_email.dart';
+import 'package:shoes_store/features/authentication/controllers/signup/signup_controller.dart';
+import 'package:shoes_store/utils/validators/validation.dart';
 
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
@@ -15,14 +16,18 @@ class SignupForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignupController());
     final dark = AkHelperFunctions.isDarkMode(context);
     return Form(
+      key: controller.signupFormKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: AkSizes.spaceBtwSections),
         child: Column(
           children: [
             // * Name
             TextFormField(
+              controller: controller.name,
+              validator: (value) => AkValidator.validateEmptyText('Name', value),
               decoration: const InputDecoration(
                 prefixIcon: Icon(Iconsax.user),
                 border: OutlineInputBorder(),
@@ -32,6 +37,8 @@ class SignupForm extends StatelessWidget {
             const SizedBox(height: AkSizes.spaceBtwInputFields),
             // * Email
             TextFormField(
+              controller: controller.email,
+              validator: (value) => AkValidator.validateEmail(value),
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.email_outlined),
                 border: OutlineInputBorder(),
@@ -41,6 +48,8 @@ class SignupForm extends StatelessWidget {
             const SizedBox(height: AkSizes.spaceBtwInputFields),
             // * Phone Number
             TextFormField(
+              controller: controller.phoneNumber,
+              validator: (value) => AkValidator.validatePhoneNumber(value),
               decoration: const InputDecoration(
                 labelText: AkTexts.phoneNo,
                 border: OutlineInputBorder(),
@@ -50,6 +59,8 @@ class SignupForm extends StatelessWidget {
             const SizedBox(height: AkSizes.spaceBtwInputFields),
             // * password
             TextFormField(
+              controller: controller.password,
+              validator: (value) => AkValidator.validatePassword(value),
               decoration: const InputDecoration(
                   prefixIcon: Icon(Iconsax.lock_1),
                   border: OutlineInputBorder(),
@@ -97,7 +108,7 @@ class SignupForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () => Get.to(() => const VerifyEmailScreen()),
+                  onPressed: () => controller.signup(),
                   style: ElevatedButton.styleFrom(
                     elevation: 0,
                     backgroundColor: dark ? AkColors.grey : AkColors.black,
