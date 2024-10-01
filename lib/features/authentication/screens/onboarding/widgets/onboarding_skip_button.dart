@@ -20,8 +20,7 @@ class OnBoardingSkipButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () => OnBoardingController.instance.skipPage(),
         style:  ElevatedButton.styleFrom(
-          backgroundColor: dark ? AkColors.grey : AkColors.black,
-          foregroundColor: dark ? AkColors.black : AkColors.white,
+          backgroundColor: dark ? AkColors.primary : AkColors.black,
           minimumSize: const Size(180, 30),
           elevation: 0,
           side: BorderSide.none, // Remove any border

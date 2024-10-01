@@ -26,7 +26,7 @@ class OnBoardingPageIndicator extends StatelessWidget {
         onDotClicked: controller.dotNavigationClick,
         count: 3,
         effect: ExpandingDotsEffect(
-          activeDotColor: dark ? AkColors.grey : AkColors.dark,
+          activeDotColor: dark ? AkColors.light : AkColors.dark,
         ),
       ),
     );

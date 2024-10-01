@@ -28,7 +28,7 @@ class NotMemberSection extends StatelessWidget {
           child: Text(
             secondText,
             style: TextStyle(
-              color: dark ? AkColors.grey : Colors.black,
+              color: dark ? AkColors.white : AkColors.primary,
               fontSize: 15,
               fontWeight: FontWeight.bold,
               decoration: TextDecoration.underline,

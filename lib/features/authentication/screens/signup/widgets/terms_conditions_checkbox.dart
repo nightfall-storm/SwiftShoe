@@ -19,7 +19,12 @@ class TermsConditionsCheckbox extends StatelessWidget {
       children: [
         Row(
           children: [
-            Obx(() => Checkbox(value: false, onChanged: (value) => {})),
+            Obx(
+              () => Checkbox(
+                value: controller.privacyPolicy.value,
+                onChanged: (value) => controller.privacyPolicy.value = !controller.privacyPolicy.value,
+              ),
+            ),
             Text.rich(TextSpan(children: [
               TextSpan(
                   text: '${AkTexts.iAgreeTo} ',
@@ -27,10 +32,10 @@ class TermsConditionsCheckbox extends StatelessWidget {
               TextSpan(
                   text: '${AkTexts.privacyPolicy} ',
                   style: Theme.of(context).textTheme.bodyMedium!.apply(
-                        color: isDarkMode ? AkColors.grey : AkColors.black,
+                        color: isDarkMode ? AkColors.white : AkColors.primary,
                         decoration: TextDecoration.underline,
                         decorationColor:
-                            isDarkMode ? AkColors.grey : AkColors.black,
+                            isDarkMode ? AkColors.white : AkColors.primary,
                       )),
               TextSpan(
                   text: ' ${AkTexts.and} ',
@@ -38,10 +43,10 @@ class TermsConditionsCheckbox extends StatelessWidget {
               TextSpan(
                   text: '${AkTexts.termsOfUse}.',
                   style: Theme.of(context).textTheme.bodyMedium!.apply(
-                        color: isDarkMode ? AkColors.grey : AkColors.black,
+                        color: isDarkMode ? AkColors.white : AkColors.primary,
                         decoration: TextDecoration.underline,
                         decorationColor:
-                            isDarkMode ? AkColors.grey : AkColors.black,
+                            isDarkMode ? AkColors.white : AkColors.primary,
                       )),
             ])),
           ],
