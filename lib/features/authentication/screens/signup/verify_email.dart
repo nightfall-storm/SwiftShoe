@@ -6,7 +6,6 @@ import 'package:shoes_store/utils/constants/sizes.dart';
 import '../../../../common/widgets/success_screen/success_screen.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/text_strings.dart';
-import '../../../../utils/helpers/helper_functions.dart';
 import '../login/login.dart';
 import 'widgets/verify_email_header.dart';
 
@@ -15,7 +14,6 @@ class VerifyEmailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = AkHelperFunctions.isDarkMode(context);
     return Scaffold(
       appBar: AppBar(
         actions: [

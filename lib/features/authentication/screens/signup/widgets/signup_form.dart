@@ -6,7 +6,6 @@ import 'package:shoes_store/utils/validators/validation.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
-import '../../../../../utils/helpers/helper_functions.dart';
 import 'terms_conditions_checkbox.dart';
 
 class SignupForm extends StatelessWidget {
@@ -17,7 +16,6 @@ class SignupForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(SignupController());
-    final dark = AkHelperFunctions.isDarkMode(context);
     return Form(
       key: controller.signupFormKey,
       child: Padding(
