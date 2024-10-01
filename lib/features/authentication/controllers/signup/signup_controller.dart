@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shoes_store/data/repositories/authentication/authentication_repository.dart';
+import 'package:shoes_store/data/repositories/user/user_repository.dart';
+import 'package:shoes_store/features/authentication/screens/signup/verify_email.dart';
 import 'package:shoes_store/utils/popups/full_screen_loader.dart';
 import 'package:shoes_store/utils/popups/loaders.dart';
 
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/helpers/network_manager.dart';
+import '../../../personalization/models/user_model.dart';
 
 class SignupController extends GetxController {
   static SignupController get instance => Get.find();
@@ -12,39 +16,72 @@ class SignupController extends GetxController {
   // * Variables
   final hidePassword = true.obs; // Observable for hiding/showing password
   final privacyPolicy = false.obs; // Observable for privacy policy acceptance
-  final name = TextEditingController(); // controller for the name input
+  final username = TextEditingController(); // controller for the Username input
   final email = TextEditingController(); // controller for the email input
-  final phoneNumber = TextEditingController(); // controller for the phone number input
+  final phoneNumber =
+      TextEditingController(); // controller for the phone number input
   final password = TextEditingController(); // controller for the password input
-  GlobalKey<FormState> signupFormKey = GlobalKey<FormState>(); // Formkey for validation
+  GlobalKey<FormState> signupFormKey =
+      GlobalKey<FormState>(); // Formkey for validation
   // * Signup
-  Future<void> signup() async {
+  void signup() async {
     try {
       // * Start loading
-      AkFullScreenLoader.openLoadingDialog('We are processing your information...', AkImages.dockerAnimation);
+      AkFullScreenLoader.openLoadingDialog(
+          'We are processing your information...', AkImages.dockerAnimation);
 
       // * Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
-      if (!isConnected) return;
+      if (!isConnected) {
+        AkFullScreenLoader.stopLoading();
+        return;
+      }
 
       // * form validation
-      if (!signupFormKey.currentState!.validate()) return;
+      if (!signupFormKey.currentState!.validate()) {
+        AkFullScreenLoader.stopLoading();
+        return;
+      }
 
       // * Privacy Policy Check
       if (!privacyPolicy.value) {
         AkLoaders.warningSnackBar(
             title: 'Accept Privacy Policy',
-            message: 'In order to create your account, you must read and accept the Privacy Policy & Terms of use');
+            message:
+                'In order to create your account, you must read and accept the Privacy Policy & Terms of use');
         return;
       }
 
       // * Register user in Firebase authentication & Save user data
+      final userCredential = await AuthenticationRepository.instance
+          .registerWithEmailAndPassword(
+              email.text.trim(), password.text.trim());
 
+      // * Save Authenticated user data in the Firestore
+      final newUser = UserModel(
+        id: userCredential.user!.uid,
+        username: username.text.trim(),
+        email: email.text.trim(),
+        phoneNumber: phoneNumber.text.trim(),
+        profilePicture: '',
+      );
 
-    } catch (e) {
-      AkLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-    } finally {
+      final userRepository = Get.put(UserRepository());
+      await userRepository.saveUserRecord(newUser);
+      // * Remove loader
       AkFullScreenLoader.stopLoading();
+
+      // * show Success Message
+      AkLoaders.successSnackBar(
+          title: 'Congratulations',
+          message: 'Your account has been created! Verify Email to continue.');
+
+      // * Move to Verify Email Screen
+      Get.to(() => const VerifyEmailScreen());
+    } catch (e) {
+      AkFullScreenLoader.stopLoading();
+      // Show some generic Error to the user
+      AkLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
 }
