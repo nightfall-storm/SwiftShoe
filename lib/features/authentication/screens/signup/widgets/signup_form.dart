@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoes_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:shoes_store/features/authentication/controllers/signup/signup_controller.dart';
 import 'package:shoes_store/utils/validators/validation.dart';
 
-import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
@@ -26,10 +24,10 @@ class SignupForm extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: AkSizes.spaceBtwSections),
         child: Column(
           children: [
-            // * Name
+            // * Username
             TextFormField(
-              controller: controller.name,
-              validator: (value) => AkValidator.validateEmptyText('Name', value),
+              controller: controller.username,
+              validator: (value) => AkValidator.validateEmptyText('Username', value),
               decoration: const InputDecoration(
                 prefixIcon: Icon(Iconsax.user),
                 border: OutlineInputBorder(),
