@@ -39,15 +39,25 @@ class SignupForm extends StatelessWidget {
               ),
             ),
             const SizedBox(height: AkSizes.spaceBtwInputFields),
+            // * Phone Number
+            TextFormField(
+              decoration: const InputDecoration(
+                labelText: AkTexts.phoneNo,
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Iconsax.call),
+              ),
+            ),
+            const SizedBox(height: AkSizes.spaceBtwInputFields),
             // * password
             TextFormField(
               decoration: const InputDecoration(
-                prefixIcon: Icon(Iconsax.lock_1),
-                border: OutlineInputBorder(),
-                labelText: AkTexts.password,
-              ),
+                  prefixIcon: Icon(Iconsax.lock_1),
+                  border: OutlineInputBorder(),
+                  labelText: AkTexts.password),
             ),
-            const SizedBox(height: AkSizes.spaceBtwInputFields), // Added spacing here to match the login form
+            const SizedBox(
+                height: AkSizes
+                    .spaceBtwInputFields), // Added spacing here to match the login form
             // * Terms and Privacy
             Row(
               children: [
@@ -82,7 +92,8 @@ class SignupForm extends StatelessWidget {
                 )
               ],
             ),
-            const SizedBox(height: AkSizes.spaceBtwItems), // Ensuring same size box
+            const SizedBox(
+                height: AkSizes.spaceBtwItems), // Ensuring same size box
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
