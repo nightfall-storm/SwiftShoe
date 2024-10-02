@@ -1,7 +1,13 @@
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:shoes_store/common/widgets/success_screen/success_screen.dart';
 import 'package:shoes_store/utils/popups/loaders.dart';
 
 import '../../../../data/repositories/authentication/authentication_repository.dart';
+import '../../../../utils/constants/image_strings.dart';
+import '../../../../utils/constants/text_strings.dart';
 
 class VerifyEmailController extends GetxController {
   static VerifyEmailController get instance => Get.find();
@@ -10,6 +16,7 @@ class VerifyEmailController extends GetxController {
   @override
   void onInit() {
     sendEmailVerification();
+    setTimerForAutoRedirect;
     super.onInit();
   }
 
@@ -30,6 +37,23 @@ class VerifyEmailController extends GetxController {
   }
 
   // * Set Timer to automatically redirect on Email Verification
+  setTimerForAutoRedirect() {
+    Timer.periodic(
+      const Duration(seconds: 1),
+      (timer) async {
+        await FirebaseAuth.instance.currentUser?.reload();
+        final user = FirebaseAuth.instance.currentUser;
+        if (user?.emailVerified ?? false) {
+          timer.cancel();
+          Get.off(() => SuccessScreen(
+              subTitle: AkTexts.yourAccountCreatedSubTitle,
+              onPressed: () => AuthenticationRepository.instance.screenRedirect,
+              image: AkImages.successfullyRegisterAnimation,
+              title: AkTexts.yourAccountCreatedTitle));
+        }
+      },
+    );
+  }
 
   // * Manually check if email verified
 }
