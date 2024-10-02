@@ -46,16 +46,17 @@ class SignupController extends GetxController {
       // * Privacy Policy Check
       if (!privacyPolicy.value) {
         AkLoaders.warningSnackBar(
-            title: 'Accept Privacy Policy',
-            message:
-                'In order to create your account, you must read and accept the Privacy Policy & Terms of use');
+          title: 'Accept Privacy Policy',
+          message: 'In order to create your account, you must read and accept the Privacy Policy & Terms of use',
+        );
         return;
       }
 
       // * Register user in Firebase authentication & Save user data
-      final userCredential = await AuthenticationRepository.instance
-          .registerWithEmailAndPassword(
-              email.text.trim(), password.text.trim());
+      final userCredential = await AuthenticationRepository.instance.registerWithEmailAndPassword(
+        email.text.trim(),
+        password.text.trim(),
+      );
 
       // * Save Authenticated user data in the Firestore
       final newUser = UserModel(
@@ -73,11 +74,12 @@ class SignupController extends GetxController {
 
       // * show Success Message
       AkLoaders.successSnackBar(
-          title: 'Congratulations',
-          message: 'Your account has been created! Verify Email to continue.');
+        title: 'Congratulations',
+        message: 'Your account has been created! Verify Email to continue.',
+      );
 
       // * Move to Verify Email Screen
-      Get.to(() => VerifyEmailScreen(email: email.text.trim(),));
+      Get.to(() => VerifyEmailScreen(email: email.text.trim()));
     } catch (e) {
       AkFullScreenLoader.stopLoading();
       // Show some generic Error to the user
