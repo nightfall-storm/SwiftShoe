@@ -26,59 +26,53 @@ class AuthenticationRepository extends GetxController {
 
   // * Function to Show Relevant Screen
   screenRedirect() async {
-
     deviceStorage.writeIfNull('isFirstTime', true);
 
-    bool isFirstTime = deviceStorage.read('isFirstTime');
-    if (isFirstTime == false) {
-      Get.offAll(() => const LoginScreen());
-    } else {
-      Get.offAll(() => const OnBoaridngScreen());
-    }
+    deviceStorage.read('isFirstTime') != true
+        ? Get.offAll(() => const LoginScreen())
+        : Get.offAll(() => const OnBoaridngScreen());
   }
 
 /* ------------------------- Email & Password Sign-in ------------------------- */
   // * [Email Authentication] - SignIn
-  
+
   // * [Email Authentication] - Register
-  Future<UserCredential> registerWithEmailAndPassword(String email, String password) async{
-    try{
-      return await _auth.createUserWithEmailAndPassword(email: email, password: password);
-    } on FirebaseAuthException catch (e){
+  Future<UserCredential> registerWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      return await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+    } on FirebaseAuthException catch (e) {
       throw AkFirebaseAuthException(e.code).message;
-    } on FirebaseException catch (e){
+    } on FirebaseException catch (e) {
       throw AkFirebaseException(e.code).message;
-    } on FormatException catch (_){
+    } on FormatException catch (_) {
       throw const AkFormatException().message;
-    } on PlatformException catch (e){
+    } on PlatformException catch (e) {
       throw AkPlatformException(e.code).message;
-    }catch(e){
+    } catch (e) {
       throw 'Something went wrong. Please try again';
     }
   }
 
   // * [Email Verification] - Mail Verification
-  Future<void> sendEmailVerification() async{
-    try{
+  Future<void> sendEmailVerification() async {
+    try {
       await _auth.currentUser?.sendEmailVerification();
-    } on FirebaseAuthException catch (e){
+    } on FirebaseAuthException catch (e) {
       throw AkFirebaseAuthException(e.code).message;
-    } on FirebaseException catch (e){
+    } on FirebaseException catch (e) {
       throw AkFirebaseException(e.code).message;
-    } on FormatException catch (_){
+    } on FormatException catch (_) {
       throw const AkFormatException().message;
-    } on PlatformException catch (e){
+    } on PlatformException catch (e) {
       throw AkPlatformException(e.code).message;
-    }catch(e){
+    } catch (e) {
       throw 'Something went wrong. Please try again';
     }
   }
-  
+
   // * [ReAuthentication] - ReAuthenticate User
 
-  
   // * [Email Authentication] - Forget Password
-  
-
-
 }
