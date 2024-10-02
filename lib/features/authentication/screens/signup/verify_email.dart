@@ -2,15 +2,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shoes_store/features/authentication/controllers/signup/verify_email_controller.dart';
 
-
-import '../../../../common/widgets/success_screen/success_screen.dart';
+import '../../../../data/repositories/authentication/authentication_repository.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/helpers/helper_functions.dart';
-import '../login/login.dart';
+import '../../controllers/signup/verify_email_controller.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
   const VerifyEmailScreen({
@@ -29,7 +27,7 @@ class VerifyEmailScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(CupertinoIcons.clear),
-            onPressed: () => Get.offAll(() => const LoginScreen()),
+            onPressed: () => AuthenticationRepository.instance.logout(),
           ),
         ],
       ),
@@ -58,18 +56,14 @@ class VerifyEmailScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => Get.to(() => SuccessScreen(
-                      title: AkTexts.yourAccountCreatedTitle,
-                      subTitle: AkTexts.yourAccountCreatedSubTitle,
-                      image: AkImages.staticSuccessIllustration,
-                      onPressed: () => Get.to(() => const LoginScreen()))),
+                  onPressed: () => controller.checkEmailVerificationStatus(),
                   child: const Text(AkTexts.tContinue),
                 ),
               ),
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () => controller.sendEmailVerification(),
                   child: const Text(AkTexts.resendEmail),
                 ),
               ),
