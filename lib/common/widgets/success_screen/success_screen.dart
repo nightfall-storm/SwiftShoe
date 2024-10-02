@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:lottie/lottie.dart';
 import 'package:shoes_store/common/styles/spacing_style.dart';
 import 'package:flutter/material.dart';
 
@@ -27,9 +28,10 @@ class SuccessScreen extends StatelessWidget {
           child: Column(
             children: [
               // * Image
-              Image(
-                  image: AssetImage(image),
-                  width: AkHelperFunctions.screenWidth() * .6),
+              Lottie.asset(
+                image,
+                width: AkHelperFunctions.screenWidth() * .6,
+              ),
               const SizedBox(height: AkSizes.spaceBtwSections),
 
               // * Title & SubTitle
