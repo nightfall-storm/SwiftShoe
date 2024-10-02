@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoes_store/features/authentication/controllers/signup/signup_controller.dart';
-import 'package:shoes_store/utils/validators/validation.dart';
+
 
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
+import '../../../../../utils/validators/validation.dart';
+import '../../../controllers/signup/signup_controller.dart';
 import 'terms_conditions_checkbox.dart';
+
 
 class SignupForm extends StatelessWidget {
   const SignupForm({

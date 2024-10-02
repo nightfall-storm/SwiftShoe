@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shoes_store/common/widgets/login_signup/form_divider.dart';
-import 'package:shoes_store/common/widgets/login_signup/social_buttons.dart';
-import 'package:shoes_store/features/authentication/screens/login/login.dart';
+
+
+import '../../../../common/widgets/login_signup/form_divider.dart';
 import '../../../../common/widgets/login_signup/not_a_member_section.dart';
+import '../../../../common/widgets/login_signup/social_buttons.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../login/login.dart';
 import 'widgets/signup_form.dart';
 import 'widgets/signup_header.dart';
 

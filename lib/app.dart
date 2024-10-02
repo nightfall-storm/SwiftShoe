@@ -1,7 +1,8 @@
-import 'package:shoes_store/bindings/general_bindings.dart';
-import 'package:shoes_store/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'bindings/general_bindings.dart';
+import 'utils/theme/theme.dart';
 
 
 
