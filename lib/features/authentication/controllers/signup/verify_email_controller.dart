@@ -16,7 +16,7 @@ class VerifyEmailController extends GetxController {
   @override
   void onInit() {
     sendEmailVerification();
-    setTimerForAutoRedirect;
+    setTimerForAutoRedirect();
     super.onInit();
   }
 
@@ -47,7 +47,7 @@ class VerifyEmailController extends GetxController {
           timer.cancel();
           Get.off(() => SuccessScreen(
               subTitle: AkTexts.yourAccountCreatedSubTitle,
-              onPressed: () => AuthenticationRepository.instance.screenRedirect,
+              onPressed: () => AuthenticationRepository.instance.screenRedirect(),
               image: AkImages.successfullyRegisterAnimation,
               title: AkTexts.yourAccountCreatedTitle));
         }
@@ -56,4 +56,16 @@ class VerifyEmailController extends GetxController {
   }
 
   // * Manually check if email verified
+  checkEmailVerificationStatus() async {
+    final currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser != null && currentUser.emailVerified) {
+      Get.off(
+        () => SuccessScreen(
+            subTitle: AkTexts.yourAccountCreatedSubTitle,
+            onPressed: () => AuthenticationRepository.instance.screenRedirect(),
+            image: AkImages.successfullyRegisterAnimation,
+            title: AkTexts.yourAccountCreatedTitle),
+      );
+    }
+  }
 }
