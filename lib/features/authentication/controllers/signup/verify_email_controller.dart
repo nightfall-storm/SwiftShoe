@@ -11,6 +11,7 @@ import '../../../../utils/popups/loaders.dart';
 
 class VerifyEmailController extends GetxController {
   static VerifyEmailController get instance => Get.find();
+  Timer? _timer;
 
   // * Send Email Whenever Verify Screen appears & Set Timer for auto redirect.
   @override
@@ -24,7 +25,7 @@ class VerifyEmailController extends GetxController {
   sendEmailVerification() async {
     try {
       await AuthenticationRepository.instance.sendEmailVerification();
-      AkLoaders.errorSnackBar(
+      AkLoaders.successSnackBar(
         title: 'Verification Email Sent',
         message: 'Please check your inbox for the verification link.',
       );
@@ -36,20 +37,26 @@ class VerifyEmailController extends GetxController {
     }
   }
 
+  // * Handle redirection to success screen
+  void redirectToSuccessScreen() {
+    Get.off(() => SuccessScreen(
+          subTitle: AkTexts.yourAccountCreatedSubTitle,
+          onPressed: () => AuthenticationRepository.instance.screenRedirect(),
+          image: AkImages.successfullyRegisterAnimation,
+          title: AkTexts.yourAccountCreatedTitle,
+        ));
+  }
+
   // * Set Timer to automatically redirect on Email Verification
   setTimerForAutoRedirect() {
-    Timer.periodic(
-      const Duration(seconds: 1),
+    _timer = Timer.periodic(
+      const Duration(seconds: 5),
       (timer) async {
         await FirebaseAuth.instance.currentUser?.reload();
         final user = FirebaseAuth.instance.currentUser;
         if (user?.emailVerified ?? false) {
           timer.cancel();
-          Get.off(() => SuccessScreen(
-              subTitle: AkTexts.yourAccountCreatedSubTitle,
-              onPressed: () => AuthenticationRepository.instance.screenRedirect(),
-              image: AkImages.successfullyRegisterAnimation,
-              title: AkTexts.yourAccountCreatedTitle));
+          redirectToSuccessScreen();
         }
       },
     );
@@ -59,13 +66,14 @@ class VerifyEmailController extends GetxController {
   checkEmailVerificationStatus() async {
     final currentUser = FirebaseAuth.instance.currentUser;
     if (currentUser != null && currentUser.emailVerified) {
-      Get.off(
-        () => SuccessScreen(
-            subTitle: AkTexts.yourAccountCreatedSubTitle,
-            onPressed: () => AuthenticationRepository.instance.screenRedirect(),
-            image: AkImages.successfullyRegisterAnimation,
-            title: AkTexts.yourAccountCreatedTitle),
-      );
+      redirectToSuccessScreen();
     }
+  }
+
+  // * Cancel the timer when the controller is disposed of
+  @override
+  void onClose() {
+    _timer?.cancel(); // Cancel the timer if it's active
+    super.onClose();
   }
 }
