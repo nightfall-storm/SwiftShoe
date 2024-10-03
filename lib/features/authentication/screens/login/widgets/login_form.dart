@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoes_store/features/authentication/screens/password_configuration/forget_password.dart';
-import 'package:shoes_store/navigation_menu.dart';
+
 
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
+import '../../../../../utils/validators/validation.dart';
+import '../../../controllers/login/login_controller.dart';
+import '../../password_configuration/forget_password.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -16,14 +18,19 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
+
     final dark = AkHelperFunctions.isDarkMode(context);
     return Form(
+      key: controller.loginFormKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: AkSizes.spaceBtwSections),
         child: Column(
           children: [
             // * Email
             TextFormField(
+              controller: controller.email,
+              validator: (value) => AkValidator.validateEmail(value),
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.email_outlined),
                 border: OutlineInputBorder(),
@@ -32,11 +39,21 @@ class LoginForm extends StatelessWidget {
             ),
             const SizedBox(height: AkSizes.spaceBtwInputFields),
             // * password
-            TextFormField(
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Iconsax.lock_1),
-                border: OutlineInputBorder(),
-                labelText: AkTexts.password,
+            Obx(
+              () => TextFormField(
+                controller: controller.password,
+                validator: (value) =>
+                    AkValidator.validateEmptyText('Password', value),
+                obscureText: controller.hidePassword.value,
+                decoration: InputDecoration(
+                    labelText: AkTexts.password,
+                    prefixIcon: const Icon(Iconsax.lock_1),
+                    suffixIcon: IconButton(
+                        onPressed: () => controller.hidePassword.value = !controller.hidePassword.value,
+                        icon: Icon(controller.hidePassword.value ? Iconsax.eye_slash : Iconsax.eye)
+                    ),
+                    border: const OutlineInputBorder(),
+                    ),
               ),
             ),
             const SizedBox(height: AkSizes.spaceBtwInputFields),
@@ -46,7 +63,11 @@ class LoginForm extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Checkbox(value: false, onChanged: (value) => {}),
+                    Obx(
+                      () => Checkbox(
+                            value: controller.rememberMe.value,
+                            onChanged: (value) => controller.rememberMe.value = !controller.rememberMe.value),
+                    ),
                     const Text(AkTexts.rememberMe),
                   ],
                 ),
@@ -66,7 +87,7 @@ class LoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () => Get.off(() => const NavigationMenu()),
+                  onPressed: () => controller.emailAndPasswordSignIn(),
                   child: const Text(AkTexts.signIn)),
             ),
           ],
