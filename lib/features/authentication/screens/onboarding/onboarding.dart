@@ -7,8 +7,8 @@ import 'widgets/onboarding_page.dart';
 import 'widgets/onboarding_page_indicator.dart';
 import 'widgets/onboarding_skip_button.dart';
 
-class OnBoaridngScreen extends StatelessWidget {
-  const OnBoaridngScreen({super.key});
+class OnBoardingScreen extends StatelessWidget {
+  const OnBoardingScreen({super.key});
 
 
   @override
