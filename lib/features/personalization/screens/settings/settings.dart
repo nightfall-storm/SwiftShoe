@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/containers/section_cotainer.dart';
 import '../../../../common/widgets/list_tiles/settings_menu_tile.dart';
 import '../../../../common/widgets/list_tiles/user_profile_tile.dart';
+import '../../../../data/repositories/authentication/authentication_repository.dart';
 import '../../../../navigation_menu.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/navigation_helper.dart';
@@ -55,7 +55,8 @@ class SettingsScreen extends StatelessWidget {
                         subtitle: 'Add, remove products and move to checkout',
                         onTap: () {
                           // ? Set the selected index to 2 (CartScreen)
-                          final navigationController = Get.find<NavigationController>();
+                          final navigationController =
+                              Get.find<NavigationController>();
                           navigationController.selectedIndex.value = 2;
 
                           // ? Navigate back to NavigationMenu
@@ -112,9 +113,16 @@ class SettingsScreen extends StatelessWidget {
                         title: 'HD Image Quality',
                         subtitle: 'Set image quality',
                         trailing: Switch(value: false, onChanged: (value) {})),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () => AuthenticationRepository.instance.logout(),
+                        child: const Text('Logout'),
+                      ),
+                    ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
