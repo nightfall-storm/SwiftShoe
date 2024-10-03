@@ -91,7 +91,10 @@ class LoginForm extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () => controller.emailAndPasswordSignIn(),
+                    onPressed: () {
+                      FocusScope.of(context).unfocus(); // Dismiss the keyboard
+                      controller.emailAndPasswordSignIn();
+                    },
                     child: const Text(AkTexts.signIn)),
               ),
             ],
