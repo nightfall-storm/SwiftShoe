@@ -21,8 +21,6 @@ class LoginController extends GetxController {
 
   @override
   void onInit() {
-    email.text = localStorage.read('REMEMBER_ME_EMAIL') ?? '';
-    password.text = localStorage.read('REMEMBER_ME_PASSWORD') ?? '';
     super.onInit();
   }
 
@@ -58,26 +56,35 @@ class LoginController extends GetxController {
 
       // Start loading after ensuring keyboard is dismissed
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        AkFullScreenLoader.openLoadingDialog('Logging you in...', AkImages.dockerAnimation);
+        AkFullScreenLoader.openLoadingDialog(
+            'Logging you in...', AkImages.dockerAnimation);
       });
 
       // Check Network Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
         AkFullScreenLoader.stopLoading();
-        AkLoaders.errorSnackBar(title: 'No Internet', message: 'Please check your internet connection');
+        AkLoaders.errorSnackBar(
+            title: 'No Internet',
+            message: 'Please check your internet connection');
         return;
       }
 
-      // Save Data if Remember Me is Selected
+      /// Save Data if Remember Me is Selected
+      // if (rememberMe.value) {
+      //   localStorage.write('REMEMBER_ME_EMAIL', email.text.trim());
+      //   localStorage.write('REMEMBER_ME_PASSWORD', password.text.trim());
+      // }
+
+      // If login is successful and remember me is checked, save the login state
       if (rememberMe.value) {
-        localStorage.write('REMEMBER_ME_EMAIL', email.text.trim());
-        localStorage.write('REMEMBER_ME_PASSWORD', password.text.trim());
+        localStorage.write('IS_LOGGED_IN', true);
       }
 
       // Login user using Email & password Authentication
       // ignore: unused_local_variable
-      final userCredential = await AuthenticationRepository.instance.loginWithEmailAndPassword(email.text.trim(), password.text.trim());
+      final userCredential = await AuthenticationRepository.instance
+          .loginWithEmailAndPassword(email.text.trim(), password.text.trim());
 
       // Remove Loader
       AkFullScreenLoader.stopLoading();
@@ -86,7 +93,8 @@ class LoginController extends GetxController {
       AuthenticationRepository.instance.screenRedirect();
     } catch (e) {
       AkFullScreenLoader.stopLoading();
-      AkLoaders.errorSnackBar(title: 'Oh Snap!', message: 'Password or email is incorrect');
+      AkLoaders.errorSnackBar(
+          title: 'Oh Snap!', message: 'Password or email is incorrect');
     }
   }
 }
