@@ -13,25 +13,32 @@ class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: AkSpacingStyle.paddingWithAppBarHeight,
-          child: Column(
-            children: [
-              // * Login Header
-              const LoginHeader(),
-              // * Form
-              const LoginForm(),
-              // * Divider
-              const FormDivider(),
-              const SizedBox(height: AkSizes.spaceBtwSections),
-              // * Footer
-              // * SocialButtons to Login
-              const SocialButtons(),
-              // * not a memeber&Signup Section
-              NotMemberSection(firstText: 'Not a member?', secondText: 'Create an account', getTo: () => Get.to(() => const SignupScreen()),)
-            ],
+    // ignore: deprecated_member_use
+    return  WillPopScope(
+      onWillPop: () async {
+        FocusScope.of(context).unfocus();
+        return false; // Prevent the default pop behavior
+      },
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: AkSpacingStyle.paddingWithAppBarHeight,
+            child: Column(
+              children: [
+                // * Login Header
+                const LoginHeader(),
+                // * Form
+                const LoginForm(),
+                // * Divider
+                const FormDivider(),
+                const SizedBox(height: AkSizes.spaceBtwSections),
+                // * Footer
+                // * SocialButtons to Login
+                const SocialButtons(),
+                // * not a memeber&Signup Section
+                NotMemberSection(firstText: 'Not a member?', secondText: 'Create an account', getTo: () => Get.to(() => const SignupScreen()),)
+              ],
+            ),
           ),
         ),
       ),
