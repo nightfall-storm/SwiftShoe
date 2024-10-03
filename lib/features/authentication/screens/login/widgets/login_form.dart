@@ -35,6 +35,7 @@ class LoginForm extends StatelessWidget {
               TextFormField(
                 controller: controller.email,
                 validator: (value) => AkValidator.validateEmail(value),
+                focusNode: controller.emailFocusNode,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.email_outlined),
                   border: OutlineInputBorder(),
@@ -46,8 +47,8 @@ class LoginForm extends StatelessWidget {
               Obx(
                 () => TextFormField(
                   controller: controller.password,
-                  validator: (value) =>
-                      AkValidator.validateEmptyText('Password', value),
+                  validator: (value) => AkValidator.validateEmptyText('Password', value),
+                  focusNode: controller.passwordFocusNode,
                   obscureText: controller.hidePassword.value,
                   decoration: InputDecoration(
                       labelText: AkTexts.password,
@@ -91,10 +92,7 @@ class LoginForm extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () {
-                      FocusScope.of(context).unfocus(); // Dismiss the keyboard
-                      controller.emailAndPasswordSignIn();
-                    },
+                    onPressed: () => controller.emailAndPasswordSignIn(),
                     child: const Text(AkTexts.signIn)),
               ),
             ],

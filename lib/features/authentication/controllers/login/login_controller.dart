@@ -8,43 +8,69 @@ import '../../../../utils/helpers/network_manager.dart';
 import '../../../../utils/popups/full_screen_loader.dart';
 import '../../../../utils/popups/loaders.dart';
 
-class LoginController extends GetxController{
-
+class LoginController extends GetxController {
   // * Variables
   final rememberMe = false.obs;
   final hidePassword = true.obs;
   final localStorage = GetStorage();
   final email = TextEditingController();
   final password = TextEditingController();
+  final emailFocusNode = FocusNode();
+  final passwordFocusNode = FocusNode();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
   @override
-  void onInit(){
+  void onInit() {
     email.text = localStorage.read('REMEMBER_ME_EMAIL') ?? '';
     password.text = localStorage.read('REMEMBER_ME_PASSWORD') ?? '';
     super.onInit();
   }
 
+  @override
+  void onClose() {
+    email.dispose();
+    password.dispose();
+    emailFocusNode.dispose();
+    passwordFocusNode.dispose();
+    super.onClose();
+  }
+
+  // * Handle back navigation
+  Future<void> handleBackNavigation() async {
+    if (emailFocusNode.hasFocus || passwordFocusNode.hasFocus) {
+      emailFocusNode.unfocus();
+      passwordFocusNode.unfocus();
+      await Future.delayed(const Duration(milliseconds: 100));
+    }
+  }
 
   // * Email and password SignIn
-  Future<void> emailAndPasswordSignIn() async{
+  Future<void> emailAndPasswordSignIn() async {
     try {
-      // start loading
-      AkFullScreenLoader.openLoadingDialog('Loggin you in...', AkImages.dockerAnimation);
+      // Validate the form first
+      if (!loginFormKey.currentState!.validate()) {
+        return;
+      }
+
+      // Ensure keyboard is dismissed
+      emailFocusNode.unfocus();
+      passwordFocusNode.unfocus();
+
+      // Start loading after ensuring keyboard is dismissed
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        AkFullScreenLoader.openLoadingDialog('Logging you in...', AkImages.dockerAnimation);
+      });
 
       // Check Network Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
         AkFullScreenLoader.stopLoading();
+        AkLoaders.errorSnackBar(title: 'No Internet', message: 'Please check your internet connection');
         return;
       }
-      if (!loginFormKey.currentState!.validate()) {
-        AkFullScreenLoader.stopLoading();
-        return;
-      }
-      
+
       // Save Data if Remember Me is Selected
-      if(rememberMe.value){
+      if (rememberMe.value) {
         localStorage.write('REMEMBER_ME_EMAIL', email.text.trim());
         localStorage.write('REMEMBER_ME_PASSWORD', password.text.trim());
       }
@@ -61,9 +87,6 @@ class LoginController extends GetxController{
     } catch (e) {
       AkFullScreenLoader.stopLoading();
       AkLoaders.errorSnackBar(title: 'Oh Snap!', message: 'Password or email is incorrect');
-      
     }
   }
-
-
 }
