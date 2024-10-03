@@ -45,12 +45,28 @@ class AuthenticationRepository extends GetxController {
           // Redirect to login screen if not the first time
           ? Get.offAll(() => const LoginScreen())
           // Redirect to OnBoarding screen if it's the first time
-          : Get.offAll(() => const OnBoaridngScreen());
+          : Get.offAll(() => const OnBoardingScreen());
     }
   }
 
 /* ------------------------- Email & Password Sign-in ------------------------- */
   // * [Email Authentication] - SignIn
+  Future<UserCredential> loginWithEmailAndPassword(String email, String password) async {
+    try {
+      return await _auth.signInWithEmailAndPassword(email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      throw AkFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw AkFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const AkFormatException().message;
+    } on PlatformException catch (e) {
+      throw AkPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+
+  }
 
   // * [Email Authentication] - Register
   Future<UserCredential> registerWithEmailAndPassword(
