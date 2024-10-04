@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
+import 'package:shoes_store/features/shop/screens/cart/cart.dart';
 
 import '../../../../common/widgets/containers/section_cotainer.dart';
 import '../../../../utils/constants/sizes.dart';
-import '../cart/cart.dart';
 import '../product_reviews/product_reviews.dart';
 import 'widgets/bottom_product_to_cart.dart';
 import 'widgets/product_attributes.dart';
@@ -50,12 +50,13 @@ class ProductDetail extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                          onPressed: () => Get.to(() => const CartScreen()), child: const Text('Checkout')),
+                          onPressed: () => Get.to(() => const CartScreen(fromProductDetail: true,)),
+                          child: const Text('Checkout')),
                     ),
                     const SizedBox(height: AkSizes.spaceBtwSections),
       
                     // ? Description
-                    const AkSectionHeading(title: 'Description'),
+                    const AkSectionHeading(title: 'Description', showActionButton: false),
                     const SizedBox(height: AkSizes.spaceBtwItems),
                     const ReadMoreText(
                       'Step into the future of comfort and performance with the Nike Air Zoom Runner in striking green. Engineered for athletes and trendsetters, this shoe features breathable mesh for ventilation and Zoom Air cushioning for unbeatable responsiveness. Perfect for everyday wear or intense workouts, the lightweight design offers flexibility while the durable outsole delivers excellent grip. Stand out in style with the bold green colorway, and experience the perfect blend of innovation, comfort, and iconic Nike design.',

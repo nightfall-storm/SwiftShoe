@@ -10,15 +10,18 @@ import '../../../../utils/helpers/navigation_helper.dart';
 import 'widgets/cart_item.dart';
 
 class CartScreen extends StatelessWidget {
-  const CartScreen({super.key});
+  const CartScreen({super.key, this.fromProductDetail = false});
+
+  final bool fromProductDetail;
 
   @override
   Widget build(BuildContext context) {
     // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async {
+        if(fromProductDetail) return true;
         handleBackNavigation(); // Call the reusable back navigation function
-        return false; // Prevent the default pop behavior
+        return false;
       },
       child: Scaffold(
         appBar: AkAppBar(
