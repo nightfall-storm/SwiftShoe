@@ -18,6 +18,7 @@ class ForgetPassword extends StatelessWidget {
     // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async {
+        controller.handleBackNavigation();
         return false;
       },
       child: Scaffold(
@@ -44,6 +45,7 @@ class ForgetPassword extends StatelessWidget {
                   child: TextFormField(
                     controller: controller.email,
                     validator: AkValidator.validateEmail,
+                    focusNode: controller.emailFocusNode,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.email),
