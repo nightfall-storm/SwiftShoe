@@ -15,17 +15,16 @@ class LoginController extends GetxController {
   final localStorage = GetStorage();
   final email = TextEditingController();
   final password = TextEditingController();
-  final emailFocusNode = FocusNode();
-  final passwordFocusNode = FocusNode();
+  FocusNode emailFocusNode = FocusNode();
+  FocusNode passwordFocusNode = FocusNode();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
   @override
-  void onClose() {
-    email.dispose();
-    password.dispose();
-    emailFocusNode.dispose();
-    passwordFocusNode.dispose();
-    super.onClose();
+  void onInit() {
+    // Re-initialize FocusNodes
+    emailFocusNode = FocusNode();
+    passwordFocusNode = FocusNode();
+    super.onInit();
   }
 
   // * Handle back navigation
@@ -50,7 +49,8 @@ class LoginController extends GetxController {
       passwordFocusNode.unfocus();
 
       // Start loading after ensuring keyboard is dismissed
-      WidgetsBinding.instance.addPostFrameCallback((_) {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        await Future.delayed(const Duration(milliseconds: 300));
         AkFullScreenLoader.openLoadingDialog(
             'Logging you in...', AkImages.dockerAnimation);
       });
@@ -81,12 +81,19 @@ class LoginController extends GetxController {
       final userCredential = await AuthenticationRepository.instance
           .loginWithEmailAndPassword(email.text.trim(), password.text.trim());
 
+      
+      // Add a delay before removing the loader
+      await Future.delayed(const Duration(milliseconds: 2000));
+
       // Remove Loader
       AkFullScreenLoader.stopLoading();
 
       // Redirect
       AuthenticationRepository.instance.screenRedirect();
+
     } catch (e) {
+      // Add a delay before removing the loader in case of an error
+      await Future.delayed(const Duration(milliseconds: 2300));
       AkFullScreenLoader.stopLoading();
       AkLoaders.errorSnackBar(
           title: 'Oh Snap!', message: 'Password or email is incorrect');
