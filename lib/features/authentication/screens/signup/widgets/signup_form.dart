@@ -28,6 +28,7 @@ class SignupForm extends StatelessWidget {
             TextFormField(
               controller: controller.username,
               validator: (value) => AkValidator.validateEmptyText('Username', value),
+              focusNode: controller.usernameFocusNode,
               decoration: const InputDecoration(
                 prefixIcon: Icon(Iconsax.user),
                 border: OutlineInputBorder(),
@@ -39,6 +40,7 @@ class SignupForm extends StatelessWidget {
             TextFormField(
               controller: controller.email,
               validator: (value) => AkValidator.validateEmail(value),
+              focusNode: controller.emailFocusNode,
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.email_outlined),
                 border: OutlineInputBorder(),
@@ -50,6 +52,7 @@ class SignupForm extends StatelessWidget {
             TextFormField(
               controller: controller.phoneNumber,
               validator: (value) => AkValidator.validatePhoneNumber(value),
+              focusNode: controller.phoneFocusNode,
               decoration: const InputDecoration(
                 labelText: AkTexts.phoneNo,
                 border: OutlineInputBorder(),
@@ -62,6 +65,7 @@ class SignupForm extends StatelessWidget {
               () => TextFormField(
                 controller: controller.password,
                 validator: (value) => AkValidator.validatePassword(value),
+                focusNode: controller.passwordFocusNode,
                 obscureText: controller.hidePassword.value,
                 decoration: InputDecoration(
                     prefixIcon: const Icon(Iconsax.lock_1),
