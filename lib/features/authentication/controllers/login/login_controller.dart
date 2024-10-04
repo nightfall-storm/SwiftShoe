@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:shoes_store/features/personalization/controllers/user_controller.dart';
 
 import '../../../../data/repositories/authentication/authentication_repository.dart';
 import '../../../../utils/constants/image_strings.dart';
@@ -18,6 +19,8 @@ class LoginController extends GetxController {
   FocusNode emailFocusNode = FocusNode();
   FocusNode passwordFocusNode = FocusNode();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+
+  final userController = Get.put(UserController());
 
   @override
   void onInit() {
@@ -52,7 +55,7 @@ class LoginController extends GetxController {
       WidgetsBinding.instance.addPostFrameCallback((_) async {
         await Future.delayed(const Duration(milliseconds: 300));
         AkFullScreenLoader.openLoadingDialog(
-            'Logging you in...', AkImages.dockerAnimation);
+            'Logging you in...', AkImages.docerAnimation);
       });
 
       // Check Network Connectivity
@@ -97,6 +100,36 @@ class LoginController extends GetxController {
       AkFullScreenLoader.stopLoading();
       AkLoaders.errorSnackBar(
           title: 'Oh Snap!', message: 'Password or email is incorrect');
+    }
+  }
+
+  // * Google SignIn Authentication
+  Future<void> googleSignIn() async{
+    try {
+      // Start Loading
+      AkFullScreenLoader.openLoadingDialog('Logging you in...', AkImages.docerAnimation);
+
+      // Check Network Connectivity
+      final isConnected = await NetworkManager.instance.isConnected();
+      if(!isConnected){
+        AkFullScreenLoader.stopLoading();
+        return;
+      }
+
+      // Google Authentication
+      // ignore: unused_local_variable
+      final userCredentials = await AuthenticationRepository.instance.signInWithGoogle();
+
+      // Save User Record
+      await userController.saveUserRecord(userCredentials);
+
+      AkFullScreenLoader.stopLoading();
+
+      // Redirect 
+      AuthenticationRepository.instance.screenRedirect();
+    } catch (e) {
+      AkFullScreenLoader.stopLoading();
+      AkLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
 }
