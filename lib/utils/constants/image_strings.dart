@@ -98,7 +98,7 @@ class AkImages {
   static const String successfulPaymentIcon = "assets/icons/payment_methods/successful_payment_icon.png";
 
   // animations
-  static const String dockerAnimation = "assets/images/animations/loader-animation.json";
+  static const String docerAnimation = "assets/images/animations/141594-animation-of-docer.json";
   static const String successfullyRegisterAnimation = "assets/images/animations/72462-check-register.json";
 }
 
