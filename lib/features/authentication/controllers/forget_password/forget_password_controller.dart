@@ -16,7 +16,6 @@ class ForgetPasswordController extends GetxController {
   FocusNode emailFocusNode = FocusNode();
   GlobalKey<FormState> forgetPasswordFormKey = GlobalKey<FormState>();
 
-
   // * Handle back navigation
   Future<void> handleBackNavigation() async {
     if (emailFocusNode.hasFocus) {
@@ -53,8 +52,6 @@ class ForgetPasswordController extends GetxController {
         return;
       }
 
-
-
       // Send Email Request to reset password
       await AuthenticationRepository.instance
           .sendPasswordResetEmail(email.text.trim());
@@ -67,8 +64,9 @@ class ForgetPasswordController extends GetxController {
 
       // Show Success Screen
       AkLoaders.successSnackBar(
-          title: 'Email Sent',
-          message: 'Email Link Sent, Please Check Your Spam inbox');
+        title: 'Email Sent',
+        message: 'If the email is registered, you will receive a link to reset your password. Please check your spam inbox.',
+      );
 
       // Redirect
       Get.to(() => ResetPassword(email: email.text.trim()));
@@ -84,7 +82,8 @@ class ForgetPasswordController extends GetxController {
   resendPasswordResetEmail(String email) async {
     try {
       // Start loading
-        AkFullScreenLoader.openLoadingDialog('Processing your request...', AkImages.docerAnimation);
+      AkFullScreenLoader.openLoadingDialog(
+          'Processing your request...', AkImages.docerAnimation);
 
       // Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
@@ -104,8 +103,10 @@ class ForgetPasswordController extends GetxController {
 
       // Show Success Screen
       AkLoaders.successSnackBar(
-          title: 'Email Sent',
-          message: 'Email Link Sent, Please Check Your Spam inbox');
+        title: 'Email Sent',
+        message:
+            'If the email is registered, you will receive a link to reset your password. Please check your spam inbox.',
+      );
     } catch (e) {
       // Add a delay before removing the loader in case of an error
       await Future.delayed(const Duration(milliseconds: 2300));
