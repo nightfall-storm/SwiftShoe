@@ -75,7 +75,7 @@ class SignupController extends GetxController {
 
       // * Start loading
       AkFullScreenLoader.openLoadingDialog(
-          'We are processing your information...', AkImages.dockerAnimation);
+          'We are processing your information...', AkImages.docerAnimation);
 
       // * Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
