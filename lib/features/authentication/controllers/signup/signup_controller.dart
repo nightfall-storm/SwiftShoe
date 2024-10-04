@@ -19,28 +19,48 @@ class SignupController extends GetxController {
   final privacyPolicy = false.obs; // Observable for privacy policy acceptance
   final username = TextEditingController(); // controller for the Username input
   final email = TextEditingController(); // controller for the email input
-  final phoneNumber =
-      TextEditingController(); // controller for the phone number input
+  final phoneNumber = TextEditingController(); // controller for the phone number input
   final password = TextEditingController(); // controller for the password input
-  GlobalKey<FormState> signupFormKey =
-      GlobalKey<FormState>(); // Formkey for validation
+  final usernameFocusNode = FocusNode();
+  final emailFocusNode = FocusNode();
+  final phoneFocusNode = FocusNode();
+  final passwordFocusNode = FocusNode();
+  GlobalKey<FormState> signupFormKey = GlobalKey<FormState>(); // Formkey for validation
+
+  @override
+  void onClose() {
+    username.dispose();
+    email.dispose();
+    phoneNumber.dispose();
+    password.dispose();
+    usernameFocusNode.dispose();
+    emailFocusNode.dispose();
+    phoneFocusNode.dispose();
+    passwordFocusNode.dispose();
+    super.onClose();
+  }
+
+  // * Handle back navigation
+  Future<bool> handleBackNavigation() async {
+    if (usernameFocusNode.hasFocus || emailFocusNode.hasFocus || 
+        phoneFocusNode.hasFocus || passwordFocusNode.hasFocus) {
+      usernameFocusNode.unfocus();
+      emailFocusNode.unfocus();
+      phoneFocusNode.unfocus();
+      passwordFocusNode.unfocus();
+      await Future.delayed(const Duration(milliseconds: 100));
+    }
+    return true;
+  }
+
   // * Signup
   void signup() async {
     try {
-      // * Start loading
-      AkFullScreenLoader.openLoadingDialog(
-          'We are processing your information...', AkImages.dockerAnimation);
-
-      // * Check Internet Connectivity
-      final isConnected = await NetworkManager.instance.isConnected();
-      if (!isConnected) {
-        AkFullScreenLoader.stopLoading();
-        return;
-      }
+      // Ensure keyboard is dismissed
+      await handleBackNavigation();
 
       // * form validation
       if (!signupFormKey.currentState!.validate()) {
-        AkFullScreenLoader.stopLoading();
         return;
       }
 
@@ -52,6 +72,19 @@ class SignupController extends GetxController {
         );
         return;
       }
+
+      // * Start loading
+      AkFullScreenLoader.openLoadingDialog(
+          'We are processing your information...', AkImages.dockerAnimation);
+
+      // * Check Internet Connectivity
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        AkFullScreenLoader.stopLoading();
+        return;
+      }
+
+
 
       // * Register user in Firebase authentication & Save user data
       final userCredential = await AuthenticationRepository.instance.registerWithEmailAndPassword(
@@ -70,6 +103,7 @@ class SignupController extends GetxController {
 
       final userRepository = Get.put(UserRepository());
       await userRepository.saveUserRecord(newUser);
+
       // * Remove loader
       AkFullScreenLoader.stopLoading();
 
