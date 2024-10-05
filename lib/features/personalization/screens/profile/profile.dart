@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoes_store/common/widgets/appbar/appbar.dart';
-import 'package:shoes_store/common/widgets/containers/section_cotainer.dart';
-import 'package:shoes_store/common/widgets/images/circular_image.dart';
-import 'package:shoes_store/features/personalization/screens/profile/widgets/profile_menu.dart';
-import 'package:shoes_store/utils/constants/image_strings.dart';
-import 'package:shoes_store/utils/constants/sizes.dart';
 
+
+import '../../../../common/widgets/appbar/appbar.dart';
+import '../../../../common/widgets/containers/section_cotainer.dart';
+import '../../../../common/widgets/images/circular_image.dart';
+import '../../../../utils/constants/image_strings.dart';
+import '../../../../utils/constants/sizes.dart';
 import '../../controllers/user_controller.dart';
-import '../update/change_name.dart';
+import 'widgets/change_name.dart';
+import 'widgets/profile_menu.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -67,7 +68,7 @@ class ProfileScreen extends StatelessWidget {
               AkProfileMenu(title: 'Date of Birth', value: '10 Mar, 2003', onTap: (){}),
               const Divider(),
               const SizedBox(height: AkSizes.spaceBtwItems),
-              Center(child: TextButton(onPressed: (){}, child: const Text('Close Account', style: TextStyle(color: Colors.red),)),)
+              Center(child: TextButton(onPressed: () => controller.deleteAccountWarningPopup(), child: const Text('Close Account', style: TextStyle(color: Colors.red),)),)
             ],
             
           ),
