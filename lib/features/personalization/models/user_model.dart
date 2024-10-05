@@ -4,7 +4,7 @@ import '../../../utils/formatters/formatter.dart';
 
 class UserModel {
   final String id;
-  final String username;
+  String username;
   final String email;
   String phoneNumber;
   String profilePicture;
