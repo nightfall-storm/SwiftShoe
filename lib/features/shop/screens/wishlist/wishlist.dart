@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shoes_store/common/widgets/appbar/appbar.dart';
 import 'package:shoes_store/common/widgets/layouts/grid_layout.dart';
+import 'package:shoes_store/features/shop/screens/all_products/all_products.dart';
 
 import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../utils/constants/sizes.dart';
@@ -18,7 +20,8 @@ class WishListScreen extends StatelessWidget {
         return false; // Prevent the default pop behavior
       },
       child: Scaffold(
-        appBar: const AkAppBar(
+        appBar: AkAppBar(
+          onAction: () => Get.to(() => const AllProducts()),
           isWishListScreen: true,
           title: 'WishList',
         ),
