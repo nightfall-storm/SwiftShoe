@@ -98,8 +98,12 @@ class UserController extends GetxController {
   // * Delete User Account
   void deleteUserAccount() async {
     try {
-      AkFullScreenLoader.openLoadingDialog(
-          'Precessing...', AkImages.docerAnimation);
+      // Start loading
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        await Future.delayed(const Duration(milliseconds: 300));
+        AkFullScreenLoader.openLoadingDialog(
+            'We are updating your information...', AkImages.docerAnimation);
+      });
 
       // First re-authenticate user
       final auth = AuthenticationRepository.instance;
@@ -110,14 +114,20 @@ class UserController extends GetxController {
         if (provider == 'google.com') {
           await auth.signInWithGoogle();
           await auth.deleteAccount();
+          // Add a delay before removing the loader
+          await Future.delayed(const Duration(milliseconds: 2500));
           AkFullScreenLoader.stopLoading();
           Get.offAll(() => const LoginScreen());
         } else if (provider == 'password') {
+          // Add a delay before removing the loader
+          await Future.delayed(const Duration(milliseconds: 2500));
           AkFullScreenLoader.stopLoading();
           Get.to(() => const ReAuthLoginForm());
         }
       }
     } catch (e) {
+      // Add a delay before removing the loader
+      await Future.delayed(const Duration(milliseconds: 2800));
       AkFullScreenLoader.stopLoading();
       AkLoaders.warningSnackBar(title: 'Oh Snap!', message: e.toString());
     }
@@ -129,9 +139,13 @@ class UserController extends GetxController {
       if (!reAuthFormKey.currentState!.validate()) {
         return;
       }
-      
-      AkFullScreenLoader.openLoadingDialog(
-          'Processing...', AkImages.docerAnimation);
+
+      // Start loading
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        await Future.delayed(const Duration(milliseconds: 300));
+        AkFullScreenLoader.openLoadingDialog(
+            'We are updating your information...', AkImages.docerAnimation);
+      });
 
       // Check Network Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
@@ -147,9 +161,13 @@ class UserController extends GetxController {
           .reAuthenticateWithEmailAndPassword(
               verifyEmail.text.trim(), verifyPassword.text.trim());
       await AuthenticationRepository.instance.deleteAccount();
+      // Add a delay before removing the loader
+      await Future.delayed(const Duration(milliseconds: 2500));
       AkFullScreenLoader.stopLoading();
       Get.offAll(() => const LoginScreen());
     } catch (e) {
+      // Add a delay before removing the loader
+      await Future.delayed(const Duration(milliseconds: 2800));
       AkFullScreenLoader.stopLoading();
       AkLoaders.warningSnackBar(title: 'Oh Snap!', message: e.toString());
     }
