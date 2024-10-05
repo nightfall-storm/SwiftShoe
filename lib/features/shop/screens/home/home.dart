@@ -11,6 +11,7 @@ import '../../../../common/widgets/products/product_cards/product_card_vertical.
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/navigation_helper.dart';
+import '../../../personalization/controllers/user_controller.dart';
 import '../all_products/all_products.dart';
 import '../brand/all_brand.dart';
 import 'widgets/banner_slider.dart';
@@ -21,6 +22,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
+    final controller = Get.put(UserController());
     // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async {
