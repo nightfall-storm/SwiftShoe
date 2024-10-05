@@ -42,7 +42,7 @@ class LoginController extends GetxController {
   // * Email and password SignIn
   Future<void> emailAndPasswordSignIn() async {
     try {
-      // Validate the form first
+      // Form Validation
       if (!loginFormKey.currentState!.validate()) {
         return;
       }
