@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../common/widgets/appbar/appbar.dart';
-import '../../../../utils/constants/sizes.dart';
-import '../../../../utils/constants/text_strings.dart';
-import '../../../../utils/validators/validation.dart';
-import '../../controllers/update/change_name_controller.dart';
+import '../../../../../common/widgets/appbar/appbar.dart';
+import '../../../../../utils/constants/sizes.dart';
+import '../../../../../utils/constants/text_strings.dart';
+import '../../../../../utils/validators/validation.dart';
+import '../../../controllers/change_name_controller.dart';
 
 class ChangeUserName extends StatelessWidget {
   const ChangeUserName({super.key});
