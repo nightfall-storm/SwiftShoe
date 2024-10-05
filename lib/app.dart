@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'bindings/general_bindings.dart';
+import 'utils/constants/colors.dart';
 import 'utils/theme/theme.dart';
 
 
@@ -21,7 +22,7 @@ class App extends StatelessWidget {
       darkTheme: AkAppTheme.darkTheme,
       initialBinding: GeneralBindings(),
       // * Show loader or circular progress indicator until authentication repository decides to show relevant screen
-      home: const Scaffold(body: Center(child: CircularProgressIndicator(color: Colors.white))),
+      home: const Scaffold(body: Center(child: CircularProgressIndicator(color: AkColors.primary))),
       debugShowCheckedModeBanner: false,
       
     );
