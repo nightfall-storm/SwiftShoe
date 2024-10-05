@@ -21,7 +21,7 @@ class UserModel {
 
   static String generateUsername(String username) {
     String camelCaseUsername = username.toLowerCase(); // Convert to lowercase
-    String usernameWithPrefix = "cwt_$camelCaseUsername"; // Add "cwt_" prefix
+    String usernameWithPrefix = "ak_$camelCaseUsername"; // Add "ak_" prefix
     return usernameWithPrefix;
   }
 
