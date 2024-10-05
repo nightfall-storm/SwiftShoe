@@ -55,7 +55,7 @@ class AkUserProfileTile extends StatelessWidget {
         }
       }),
       trailing: IconButton(
-          onPressed: () => Get.to(const ProfileScreen()),
+          onPressed: () => Get.to(() => const ProfileScreen()),
           icon: Icon(
             Iconsax.edit,
             color: AkHelperFunctions.isDarkMode(context)
