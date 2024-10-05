@@ -68,23 +68,22 @@ class LoginController extends GetxController {
         return;
       }
 
-      /// Save Data if Remember Me is Selected
-      // if (rememberMe.value) {
-      //   localStorage.write('REMEMBER_ME_EMAIL', email.text.trim());
-      //   localStorage.write('REMEMBER_ME_PASSWORD', password.text.trim());
-      // }
-
-      // If login is successful and remember me is checked, save the login state
-      if (rememberMe.value) {
-        localStorage.write('IS_LOGGED_IN', true);
-      }
-
-      // Login user using Email & password Authentication
-      // ignore: unused_local_variable
+      // Attempt to login the user using Email & password Authentication
       final userCredential = await AuthenticationRepository.instance
           .loginWithEmailAndPassword(email.text.trim(), password.text.trim());
 
-      
+      // If login is successful
+      if (userCredential.user != null) {
+        // Manage local storage based on "Remember Me"
+        if (rememberMe.value) {
+          localStorage.write('IS_REMEMBER_ME', true);
+          // Optionally save user email for auto-fill
+          localStorage.write('USER_EMAIL', email.text.trim());
+        } else {
+          localStorage.remove('IS_REMEMBER_ME');
+          localStorage.remove('USER_EMAIL');
+        }
+      }
       // Add a delay before removing the loader
       await Future.delayed(const Duration(milliseconds: 2000));
 
@@ -93,7 +92,6 @@ class LoginController extends GetxController {
 
       // Redirect
       AuthenticationRepository.instance.screenRedirect();
-
     } catch (e) {
       // Add a delay before removing the loader in case of an error
       await Future.delayed(const Duration(milliseconds: 2300));
@@ -104,28 +102,30 @@ class LoginController extends GetxController {
   }
 
   // * Google SignIn Authentication
-  Future<void> googleSignIn() async{
+  Future<void> googleSignIn() async {
     try {
       // Start Loading
-      AkFullScreenLoader.openLoadingDialog('Logging you in...', AkImages.docerAnimation);
+      AkFullScreenLoader.openLoadingDialog(
+          'Logging you in...', AkImages.docerAnimation);
 
       // Check Network Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
-      if(!isConnected){
+      if (!isConnected) {
         AkFullScreenLoader.stopLoading();
         return;
       }
 
       // Google Authentication
       // ignore: unused_local_variable
-      final userCredentials = await AuthenticationRepository.instance.signInWithGoogle();
+      final userCredentials =
+          await AuthenticationRepository.instance.signInWithGoogle();
 
       // Save User Record
       await userController.saveUserRecord(userCredentials);
 
       AkFullScreenLoader.stopLoading();
 
-      // Redirect 
+      // Redirect
       AuthenticationRepository.instance.screenRedirect();
     } catch (e) {
       AkFullScreenLoader.stopLoading();

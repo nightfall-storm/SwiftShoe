@@ -26,7 +26,21 @@ class AuthenticationRepository extends GetxController {
   @override
   void onReady() {
     FlutterNativeSplash.remove();
-    screenRedirect();
+
+    // Check if the user has chosen to remember login
+    final isRememberMe = deviceStorage.read('IS_REMEMBER_ME') ?? false;
+    if (isRememberMe) {
+      screenRedirect();
+    } else {
+      // Local Storage
+      deviceStorage.writeIfNull('isFirstTime', true);
+
+      deviceStorage.read('isFirstTime') != true
+          // Redirect to login screen if not the first time
+          ? Get.offAll(() => const LoginScreen())
+          // Redirect to OnBoarding screen if it's the first time
+          : Get.offAll(() => const OnBoardingScreen());
+    }
   }
 
   // * Function to Show Relevant Screen
@@ -125,7 +139,6 @@ class AuthenticationRepository extends GetxController {
 
   // * [ReAuthentication] - ReAuthenticate User
 
-  
 /* ------------------------- end Federated identity * Social sign-in ------------------------- */
   // * [GoogleAuthentication] - GOOGLE
   Future<UserCredential?> signInWithGoogle() async {
@@ -134,7 +147,8 @@ class AuthenticationRepository extends GetxController {
       final GoogleSignInAccount? userAccount = await GoogleSignIn().signIn();
 
       // Obtain the auth details form the request
-      final GoogleSignInAuthentication? googleAuth = await userAccount?.authentication;
+      final GoogleSignInAuthentication? googleAuth =
+          await userAccount?.authentication;
 
       // Create a new credential
       final credentials = GoogleAuthProvider.credential(
@@ -144,7 +158,6 @@ class AuthenticationRepository extends GetxController {
 
       // Once Signed in, return the UserCredential
       return await _auth.signInWithCredential(credentials);
-
     } on FirebaseAuthException catch (e) {
       throw AkFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
@@ -165,7 +178,7 @@ class AuthenticationRepository extends GetxController {
     try {
       await GoogleSignIn().signOut();
       await FirebaseAuth.instance.signOut();
-      deviceStorage.remove('IS_LOGGED_IN');
+      deviceStorage.remove('IS_REMEMBER_ME');
       Get.offAll(() => const LoginScreen());
     } on FirebaseAuthException catch (e) {
       throw AkFirebaseAuthException(e.code).message;
