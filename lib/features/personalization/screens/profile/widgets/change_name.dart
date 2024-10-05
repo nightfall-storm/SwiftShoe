@@ -40,10 +40,11 @@ class ChangeUserName extends StatelessWidget {
                     controller: controller.userName,
                     validator: (value) =>
                         AkValidator.validateEmptyText('UserName', value),
-                    expands: false,
                     decoration: const InputDecoration(
-                        labelText: AkTexts.username,
-                        prefixIcon: Icon(Iconsax.user)),
+                      labelText: AkTexts.username,
+                      prefixIcon: Icon(Iconsax.user),
+                      border: OutlineInputBorder(),
+                    ),
                   ),
                 ],
               ),
@@ -53,7 +54,9 @@ class ChangeUserName extends StatelessWidget {
             // * Save Button
             SizedBox(
               width: double.infinity,
-              child: ElevatedButton(onPressed: () => controller.updateUserName(), child: const Text('Save')),
+              child: ElevatedButton(
+                  onPressed: () => controller.updateUserName(),
+                  child: const Text('Save')),
             )
           ],
         ),
