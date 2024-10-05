@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:shoes_store/common/styles/shimmer_style.dart';
 import 'package:shoes_store/features/personalization/controllers/user_controller.dart';
 import 'package:shoes_store/features/personalization/screens/profile/profile.dart';
 
@@ -16,7 +17,7 @@ class AkUserProfileTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(UserController());
+    final controller = UserController.instance;
     return ListTile(
       leading: const AkCircularImage(
         image: AkImages.user,
@@ -27,23 +28,32 @@ class AkUserProfileTile extends StatelessWidget {
         applyOverlayColor: false,
       ),
       title: Obx(() {
-        return Text(
-          'Hello, ${controller.user.value.username}',
-          style: Theme.of(context).textTheme.headlineSmall!.apply(
-              color: AkHelperFunctions.isDarkMode(context)
-                  ? AkColors.white
-                  : AkColors.black),
-        );
+        if (controller.profileLoading.value) {
+          return const AkShimmerEffect(width: 80, height: 15);
+        } else {
+          return Text(
+            'Hello, ${controller.user.value.username}',
+            style: Theme.of(context).textTheme.headlineSmall!.apply(
+                  color: AkHelperFunctions.isDarkMode(context)
+                      ? AkColors.white
+                      : AkColors.black,
+                ),
+          );
+        }
       }),
-      subtitle: Obx(
-        () => Text(
-          controller.user.value.email,
-          style: Theme.of(context).textTheme.labelMedium!.apply(
-              color: AkHelperFunctions.isDarkMode(context)
-                  ? AkColors.white
-                  : AkColors.black),
-        ),
-      ),
+      subtitle: Obx(() {
+        if (controller.profileLoading.value) {
+          return const AkShimmerEffect(width: 80, height: 15);
+        } else {
+          return Text(
+            controller.user.value.email,
+            style: Theme.of(context).textTheme.labelMedium!.apply(
+                color: AkHelperFunctions.isDarkMode(context)
+                    ? AkColors.white
+                    : AkColors.black),
+          );
+        }
+      }),
       trailing: IconButton(
           onPressed: () => Get.to(const ProfileScreen()),
           icon: Icon(
