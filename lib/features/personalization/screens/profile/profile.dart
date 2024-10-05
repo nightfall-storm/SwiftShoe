@@ -8,11 +8,15 @@ import 'package:shoes_store/features/personalization/screens/profile/widgets/pro
 import 'package:shoes_store/utils/constants/image_strings.dart';
 import 'package:shoes_store/utils/constants/sizes.dart';
 
+import '../../controllers/user_controller.dart';
+import '../update/change_name.dart';
+
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Scaffold(
       appBar: AkAppBar(
         onAction: () {},
@@ -49,17 +53,16 @@ class ProfileScreen extends StatelessWidget {
               // ? Heading Profile Info
               const AkSectionHeading(title: 'Profile Information', showActionButton: false),
               const SizedBox(height: AkSizes.spaceBtwItems),
-              AkProfileMenu(title: 'Name', value: 'nightfall', onTap: (){}),
-              AkProfileMenu(title: 'Username', value: 'tsunaim', onTap: (){}),
+              AkProfileMenu(title: 'Username', value: controller.user.value.username, onTap: () => Get.to(() => const ChangeUserName())),
+              AkProfileMenu(title: 'E-mail', value: controller.user.value.email, onTap: (){}),
               const SizedBox(height: AkSizes.spaceBtwItems),
               const Divider(),
               const SizedBox(height: AkSizes.spaceBtwItems),
               // ? Heading Personal Info
               const AkSectionHeading(title: 'Personal Information', showActionButton: false),
               const SizedBox(height: AkSizes.spaceBtwItems),
-              AkProfileMenu(title: 'User ID', value: '1337',icon: Iconsax.copy, onTap: (){}),
-              AkProfileMenu(title: 'E-mail', value: 'night-fall@gmail.com', onTap: (){}),
-              AkProfileMenu(title: 'Phone Number', value: '0665010010', onTap: (){}),
+              AkProfileMenu(title: 'User ID', value: controller.user.value.id, icon: Iconsax.copy, onTap: (){}),
+              AkProfileMenu(title: 'Phone Number', value: controller.user.value.phoneNumber, onTap: (){}),
               AkProfileMenu(title: 'Gender', value: 'Male', onTap: (){}),
               AkProfileMenu(title: 'Date of Birth', value: '10 Mar, 2003', onTap: (){}),
               const Divider(),
