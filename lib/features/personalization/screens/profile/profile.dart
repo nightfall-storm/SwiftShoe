@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shoes_store/common/styles/shimmer_style.dart';
+import 'package:shoes_store/features/personalization/screens/profile/update/change_phone_number.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/containers/section_cotainer.dart';
@@ -9,7 +10,7 @@ import '../../../../common/widgets/images/circular_image.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../controllers/user_controller.dart';
-import 'widgets/change_name.dart';
+import 'update/change_name.dart';
 import 'widgets/profile_menu.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -72,7 +73,7 @@ class ProfileScreen extends StatelessWidget {
               AkProfileMenu(
                   title: 'Username',
                   value: controller.user.value.username,
-                  onTap: () => Get.to(() => const ChangeUserName())),
+                  onTap: () => Get.off(() => const ChangeUserName())),
               AkProfileMenu(
                   title: 'E-mail',
                   value: controller.user.value.email,
@@ -89,10 +90,12 @@ class ProfileScreen extends StatelessWidget {
                   value: controller.user.value.id,
                   icon: Iconsax.copy,
                   onTap: () {}),
-              AkProfileMenu(
-                  title: 'Phone Number',
-                  value: controller.user.value.phoneNumber,
-                  onTap: () {}),
+              Obx(
+                () => AkProfileMenu(
+                    title: 'Phone Number',
+                    value: controller.user.value.phoneNumber,
+                    onTap: () => Get.off(() => const ChangePhoneNumber())),
+              ),
               AkProfileMenu(title: 'Gender', value: 'Male', onTap: () {}),
               AkProfileMenu(
                   title: 'Date of Birth', value: '10 Mar, 2003', onTap: () {}),
