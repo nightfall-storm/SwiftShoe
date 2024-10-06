@@ -5,9 +5,9 @@ import 'package:shoes_store/features/personalization/screens/profile/profile.dar
 import 'package:shoes_store/utils/helpers/network_manager.dart';
 import 'package:shoes_store/utils/popups/full_screen_loader.dart';
 
-import '../../../data/repositories/user/user_repository.dart';
-import '../../../utils/constants/image_strings.dart';
-import '../../../utils/popups/loaders.dart';
+import '../../../../data/repositories/user/user_repository.dart';
+import '../../../../utils/constants/image_strings.dart';
+import '../../../../utils/popups/loaders.dart';
 
 class UpdateNameController extends GetxController {
   static UpdateNameController get instance => Get.find();
