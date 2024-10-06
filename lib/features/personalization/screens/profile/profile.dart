@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-
+import 'package:shoes_store/common/styles/shimmer_style.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/containers/section_cotainer.dart';
@@ -34,47 +34,82 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const AkCircularImage(
-                        image: AkImages.user,
-                        width: 80,
-                        height: 80,
-                        applyColor: false,
-                        applyOverlayColor: false),
+                    Obx(() {
+                      final networkImage = controller.user.value.profilePicture;
+                      final image = networkImage.isNotEmpty
+                          ? networkImage
+                          : AkImages.user;
+
+                      return controller.imageUploading.value
+                          ? const AkShimmerEffect(
+                              width: 80,
+                              height: 80,
+                              radius: 80,
+                            )
+                          : AkCircularImage(
+                              image: image,
+                              width: 80,
+                              height: 80,
+                              applyColor: false,
+                              applyOverlayColor: false,
+                              isNetworkImage: networkImage.isNotEmpty);
+                    }),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () => controller.uploadUserProfilePicture(),
                         child: const Text('Change Profile Picture')),
                   ],
                 ),
               ),
 
-              // * Details 
+              // * Details
               const SizedBox(height: AkSizes.spaceBtwItems / 2),
               const Divider(),
               const SizedBox(height: AkSizes.spaceBtwItems),
               // ? Heading Profile Info
-              const AkSectionHeading(title: 'Profile Information', showActionButton: false),
+              const AkSectionHeading(
+                  title: 'Profile Information', showActionButton: false),
               const SizedBox(height: AkSizes.spaceBtwItems),
-              AkProfileMenu(title: 'Username', value: controller.user.value.username, onTap: () => Get.to(() => const ChangeUserName())),
-              AkProfileMenu(title: 'E-mail', value: controller.user.value.email, onTap: (){}),
+              AkProfileMenu(
+                  title: 'Username',
+                  value: controller.user.value.username,
+                  onTap: () => Get.to(() => const ChangeUserName())),
+              AkProfileMenu(
+                  title: 'E-mail',
+                  value: controller.user.value.email,
+                  onTap: () {}),
               const SizedBox(height: AkSizes.spaceBtwItems),
               const Divider(),
               const SizedBox(height: AkSizes.spaceBtwItems),
               // ? Heading Personal Info
-              const AkSectionHeading(title: 'Personal Information', showActionButton: false),
+              const AkSectionHeading(
+                  title: 'Personal Information', showActionButton: false),
               const SizedBox(height: AkSizes.spaceBtwItems),
-              AkProfileMenu(title: 'User ID', value: controller.user.value.id, icon: Iconsax.copy, onTap: (){}),
-              AkProfileMenu(title: 'Phone Number', value: controller.user.value.phoneNumber, onTap: (){}),
-              AkProfileMenu(title: 'Gender', value: 'Male', onTap: (){}),
-              AkProfileMenu(title: 'Date of Birth', value: '10 Mar, 2003', onTap: (){}),
+              AkProfileMenu(
+                  title: 'User ID',
+                  value: controller.user.value.id,
+                  icon: Iconsax.copy,
+                  onTap: () {}),
+              AkProfileMenu(
+                  title: 'Phone Number',
+                  value: controller.user.value.phoneNumber,
+                  onTap: () {}),
+              AkProfileMenu(title: 'Gender', value: 'Male', onTap: () {}),
+              AkProfileMenu(
+                  title: 'Date of Birth', value: '10 Mar, 2003', onTap: () {}),
               const Divider(),
               const SizedBox(height: AkSizes.spaceBtwItems),
-              Center(child: TextButton(onPressed: () => controller.deleteAccountWarningPopup(), child: const Text('Close Account', style: TextStyle(color: Colors.red),)),)
+              Center(
+                child: TextButton(
+                    onPressed: () => controller.deleteAccountWarningPopup(),
+                    child: const Text(
+                      'Close Account',
+                      style: TextStyle(color: Colors.red),
+                    )),
+              )
             ],
-            
           ),
         ),
       ),
     );
   }
 }
-

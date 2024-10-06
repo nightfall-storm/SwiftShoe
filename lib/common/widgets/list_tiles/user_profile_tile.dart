@@ -19,14 +19,25 @@ class AkUserProfileTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = UserController.instance;
     return ListTile(
-      leading: const AkCircularImage(
-        image: AkImages.user,
-        width: 50,
-        height: 50,
-        padding: 0,
-        applyColor: false,
-        applyOverlayColor: false,
-      ),
+      leading: Obx(() {
+        final networkImage = controller.user.value.profilePicture;
+        final image = networkImage.isNotEmpty ? networkImage : AkImages.user;
+
+        return controller.imageUploading.value
+            ? const AkShimmerEffect(
+                width: 80,
+                height: 80,
+                radius: 80,
+              )
+            : AkCircularImage(
+                image: image,
+                width: 50,
+                height: 50,
+                padding: 0,
+                applyColor: false,
+                applyOverlayColor: false,
+                isNetworkImage: networkImage.isNotEmpty);
+      }),
       title: Obx(() {
         if (controller.profileLoading.value) {
           return const AkShimmerEffect(width: 80, height: 15);
