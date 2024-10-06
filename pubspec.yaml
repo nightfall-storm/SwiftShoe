@@ -26,7 +26,7 @@ dependencies:
   smooth_page_indicator: ^1.2.0+3
   flutter_native_splash: ^2.4.1
   shimmer: ^3.0.0
-
+  image_picker: ^1.1.2
 
   # * State Management
   get: ^4.6.6
