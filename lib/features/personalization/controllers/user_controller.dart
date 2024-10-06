@@ -46,21 +46,26 @@ class UserController extends GetxController {
   // * Save user record from any registration provider
   Future<void> saveUserRecord(UserCredential? userCredentials) async {
     try {
-      if (userCredentials != null) {
-        final username =
-            UserModel.generateUsername(userCredentials.user!.displayName ?? '');
+      // First update Rx User and the check if user data is already stored, If not store new data
+      await fetchUserRecord();
+      // If no record already stored
+      if (user.value.id.isEmpty) {
+        if (userCredentials != null) {
+          final username = UserModel.generateUsername(
+              userCredentials.user!.displayName ?? '');
 
-        // Map Data
-        final user = UserModel(
-          id: userCredentials.user!.uid,
-          username: username,
-          email: userCredentials.user!.email ?? '',
-          phoneNumber: userCredentials.user!.phoneNumber ?? '',
-          profilePicture: userCredentials.user!.photoURL ?? '',
-        );
+          // Map Data
+          final user = UserModel(
+            id: userCredentials.user!.uid,
+            username: username,
+            email: userCredentials.user!.email ?? '',
+            phoneNumber: userCredentials.user!.phoneNumber ?? '',
+            profilePicture: userCredentials.user!.photoURL ?? '',
+          );
 
-        // Save User Data
-        await userRepository.saveUserRecord(user);
+          // Save User Data
+          await userRepository.saveUserRecord(user);
+        }
       }
     } catch (e) {
       AkLoaders.warningSnackBar(
