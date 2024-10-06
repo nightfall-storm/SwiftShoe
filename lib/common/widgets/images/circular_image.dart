@@ -52,22 +52,25 @@ class AkCircularImage extends StatelessWidget {
         color: _getBackgroundColor(isDarkMode),
         borderRadius: BorderRadius.circular(100),
       ),
-      child: Center(
-        child: isNetworkImage
-            ? CachedNetworkImage(
-                fit: fit,
-                color: overlayColor,
-                imageUrl: image,
-                progressIndicatorBuilder: (context, url, downloadProgress) =>
-                    const AkShimmerEffect(width: 55, height: 55, radius: 55),
-                errorWidget: (context, url, downloadProgress) =>
-                    const Icon(Icons.error),
-              )
-            : Image(
-                fit: fit,
-                image: AssetImage(image),
-                color: _getOverlayColor(isDarkMode),
-              ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(100),
+        child: Center(
+          child: isNetworkImage
+              ? CachedNetworkImage(
+                  fit: fit,
+                  color: overlayColor,
+                  imageUrl: image,
+                  progressIndicatorBuilder: (context, url, downloadProgress) =>
+                      const AkShimmerEffect(width: 55, height: 55, radius: 55),
+                  errorWidget: (context, url, downloadProgress) =>
+                      const Icon(Icons.error),
+                )
+              : Image(
+                  fit: fit,
+                  image: AssetImage(image),
+                  color: _getOverlayColor(isDarkMode),
+                ),
+        ),
       ),
     );
   }
