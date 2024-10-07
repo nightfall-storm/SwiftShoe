@@ -20,7 +20,7 @@ class FormDivider extends StatelessWidget {
                 thickness: 0.5,
                 indent: 60,
                 endIndent: 5)),
-        Text(AkTexts.orSignUpWith.capitalize!),
+        Text(AkTexts.orSignInWith.capitalize!),
         Flexible(
             child: Divider(
                 color: dark ? AkColors.darkGrey : AkColors.grey,
