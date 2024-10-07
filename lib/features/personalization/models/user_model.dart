@@ -8,6 +8,8 @@ class UserModel {
   final String email;
   String phoneNumber;
   String profilePicture;
+  String gender; 
+  String birthday; 
 
   UserModel({
     required this.id,
@@ -15,6 +17,8 @@ class UserModel {
     required this.email,
     required this.phoneNumber,
     required this.profilePicture,
+    required this.gender,
+    required this.birthday,
   });
 
   String get formattedPhoneNumber => AkFormatter.formatPhoneNumber(phoneNumber);
@@ -27,7 +31,13 @@ class UserModel {
 
   // Static function to create an empty user model.
   static UserModel empty() => UserModel(
-      id: "", username: "", email: "", phoneNumber: "", profilePicture: "");
+      id: "",
+      username: "",
+      email: "",
+      phoneNumber: "",
+      profilePicture: "",
+      gender: "",
+      birthday: "");
 
   // Convert model to JSON structure for storing data in Firebase.
   Map<String, dynamic> toJson() {
@@ -36,6 +46,8 @@ class UserModel {
       'Email': email,
       'PhoneNumber': phoneNumber,
       'ProfilePicture': profilePicture,
+      'Gender': gender,
+      'Birthday': birthday,
     };
   }
 
@@ -49,6 +61,8 @@ class UserModel {
       email: data['Email'] ?? "",
       phoneNumber: data['PhoneNumber'] ?? "",
       profilePicture: data['ProfilePicture'] ?? "",
+      gender: data['Gender'] ?? "", 
+      birthday: data['Birthday'] ?? "", 
     );
   }
 }
