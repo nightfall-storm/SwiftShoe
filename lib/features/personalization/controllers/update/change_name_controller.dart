@@ -68,7 +68,7 @@ class UpdateNameController extends GetxController {
 
       // Show Success Message
       AkLoaders.successSnackBar(
-          title: 'Congratulations', message: 'Your name has been updated.');
+          title: 'Awesome!', message: 'Your username has been updated.');
 
       // Move to previous screen.
       Get.off(() => const ProfileScreen());
