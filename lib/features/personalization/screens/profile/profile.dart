@@ -10,6 +10,7 @@ import '../../../../common/widgets/images/circular_image.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../controllers/user_controller.dart';
+import 'update/change_gender.dart';
 import 'update/change_name.dart';
 import 'widgets/profile_menu.dart';
 
@@ -92,11 +93,15 @@ class ProfileScreen extends StatelessWidget {
                   onTap: () {}),
               Obx(
                 () => AkProfileMenu(
-                    title: 'Phone Number',
-                    value: controller.user.value.phoneNumber,
-                    onTap: () => Get.off(() => const ChangePhoneNumber())),
+                  title: 'Phone Number',
+                  value: controller.user.value.phoneNumber,
+                  onTap: () => Get.off(() => const ChangePhoneNumber()),
+                ),
               ),
-              AkProfileMenu(title: 'Gender', value: 'Male', onTap: () {}),
+              AkProfileMenu(
+                  title: 'Gender',
+                  value: controller.user.value.gender,
+                  onTap: () => Get.off(() => const ChangeGender())),
               AkProfileMenu(
                   title: 'Date of Birth', value: '10 Mar, 2003', onTap: () {}),
               const Divider(),
