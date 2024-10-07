@@ -14,7 +14,6 @@ class UpdateGenderController extends GetxController {
 
   final userController = UserController.instance;
   final userRepository = Get.put(UserRepository());
-  GlobalKey<FormState> updateUserGenderFormKey = GlobalKey<FormState>();
 
   // Observable variable to hold the selected gender
   var selectedGender = ''.obs;

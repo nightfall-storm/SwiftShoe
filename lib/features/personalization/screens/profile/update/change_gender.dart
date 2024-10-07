@@ -39,7 +39,6 @@ class ChangeGender extends StatelessWidget {
 
               // * Text field and Button
               Form(
-                key: controller.updateUserGenderFormKey,
                 child: Column(
                   children: [
                     // Gender Dropdown
