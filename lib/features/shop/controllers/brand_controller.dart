@@ -36,6 +36,8 @@ class BrandController extends GetxController {
       
     } catch (e) {
       AkLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-    } finally {}
+    } finally {
+      isLoading.value = false;
+    }
   }
 }
