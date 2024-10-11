@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
-
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/containers/section_cotainer.dart';
 import '../../../../common/widgets/containers/search_container.dart';
@@ -15,7 +13,7 @@ import '../../../personalization/controllers/user_controller.dart';
 import '../all_products/all_products.dart';
 import '../brand/all_brand.dart';
 import 'widgets/banner_slider.dart';
-import '../../../../common/widgets/containers/categories_horizontal.dart';
+import '../../../../common/widgets/containers/brands_horizontal.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -53,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: AkSizes.spaceBtwSections),
-              // * Categories
+              // * Brands
               Padding(
                 padding: const EdgeInsets.only(
                     left: AkSizes.defaultSpace / 2,
@@ -68,8 +66,8 @@ class HomeScreen extends StatelessWidget {
                       onPressed: () => Get.to(() => const AllBrandsScreen()),
                     ),
                     const SizedBox(height: AkSizes.spaceBtwItems),
-                    // ? Categories Section
-                    const AkCategoriesHorizontal(),
+                    // ? Brands Section
+                    const AkBrandsHorizontal(),
                     // ? Heading Popular Products
                     AkSectionHeading(
                       title: 'Popular Products',

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:shoes_store/data/services/dummy_data.dart';
 
 import '../../../../common/widgets/shimmer/shimmer.dart';
 import '../../../../common/widgets/appbar/appbar.dart';
@@ -113,6 +114,14 @@ class ProfileScreen extends StatelessWidget {
                     child: const Text(
                       'Close Account',
                       style: TextStyle(color: Colors.red),
+                    )),
+              ),
+              Center(
+                child: TextButton(
+                    onPressed: () => AkDummyData.uploadDummyBrands(),
+                    child: const Text(
+                      'Upload Data',
+                      style: TextStyle(color: Colors.green),
                     )),
               )
             ],
