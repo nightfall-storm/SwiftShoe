@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shoes_store/common/styles/shimmer_style.dart';
+import 'package:shoes_store/common/widgets/shimmer/shimmer.dart';
 import 'package:shoes_store/features/personalization/controllers/user_controller.dart';
 import 'package:shoes_store/features/personalization/screens/profile/profile.dart';
 
