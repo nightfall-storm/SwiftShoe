@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoes_store/common/widgets/images/circular_image.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
@@ -10,13 +11,15 @@ class AkVerticalImageText extends StatelessWidget {
     required this.title,
     this.onTap,
     this.textColor = AkColors.black,
-    this.backgroundColor = AkColors.white,
+    this.backgroundColor,
+    this.isNetworkImage = true,
     required this.image,
   });
   final String image, title;
   final void Function()? onTap;
   final Color textColor;
   final Color? backgroundColor;
+  final bool isNetworkImage;
 
   @override
   Widget build(BuildContext context) {
@@ -28,26 +31,34 @@ class AkVerticalImageText extends StatelessWidget {
         child: Column(
           children: [
             // * Circular Icon
-            Container(
-              width: 56,
-              height: 56,
-              decoration: BoxDecoration(
-                  color: AkColors.white,
-                  borderRadius: BorderRadius.circular(100),
-                  border: Border.all(
-                      color: backgroundColor ??
-                          (isDarkMode
-                              ? AkColors.darkGrey
-                              : AkColors.grey))),
-              child: Center(
-                child: Image(
-                  image: AssetImage(image),
-                  height: 30,
-                  fit: BoxFit.cover,
-                  color: isDarkMode ? AkColors.dark : AkColors.black,
-                ),
+            AkCircularImage(
+              image: image,
+              fit: BoxFit.fitWidth,
+              padding: AkSizes.sm * 1.4,
+              isNetworkImage: isNetworkImage,
+              backgroundColor: isDarkMode ? AkColors.light : AkColors.white,
               ),
-            ),
+
+            // Container(
+            //   width: 56,
+            //   height: 56,
+            //   decoration: BoxDecoration(
+            //       color: AkColors.white,
+            //       borderRadius: BorderRadius.circular(100),
+            //       border: Border.all(
+            //           color: backgroundColor ??
+            //               (isDarkMode
+            //                   ? AkColors.darkGrey
+            //                   : AkColors.grey))),
+            //   child: Center(
+            //     child: Image(
+            //       image: AssetImage(image),
+            //       height: 30,
+            //       fit: BoxFit.cover,
+            //       color: isDarkMode ? AkColors.dark : AkColors.black,
+            //     ),
+            //   ),
+            // ),
             const SizedBox(height: AkSizes.spaceBtwItems / 2),
             // * labelText
             SizedBox(
@@ -55,7 +66,7 @@ class AkVerticalImageText extends StatelessWidget {
               title,
               style: Theme.of(context).textTheme.labelSmall!.apply(
                   color: backgroundColor ??
-                      (AkHelperFunctions.isDarkMode(context)
+                      (isDarkMode
                           ? AkColors.light
                           : AkColors.black)),
               maxLines: 1,
