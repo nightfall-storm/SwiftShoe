@@ -19,6 +19,7 @@ class AkCircularImage extends StatelessWidget {
     this.padding = AkSizes.sm,
     this.applyColor = true,
     this.applyOverlayColor = true,
+    this.applyBorderColor = false,
   });
 
   final BoxFit? fit;
@@ -29,6 +30,7 @@ class AkCircularImage extends StatelessWidget {
   final double width, height, padding;
   final bool applyColor;
   final bool applyOverlayColor;
+  final bool applyBorderColor;
 
   Color _getBackgroundColor(bool isDarkMode) {
     if (!applyColor) return Colors.transparent;
@@ -51,6 +53,7 @@ class AkCircularImage extends StatelessWidget {
       decoration: BoxDecoration(
         color: _getBackgroundColor(isDarkMode),
         borderRadius: BorderRadius.circular(100),
+        border: Border.all(color: applyBorderColor ? (isDarkMode ? AkColors.darkGrey : AkColors.grey) : Colors.transparent)
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(100),
