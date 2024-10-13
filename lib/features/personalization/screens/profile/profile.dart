@@ -118,7 +118,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               Center(
                 child: TextButton(
-                    onPressed: () => AkDummyData.uploadDummyBrands(),
+                    onPressed: () => AkDummyData.uploadDummyBrandsAndCollections(),
                     child: const Text(
                       'Upload Data',
                       style: TextStyle(color: Colors.green),
