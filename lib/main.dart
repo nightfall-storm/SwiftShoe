@@ -6,6 +6,7 @@ import 'package:shoes_store/app.dart';
 import 'package:flutter/material.dart';
 
 import 'data/repositories/authentication/authentication_repository.dart';
+import 'data/repositories/collections/collection_repository.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -23,6 +24,8 @@ Future<void> main() async {
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
       .then((FirebaseApp value) => Get.put(AuthenticationRepository()));
+  // Only to upload dummy data 
+  // Get.put(CollectionRepository());
 
   runApp(const App());
 }
