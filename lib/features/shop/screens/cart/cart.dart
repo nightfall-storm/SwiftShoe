@@ -19,14 +19,17 @@ class CartScreen extends StatelessWidget {
     // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async {
-        if(fromProductDetail) return true;
+        if (fromProductDetail) return true;
         handleBackNavigation(); // Call the reusable back navigation function
         return false;
       },
       child: Scaffold(
         appBar: AkAppBar(
             title: 'Cart',
-            onPressed: () => Get.back(),
+            onPressed: () {
+              if (fromProductDetail) return Get.back();
+              handleBackNavigation();
+            },
             actions: const [],
             appBarSize: 35),
         body: Padding(
