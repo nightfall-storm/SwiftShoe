@@ -32,20 +32,9 @@ class CategoryScreen extends StatelessWidget {
         if (collections.isLoading.value) {
           return const Scaffold(
             appBar: AkAppBar(title: 'Category'),
-            body:
-                Center(child: CircularProgressIndicator()), // Loading indicator
+            body: Center(child: CircularProgressIndicator()), // Loading indicator
           );
         }
-
-        if (collections.allCollections.isEmpty) {
-          return const Scaffold(
-            appBar: AkAppBar(title: 'Category'),
-            body: Center(
-                child:
-                    Text('No collections available.')), // Message for no data
-          );
-        }
-
         final tabCount = collections.allCollections.length;
 
         return DefaultTabController(
