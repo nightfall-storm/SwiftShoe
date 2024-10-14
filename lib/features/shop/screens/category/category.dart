@@ -21,7 +21,7 @@ class CategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final CollectionController controller = Get.put(CollectionController());
+    final collections = Get.put(CollectionController());
 
     // ignore: deprecated_member_use
     return WillPopScope(
@@ -30,7 +30,7 @@ class CategoryScreen extends StatelessWidget {
         return false; // Prevent the default pop behavior
       },
       child: Obx(() {
-        if (controller.isLoading.value) {
+        if (collections.isLoading.value) {
           return Scaffold(
             appBar: AkAppBar(title: 'Category'),
             body:
@@ -38,7 +38,7 @@ class CategoryScreen extends StatelessWidget {
           );
         }
 
-        if (controller.allCollections.isEmpty) {
+        if (collections.allCollections.isEmpty) {
           return Scaffold(
             appBar: AkAppBar(title: 'Category'),
             body: Center(
@@ -47,7 +47,7 @@ class CategoryScreen extends StatelessWidget {
           );
         }
 
-        final tabCount = controller.allCollections.length;
+        final tabCount = collections.allCollections.length;
 
         return DefaultTabController(
           length: tabCount,
@@ -82,23 +82,18 @@ class CategoryScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    bottom: AkTabBar(controller: controller),
+                    bottom: AkTabBar(
+                      tabs: collections.allCollections
+                          .map((collection) => Tab(text: collection.name))
+                          .toList(),
+                    ),
                   ),
                 ];
               },
               body: TabBarView(
-                children: [
-                  ...controller.allCollections.map((collection) {
-                    return AkCategoryTab(
-                      images: const [
-                        // Replace with the actual images related to the collection
-                        AkImages.productImage1,
-                        AkImages.productImage2,
-                        AkImages.productImage3,
-                      ],
-                    );
-                  }),
-                ],
+                children: collections.allCollections
+                    .map((collection) => AkCategoryTab(collection: collection))
+                    .toList(),
               ),
             ),
           ),

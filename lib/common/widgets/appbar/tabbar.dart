@@ -1,25 +1,17 @@
 import 'package:flutter/material.dart';
-import '../../../features/shop/controllers/collection_controller.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/helpers/helper_functions.dart';
 
 class AkTabBar extends StatelessWidget implements PreferredSizeWidget {
   const AkTabBar({
     super.key,
-    required this.controller, // Add a controller parameter
+    required this.tabs,
   });
   
-  final CollectionController controller; // Controller to fetch collections
-
+  final List<Widget> tabs;
   @override
   Widget build(BuildContext context) {
     final bool isDarkMode = AkHelperFunctions.isDarkMode(context);
-    
-    // Generate tabs from all collections
-    List<Widget> tabs = controller.allCollections
-        .map((collection) => Tab(text: collection.name))
-        .toList();
-
     return Material(
       color: isDarkMode ? AkColors.black : AkColors.white,
       child: TabBar(
