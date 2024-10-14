@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,7 +11,6 @@ import '../../../../common/widgets/appbar/tabbar.dart';
 import '../../../../common/widgets/containers/section_cotainer.dart';
 import '../../../../common/widgets/brand/brand_card.dart';
 import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/helpers/navigation_helper.dart';
 import '../../controllers/collection_controller.dart';
 import 'widgets/category_tab.dart';
@@ -31,7 +30,7 @@ class CategoryScreen extends StatelessWidget {
       },
       child: Obx(() {
         if (collections.isLoading.value) {
-          return Scaffold(
+          return const Scaffold(
             appBar: AkAppBar(title: 'Category'),
             body:
                 Center(child: CircularProgressIndicator()), // Loading indicator
@@ -39,7 +38,7 @@ class CategoryScreen extends StatelessWidget {
         }
 
         if (collections.allCollections.isEmpty) {
-          return Scaffold(
+          return const Scaffold(
             appBar: AkAppBar(title: 'Category'),
             body: Center(
                 child:
@@ -52,7 +51,7 @@ class CategoryScreen extends StatelessWidget {
         return DefaultTabController(
           length: tabCount,
           child: Scaffold(
-            appBar: AkAppBar(title: 'Category'),
+            appBar: const AkAppBar(title: 'Category'),
             body: NestedScrollView(
               headerSliverBuilder: (_, innerBoxIsScrolled) {
                 return [
@@ -64,10 +63,10 @@ class CategoryScreen extends StatelessWidget {
                         : AkColors.white,
                     expandedHeight: 440,
                     flexibleSpace: Padding(
-                      padding: EdgeInsets.only(left: 8, right: 8, top: 24),
+                      padding: const EdgeInsets.only(left: 8, right: 8, top: 24),
                       child: ListView(
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         children: [
                           AkSectionHeading(
                               title: 'Featured Brands', onPressed: () {}),
@@ -76,7 +75,7 @@ class CategoryScreen extends StatelessWidget {
                             mainAxisExtent: 80,
                             itemCount: 4,
                             itemBuilder: (_, index) {
-                              return AkBrandCard(showBorder: true);
+                              return const AkBrandCard(showBorder: true);
                             },
                           ),
                         ],
