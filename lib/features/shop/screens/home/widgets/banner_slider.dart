@@ -1,13 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider_x/carousel_slider_x.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shoes_store/common/widgets/shimmer/shimmer.dart';
 
 import '../../../../../common/widgets/custom_shapes/containers/circular_container.dart';
-import '../../../../../common/widgets/images/round_image.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../controllers/banner_controller.dart';
+import '../../../models/banner_model.dart';
 
 class AkBannerSlider extends StatelessWidget {
   const AkBannerSlider({super.key});
@@ -21,7 +22,10 @@ class AkBannerSlider extends StatelessWidget {
     return Obx(() {
       // loader
       if (controller.isLoading.value) {
-        return const AkShimmerEffect(width: 300, height: 240);
+        return const AkShimmerEffect(
+          width: double.infinity,
+          height: 240,
+        );
       }
 
       // no data found
@@ -37,14 +41,23 @@ class AkBannerSlider extends StatelessWidget {
                 viewportFraction: 1,
                 autoPlay: true,
               ),
-              items: controller.banners
-                  .map((banner) => AkRoundedImage(
+              items: controller.banners.asMap().entries.map((entry) {
+                int index = entry.key;
+                BannerModel banner = entry.value;
+                return Obx(() => controller.isImageLoaded(index)
+                    ? CachedNetworkImage(
                         imageUrl: banner.imageUrl,
-                        isNetworkImage: true,
-                        onPressed: () => Get.toNamed(banner.targetScreen),
-                      ))
-                  .toList(),
-              onPageChanged: (index, _) => controller.updatePageIndicator(index),
+                        fit: BoxFit.cover,
+                        placeholder: (context, url) => const AkShimmerEffect(
+                            width: double.infinity, height: 240),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
+                      )
+                    : const AkShimmerEffect(
+                        width: double.infinity, height: 240));
+              }).toList(),
+              onPageChanged: (index, _) =>
+                  controller.updatePageIndicator(index),
             ),
             const SizedBox(height: AkSizes.spaceBtwItems),
             Center(
