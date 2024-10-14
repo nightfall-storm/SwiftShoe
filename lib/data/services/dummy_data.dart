@@ -1,9 +1,32 @@
 import 'package:logger/logger.dart';
+import 'package:shoes_store/data/repositories/banners/banner_repository.dart';
+import 'package:shoes_store/features/shop/models/banner_model.dart';
 import 'package:shoes_store/features/shop/models/collection_model.dart';
 import 'package:shoes_store/data/repositories/collections/collection_repository.dart';
 
+import '../../routes/routes.dart';
+import '../../utils/constants/image_strings.dart';
+
 class AkDummyData {
   static final Logger logger = Logger();
+  static Future<void> uploadDummyBanners() async {
+    final banners = [
+      BannerModel(active: true, imageUrl: AkImages.homeBanner1, targetScreen: AkRoutes.home),
+      BannerModel(active: true, imageUrl: AkImages.homeBanner2, targetScreen: AkRoutes.home),
+      BannerModel(active: true, imageUrl: AkImages.homeBanner3, targetScreen: AkRoutes.home),
+    ];
+    try {
+      // Upload the dummy Banners data to Firebase
+      await BannerRepository.instance.uploadDummyData(banners);
+
+      // Log success message
+      logger.i('Success: Banners uploaded successfully');
+    } catch (e) {
+      // Log error message
+      logger.e('Error: $e');
+    }
+  }
+
   static Future<void> uploadDummyBrandsAndCollections() async {
     // final brands = [
     //   BrandModel(
