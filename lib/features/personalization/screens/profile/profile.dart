@@ -123,7 +123,14 @@ class ProfileScreen extends StatelessWidget {
                       'Upload Data',
                       style: TextStyle(color: Colors.green),
                     )),
-              )
+              ),              Center(
+                child: TextButton(
+                    onPressed: () => AkDummyData.uploadDummyBanners(),
+                    child: const Text(
+                      'Upload Banners',
+                      style: TextStyle(color: Colors.green),
+                    )),
+              ),
             ],
           ),
         ),
