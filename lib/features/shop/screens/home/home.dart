@@ -6,7 +6,6 @@ import '../../../../common/widgets/containers/section_cotainer.dart';
 import '../../../../common/widgets/containers/search_container.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
-import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/navigation_helper.dart';
 import '../../../personalization/controllers/user_controller.dart';
@@ -42,13 +41,7 @@ class HomeScreen extends StatelessWidget {
               // * SliderBanner
               const Padding(
                 padding: EdgeInsets.zero,
-                child: AkBannerSlider(
-                  banners: [
-                    AkImages.homeBanner1,
-                    AkImages.homeBanner2,
-                    AkImages.homeBanner3,
-                  ],
-                ),
+                child: AkBannerSlider(),
               ),
               const SizedBox(height: AkSizes.spaceBtwSections),
               // * Brands
