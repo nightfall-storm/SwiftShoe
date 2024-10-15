@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shoes_store/common/widgets/shimmer/vertical_product_shimmer.dart';
+import 'package:shoes_store/features/shop/controllers/product_controller.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/containers/section_cotainer.dart';
@@ -20,7 +22,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
-    final controller = Get.put(UserController());
+    final userController = Get.put(UserController());
+    final controller = Get.put(ProductController());
     // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async {
@@ -68,10 +71,25 @@ class HomeScreen extends StatelessWidget {
                       onPressed: () => Get.to(() => const AllProducts()),
                     ),
                     const SizedBox(height: AkSizes.spaceBtwItems),
-                    AkGridLayout(
-                      itemCount: 4,
-                      itemBuilder: (_, index) => const AkProductCardVertical(),
-                    ),
+                    Obx(() {
+                      if (controller.isLoading.value) {
+                        return const AkVerticalProductShimmer();
+                      }
+                      if (controller.featuredProducts.isEmpty) {
+                        return Center(
+                          child: Text(
+                            'No Data Found!',
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        );
+                      }
+                      return AkGridLayout(
+                        itemCount: controller.featuredProducts.length,
+                        itemBuilder: (_, index) => AkProductCardVertical(
+                          product: controller.featuredProducts[index],
+                        ),
+                      );
+                    }),
                   ],
                 ),
               ),
