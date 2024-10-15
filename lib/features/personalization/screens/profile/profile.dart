@@ -105,7 +105,9 @@ class ProfileScreen extends StatelessWidget {
                   value: controller.user.value.gender,
                   onTap: () => Get.off(() => const ChangeGender())),
               AkProfileMenu(
-                  title: 'Date of Birth', value: controller.user.value.birthday, onTap: () => Get.off(() => const ChangeBirthday())),
+                  title: 'Date of Birth',
+                  value: controller.user.value.birthday,
+                  onTap: () => Get.off(() => const ChangeBirthday())),
               const Divider(),
               const SizedBox(height: AkSizes.spaceBtwItems),
               Center(
@@ -118,18 +120,30 @@ class ProfileScreen extends StatelessWidget {
               ),
               Center(
                 child: TextButton(
-                    onPressed: () => AkDummyData.uploadDummyBrandsAndCollections(),
+                    onPressed: () =>
+                        AkDummyData.uploadDummyBrandsAndCollections(),
                     child: const Text(
                       'Upload Data',
                       style: TextStyle(color: Colors.green),
                     )),
-              ),              Center(
+              ),
+              Center(
                 child: TextButton(
-                    onPressed: () => AkDummyData.uploadDummyBanners(),
-                    child: const Text(
-                      'Upload Banners',
-                      style: TextStyle(color: Colors.green),
-                    )),
+                  onPressed: () => AkDummyData.uploadDummyBanners(),
+                  child: const Text(
+                    'Upload Banners',
+                    style: TextStyle(color: Colors.green),
+                  ),
+                ),
+              ),
+              Center(
+                child: TextButton(
+                  onPressed: () => AkDummyData.uploadDummyProducts(),
+                  child: const Text(
+                    'Upload Products',
+                    style: TextStyle(color: Colors.blue),
+                  ),
+                ),
               ),
             ],
           ),
