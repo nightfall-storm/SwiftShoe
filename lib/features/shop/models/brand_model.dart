@@ -4,42 +4,55 @@ class BrandModel {
   String id;
   String name;
   String image;
-  String parentId;
-  bool isFeatured;
-
+  bool? isFeatured;
+  int? productsCount;
   BrandModel({
     required this.id,
     required this.name,
     required this.image,
-    required this.isFeatured,
-    this.parentId = '',
+    this.isFeatured,
+    this.productsCount,
   });
 
   // * Empty Helper Function
-  static BrandModel empty() => BrandModel(id: '', image: '', name: '', isFeatured: false);
+  static BrandModel empty() => BrandModel(id: '', image: '', name: '');
 
   // * Convert model to Json Structure to store data in Firebase
-  Map<String, dynamic> toJson() {
+  toJson() {
     return {
+      'Id': id,
       'Name': name,
       'Image': image,
-      'ParentId': parentId,
+      'ProductsCount': productsCount,
       'IsFeatured': isFeatured,
     };
   }
 
+  // * Map Json oriented document snapshot from firebase to UserModel
+  factory BrandModel.fromJson(Map<String, dynamic> document) {
+    final data = document;
+    if (data.isEmpty) return BrandModel.empty();
+    // Map JSON Record to the MODEL
+    return BrandModel(
+      id: data['Id'] ?? '',
+      name: data['Name'] ?? '',
+      image: data['Image'] ?? '',
+      isFeatured: data['IsFeatured'] ?? false,
+      productsCount: int.parse((data['ProductsCount'] ?? 0).toString()),
+    );
+  }
+
   // * Map Json oriented document snapshot from Firebase to UserModel
-  factory BrandModel.fromSnapShot(
-      DocumentSnapshot<Map<String, dynamic>> document) {
+  factory BrandModel.fromSnapShot(DocumentSnapshot<Map<String, dynamic>> document) {
     if (document.data() != null) {
       final data = document.data()!;
 
       // Map JSON Record to the MODEL
       return BrandModel(
-        id: document.id,
+        id: data['Id'] ?? '',
         name: data['Name'] ?? '',
         image: data['Image'] ?? '',
-        parentId: data['ParentId'] ?? '',
+        productsCount: data['ProductsCount'] ?? 0,
         isFeatured: data['IsFeatured'] ?? false,
       );
     } else {
