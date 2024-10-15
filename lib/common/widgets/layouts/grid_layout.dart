@@ -6,7 +6,7 @@ class AkGridLayout extends StatelessWidget {
   const AkGridLayout({
     super.key,
     required this.itemCount,
-    this.mainAxisExtent = 270,
+    this.mainAxisExtent = 280,
     required this.itemBuilder,
   });
   final int itemCount;
