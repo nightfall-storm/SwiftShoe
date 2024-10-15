@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
-
-import 'package:shoes_store/utils/popups/loaders.dart';
+import 'package:logger/logger.dart';
 
 import '../../../data/repositories/brands/brand_repository.dart';
 import '../models/brand_model.dart';
@@ -8,6 +7,7 @@ import '../models/brand_model.dart';
 class BrandController extends GetxController {
   static BrandController get instance => Get.find();
 
+  static Logger logger = Logger();
   final isLoading = false.obs;
   final _brandRepository = Get.put(BrandRepository());
   RxList<BrandModel> allBrands = <BrandModel>[].obs;
@@ -32,10 +32,10 @@ class BrandController extends GetxController {
       allBrands.assignAll(brands);
 
       // Filter featured brands
-      featuredBrands.assignAll(allBrands.where((brand) => brand.isFeatured && brand.parentId.isEmpty).take(8).toList());
+      featuredBrands.assignAll(allBrands.where((brand) => brand.isFeatured ?? false).take(8).toList());
       
     } catch (e) {
-      AkLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      logger.e(e.toString());
     } finally {
       isLoading.value = false;
     }
