@@ -5,7 +5,11 @@
 -- */
 
 
+// ignore: dangling_library_doc_comments
 /// Switch of Custom Brand-Text-Size Widget
+
+enum ProductType {single, variable}
+
 enum TextSizes { small, medium, large }
 
 enum OrderStatus { processing, shipped, delivered }
