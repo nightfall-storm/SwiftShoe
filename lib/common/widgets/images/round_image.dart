@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
+import '../shimmer/shimmer.dart';
 
 class AkRoundedImage extends StatelessWidget {
   const AkRoundedImage({
@@ -32,9 +33,7 @@ class AkRoundedImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-        // * HomeBanner
-        GestureDetector(
+    return GestureDetector(
       onTap: onPressed,
       child: Container(
         width: width,
@@ -49,11 +48,21 @@ class AkRoundedImage extends StatelessWidget {
           borderRadius: applyImageRadius
               ? BorderRadius.circular(borderRadius)
               : BorderRadius.zero,
-          child: Image(
-              fit: fit,
-              image: isNetworkImage
-                  ? NetworkImage(imageUrl)
-                  : AssetImage(imageUrl) as ImageProvider),
+          child: isNetworkImage
+              ? CachedNetworkImage(
+                  imageUrl: imageUrl,
+                  fit: fit,
+                  placeholder: (context, url) => AkShimmerEffect(
+                    width: width ?? double.infinity,
+                    height: height ?? 200,
+                    radius: borderRadius,
+                  ),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                )
+              : Image(
+                  fit: fit,
+                  image: AssetImage(imageUrl),
+                ),
         ),
       ),
     );
