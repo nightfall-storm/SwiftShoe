@@ -103,6 +103,13 @@ class AkImages {
   static const String brooksProduct3Variation2 = "/assets/images/products/Trace3-iris_orange.jpg";
 
   // -- Adidas
+  static const String adidasProduct1 = "/assets/images/products/BounceLegends-gold_black.jpg";
+  static const String adidasProduct1Variation1 = "/assets/images/products/BounceLegends-white.jpg";
+  static const String adidasProduct1Variation2 = "/assets/images/products/BounceLegends-red_white.jpg";
+  static const String adidasProduct1Variation3 = "/assets/images/products/BounceLegends-black_white.jpg";
+  static const String adidasProduct2 = "/assets/images/products/Dropset2-black.jpg";
+  static const String adidasProduct2Variation = "/assets/images/products/Dropset2-white.jpg";
+  static const String adidasProduct3Single = "/assets/images/products/Powerlift5-black_white.jpg";
 
   // -- Product Reviews
   static const String userProfileImage1 = "assets/images/reviews/review_profile_image_1.jpg";
