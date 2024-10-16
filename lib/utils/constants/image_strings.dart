@@ -95,7 +95,14 @@ class AkImages {
   static const String crocsProduct3Single = "/assets/images/products/ClassicHolidayLinedClogs.jpg";
 
   // -- Brooks
-  
+  static const String brooksProduct1Single = "/assets/images/products/GlycerinStealthFitGTS21-white_black.jpg";
+  static const String brooksProduct2 = "/assets/images/products/AddictionWalker2-white.jpg";
+  static const String brooksProduct2Variation = "/assets/images/products/AddictionWalker2-black.jpg";
+  static const String brooksProduct3 = "/assets/images/products/Trace3-blue_yellow.jpg";
+  static const String brooksProduct3Variation1 = "/assets/images/products/Trace3-grey_black.jpg";
+  static const String brooksProduct3Variation2 = "/assets/images/products/Trace3-iris_orange.jpg";
+
+  // -- Adidas
 
   // -- Product Reviews
   static const String userProfileImage1 = "assets/images/reviews/review_profile_image_1.jpg";
