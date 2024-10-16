@@ -80,7 +80,14 @@ class AkImages {
   static const String nikeProduct3 = "/assets/images/products/NikeVaporfly3-Multi-Color_pink.png";
   static const String nikeProduct3Variation1 = "/assets/images/products/NikeVaporfly3-Multi-color_orange.png";
   static const String nikeProduct3Variation2 = "/assets/images/products/NikeVaporfly3-black_gold.png";
-  
+
+  // -- Puma
+  static const String pumaProduct1Single = "/assets/images/products/Formula1Ca1Pro-black_red.jpg";
+  static const String pumaProduct2 = "/assets/images/products/VelocityNitro3-white_sunstream.jpg";
+  static const String pumaProduct2Variation1 = "/assets/images/products/VelocityNitro3-greyfog.jpg";
+  static const String pumaProduct2Variation2 = "/assets/images/products/VelocityNitro3-black_white.jpg";
+  static const String pumaProduct3Single = "/assets/images/products/LaceRiderRetro-White_Parasailing.jpg";
+
   // -- Product Reviews
   static const String userProfileImage1 = "assets/images/reviews/review_profile_image_1.jpg";
   static const String userProfileImage2 = "assets/images/reviews/review_profile_image_2.jpeg";
