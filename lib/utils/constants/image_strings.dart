@@ -61,6 +61,15 @@ class AkImages {
   static const String productImage10 = "assets/images/products/NikeBasketballShoeGreenBlack.png";
   static const String productImage11 = "assets/images/products/NikeWildhorse.png";
 
+  // -- Jordan Products
+  static const String jordanProduct1Single = "/assets/images/products/NikeAirJOrdonWhiteRed.png";
+  static const String jordanProduct2Single = "/assets/images/products/AirJordan4Retro-orchid.png";
+  static const String jordanProduct3 = "/assets/images/products/JordanSpizikeLow-brown_white.png";
+  static const String jordanProduct3Variation = "/assets/images/products/JordanSpizikeLow-gymred.jpg";
+  static const String jordanProduct4 = "/assets/images/products/NikeAirJOrdonOrange.png";
+  static const String jordanProduct4Variation1 = "/assets/images/products/NikeAirJOrdonBlackRed.png";
+  static const String jordanProduct4Variation2 = "/assets/images/products/NikeAirJOrdonWhiteRed.png";
+  static const String jordanProduct4Variation3 = "/assets/images/products/NikeAirJordonSingleBlue.png";
 
 
 
