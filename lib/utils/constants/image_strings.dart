@@ -88,6 +88,15 @@ class AkImages {
   static const String pumaProduct2Variation2 = "/assets/images/products/VelocityNitro3-black_white.jpg";
   static const String pumaProduct3Single = "/assets/images/products/LaceRiderRetro-White_Parasailing.jpg";
 
+  // -- Crocs
+  static const String crocsProduct1 = "/assets/images/products/EchoBoots-black.jpg";
+  static const String crocsProduct1Variation = "/assets/images/products/EchoBoots-white.jpg";
+  static const String crocsProduct2Single = "/assets/images/products/StarWarsGroguClassicClog-GroguBone.jpg";
+  static const String crocsProduct3Single = "/assets/images/products/ClassicHolidayLinedClogs.jpg";
+
+  // -- Brooks
+  
+
   // -- Product Reviews
   static const String userProfileImage1 = "assets/images/reviews/review_profile_image_1.jpg";
   static const String userProfileImage2 = "assets/images/reviews/review_profile_image_2.jpeg";
