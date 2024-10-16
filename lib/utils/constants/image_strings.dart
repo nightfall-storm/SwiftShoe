@@ -71,8 +71,16 @@ class AkImages {
   static const String jordanProduct4Variation2 = "/assets/images/products/NikeAirJOrdonWhiteRed.png";
   static const String jordanProduct4Variation3 = "/assets/images/products/NikeAirJordonSingleBlue.png";
 
-
-
+  // -- Nike Products
+  static const String nikeProduct1 = "/assets/images/products/Nikesportsshoesblue_green.png";
+  static const String nikeProduct1Variation = "/assets/images/products/Nikesportsshoesblack_grey.png";
+  static const String nikeProduct2 = "/assets/images/products/NikeAirMaxSC-White.png";
+  static const String nikeProduct2Variation1 = "/assets/images/products/NikeAirMaxSC-white_jade.png";
+  static const String nikeProduct2Variation2 = "/assets/images/products/NikeAirMaxSC-black.png";
+  static const String nikeProduct3 = "/assets/images/products/NikeVaporfly3-Multi-Color_pink.png";
+  static const String nikeProduct3Variation1 = "/assets/images/products/NikeVaporfly3-Multi-color_orange.png";
+  static const String nikeProduct3Variation2 = "/assets/images/products/NikeVaporfly3-black_gold.png";
+  
   // -- Product Reviews
   static const String userProfileImage1 = "assets/images/reviews/review_profile_image_1.jpg";
   static const String userProfileImage2 = "assets/images/reviews/review_profile_image_2.jpeg";
