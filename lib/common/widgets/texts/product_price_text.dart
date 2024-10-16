@@ -20,7 +20,7 @@ class AkProductPriceText extends StatelessWidget {
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
       style: isLarge
-          ? Theme.of(context).textTheme.headlineMedium!.apply(
+          ? Theme.of(context).textTheme.headlineSmall!.apply(
               decoration: lineThrough ? TextDecoration.lineThrough : null)
           : Theme.of(context).textTheme.titleLarge,
     );
