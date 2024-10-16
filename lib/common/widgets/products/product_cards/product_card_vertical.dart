@@ -63,8 +63,9 @@ class AkProductCardVertical extends StatelessWidget {
                 ),
                 // * Discount TAG
                 Positioned(
-                  top: 7,
-                  left: 3,
+                  width: 43,
+                  top: 9,
+                  left: 8,
                   child: Transform.rotate(
                     angle: -3.14 / 2,
                     child: AkRoundedContainer(
@@ -79,12 +80,14 @@ class AkProductCardVertical extends StatelessWidget {
                         horizontal: AkSizes.sm,
                         vertical: AkSizes.xs,
                       ),
-                      child: Text(
-                        '$salePercentage%',
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelLarge!
-                            .apply(color: AkColors.white),
+                      child: Center(
+                        child: Text(
+                          '$salePercentage%',
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelLarge!
+                              .apply(color: AkColors.white),
+                        ),
                       ),
                     ),
                   ),
