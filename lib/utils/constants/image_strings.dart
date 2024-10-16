@@ -62,54 +62,53 @@ class AkImages {
   static const String productImage11 = "assets/images/products/NikeWildhorse.png";
 
   // -- Jordan Products
-  static const String jordanProduct1Single = "/assets/images/products/NikeAirJOrdonWhiteRed.png";
-  static const String jordanProduct2Single = "/assets/images/products/AirJordan4Retro-orchid.png";
-  static const String jordanProduct3 = "/assets/images/products/JordanSpizikeLow-brown_white.png";
-  static const String jordanProduct3Variation = "/assets/images/products/JordanSpizikeLow-gymred.jpg";
-  static const String jordanProduct4 = "/assets/images/products/NikeAirJOrdonOrange.png";
-  static const String jordanProduct4Variation1 = "/assets/images/products/NikeAirJOrdonBlackRed.png";
-  static const String jordanProduct4Variation2 = "/assets/images/products/NikeAirJOrdonWhiteRed.png";
-  static const String jordanProduct4Variation3 = "/assets/images/products/NikeAirJordonSingleBlue.png";
+  static const String jordanProduct1Single = "assets/images/products/NikeAirJOrdonWhiteRed.png";
+  static const String jordanProduct2Single = "assets/images/products/AirJordan4Retro-orchid.png";
+  static const String jordanProduct3 = "assets/images/products/JordanSpizikeLow-brown_white.png";
+  static const String jordanProduct3Variation = "assets/images/products/JordanSpizikeLow-gymred.png";
+  static const String jordanProduct4 = "assets/images/products/NikeAirJOrdonOrange.png";
+  static const String jordanProduct4Variation1 = "assets/images/products/NikeAirJOrdonBlackRed.png";
+  static const String jordanProduct4Variation2= "assets/images/products/NikeAirJordonSingleBlue.png";
 
   // -- Nike Products
-  static const String nikeProduct1 = "/assets/images/products/Nikesportsshoesblue_green.png";
-  static const String nikeProduct1Variation = "/assets/images/products/Nikesportsshoesblack_grey.png";
-  static const String nikeProduct2 = "/assets/images/products/NikeAirMaxSC-White.png";
-  static const String nikeProduct2Variation1 = "/assets/images/products/NikeAirMaxSC-white_jade.png";
-  static const String nikeProduct2Variation2 = "/assets/images/products/NikeAirMaxSC-black.png";
-  static const String nikeProduct3 = "/assets/images/products/NikeVaporfly3-Multi-Color_pink.png";
-  static const String nikeProduct3Variation1 = "/assets/images/products/NikeVaporfly3-Multi-color_orange.png";
-  static const String nikeProduct3Variation2 = "/assets/images/products/NikeVaporfly3-black_gold.png";
+  static const String nikeProduct1 = "assets/images/products/Nikesportsshoesblue_green.png";
+  static const String nikeProduct1Variation = "assets/images/products/Nikesportsshoesblack_grey.png";
+  static const String nikeProduct2 = "assets/images/products/NikeAirMaxSC-White.png";
+  static const String nikeProduct2Variation1 = "assets/images/products/NikeAirMaxSC-white_jade.png";
+  static const String nikeProduct2Variation2 = "assets/images/products/NikeAirMaxSC-black.png";
+  static const String nikeProduct3 = "assets/images/products/NikeVaporfly3-Multi-Color_pink.png";
+  static const String nikeProduct3Variation1 = "assets/images/products/NikeVaporfly3-Multi-color_orange.png";
+  static const String nikeProduct3Variation2 = "assets/images/products/NikeVaporfly3-black_gold.png";
 
   // -- Puma
-  static const String pumaProduct1Single = "/assets/images/products/Formula1Ca1Pro-black_red.jpg";
-  static const String pumaProduct2 = "/assets/images/products/VelocityNitro3-white_sunstream.jpg";
-  static const String pumaProduct2Variation1 = "/assets/images/products/VelocityNitro3-greyfog.jpg";
-  static const String pumaProduct2Variation2 = "/assets/images/products/VelocityNitro3-black_white.jpg";
-  static const String pumaProduct3Single = "/assets/images/products/LaceRiderRetro-White_Parasailing.jpg";
+  static const String pumaProduct1Single = "assets/images/products/Formula1Ca1Pro-black_red.png";
+  static const String pumaProduct2 = "assetsimages/products/VelocityNitro3-white_sunstream.png";
+  static const String pumaProduct2Variation1 = "assets/images/products/VelocityNitro3-greyfog.png";
+  static const String pumaProduct2Variation2 = "assets/images/products/VelocityNitro3-black_white.png";
+  static const String pumaProduct3Single = "assets/images/products/LaceRiderRetro-White_Parasailing.png";
 
   // -- Crocs
-  static const String crocsProduct1 = "/assets/images/products/EchoBoots-black.jpg";
-  static const String crocsProduct1Variation = "/assets/images/products/EchoBoots-white.jpg";
-  static const String crocsProduct2Single = "/assets/images/products/StarWarsGroguClassicClog-GroguBone.jpg";
-  static const String crocsProduct3Single = "/assets/images/products/ClassicHolidayLinedClogs.jpg";
+  static const String crocsProduct1 = "assets/images/products/EchoBoots-black.png";
+  static const String crocsProduct1Variation = "assets/images/products/EchoBoots-white.png";
+  static const String crocsProduct2Single = "assets/images/products/StarWarsGroguClassicClog-GroguBone.png";
+  static const String crocsProduct3Single = "assets/images/products/ClassicHolidayLinedClogs.png";
 
   // -- Brooks
-  static const String brooksProduct1Single = "/assets/images/products/GlycerinStealthFitGTS21-white_black.jpg";
-  static const String brooksProduct2 = "/assets/images/products/AddictionWalker2-white.jpg";
-  static const String brooksProduct2Variation = "/assets/images/products/AddictionWalker2-black.jpg";
-  static const String brooksProduct3 = "/assets/images/products/Trace3-blue_yellow.jpg";
-  static const String brooksProduct3Variation1 = "/assets/images/products/Trace3-grey_black.jpg";
-  static const String brooksProduct3Variation2 = "/assets/images/products/Trace3-iris_orange.jpg";
+  static const String brooksProduct1Single = "assets/images/products/GlycerinStealthFitGTS21-white_black.png";
+  static const String brooksProduct2 = "assets/images/products/AddictionWalker2-white.png";
+  static const String brooksProduct2Variation = "assets/images/products/AddictionWalker2-black.png";
+  static const String brooksProduct3 = "assets/images/products/Trace3-blue_yellow.png";
+  static const String brooksProduct3Variation1 = "assets/images/products/Trace3-grey_black.png";
+  static const String brooksProduct3Variation2 = "assets/images/products/Trace3-iris_orange.png";
 
   // -- Adidas
-  static const String adidasProduct1 = "/assets/images/products/BounceLegends-gold_black.jpg";
-  static const String adidasProduct1Variation1 = "/assets/images/products/BounceLegends-white.jpg";
-  static const String adidasProduct1Variation2 = "/assets/images/products/BounceLegends-red_white.jpg";
-  static const String adidasProduct1Variation3 = "/assets/images/products/BounceLegends-black_white.jpg";
-  static const String adidasProduct2 = "/assets/images/products/Dropset2-black.jpg";
-  static const String adidasProduct2Variation = "/assets/images/products/Dropset2-white.jpg";
-  static const String adidasProduct3Single = "/assets/images/products/Powerlift5-black_white.jpg";
+  static const String adidasProduct1 = "assets/images/products/BounceLegends-gold_black.png";
+  static const String adidasProduct1Variation1 = "assets/images/products/BounceLegends-white.png";
+  static const String adidasProduct1Variation2 = "assets/images/products/BounceLegends-red_white.png";
+  static const String adidasProduct1Variation3 = "assets/images/products/BounceLegends-black_white.png";
+  static const String adidasProduct2 = "assets/images/products/Dropset2-black.png";
+  static const String adidasProduct2Variation = "assets/images/products/Dropset2-white.png";
+  static const String adidasProduct3Single = "assets/images/products/Powerlift5-black_white.png";
 
   // -- Product Reviews
   static const String userProfileImage1 = "assets/images/reviews/review_profile_image_1.jpg";
