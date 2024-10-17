@@ -14,7 +14,7 @@ import '../../../utils/constants/enums.dart';
 
 class ProductRepository extends GetxController {
   static ProductRepository get instance => Get.find();
-  static final Logger _logger = Logger();
+  // static final Logger _logger = Logger();
 
   // Firestore instance for dataase interactions
   final _db = FirebaseFirestore.instance;
@@ -28,7 +28,7 @@ class ProductRepository extends GetxController {
           .limit(4)
           .get();
 
-      _logger.i("Fetched documents: ${snapshot.docs.length}"); // Debug statement
+      // _logger.i("Fetched documents: ${snapshot.docs.length}"); // Debug statement
 
       return snapshot.docs.map((e) => ProductModel.fromSnapShot(e)).toList();
     } on FirebaseException catch (e) {

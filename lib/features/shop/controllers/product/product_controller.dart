@@ -8,7 +8,7 @@ import '../../models/product_model.dart';
 
 class ProductController extends GetxController {
   static ProductController get instance => Get.find();
-  static final Logger _logger = Logger();
+  // static final Logger _logger = Logger();
 
   final isLoading = false.obs;
   final productRepository = Get.put(ProductRepository());
@@ -30,13 +30,12 @@ class ProductController extends GetxController {
 
       // Fetch products
       final products = await productRepository.getFeaturedProducts();
-      _logger.i(
-          'Featured products fetched: ${products.length}'); // Debug statement
+      // _logger.i('Featured products fetched: ${products.length}'); // Debug statement
 
       // Assign Products
       featuredProducts.assignAll(products);
     } catch (e) {
-      _logger.i('Error fetching products: $e'); // Debug statement
+      // _logger.i('Error fetching products: $e'); // Debug statement
       AkLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {
       isLoading.value = false;
