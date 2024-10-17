@@ -6,6 +6,7 @@ import 'package:shoes_store/features/shop/screens/cart/cart.dart';
 
 import '../../../../common/widgets/containers/section_cotainer.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../models/product_model.dart';
 import '../product_reviews/product_reviews.dart';
 import 'widgets/bottom_product_to_cart.dart';
 import 'widgets/product_attributes.dart';
@@ -16,7 +17,8 @@ import 'widgets/rating_share.dart';
 
 
 class ProductDetail extends StatelessWidget {
-  const ProductDetail({super.key});
+  const ProductDetail({super.key, required this.product});
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class ProductDetail extends StatelessWidget {
           child: Column(
             children: [
               // * Product Image Slider
-              const AkProductImageSlider(),
+              AkProductImageSlider(product: product),
       
               // * Product Details
               Padding(
