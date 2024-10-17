@@ -63,9 +63,9 @@ class AkProductCardVertical extends StatelessWidget {
                 ),
                 // * Discount TAG
                 Positioned(
-                  width: 43,
-                  top: 9,
-                  left: 8,
+                  width: 57,
+                  top: 17,
+                  left: 5,
                   child: Transform.rotate(
                     angle: -3.14 / 2,
                     child: AkRoundedContainer(
@@ -82,7 +82,7 @@ class AkProductCardVertical extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          '$salePercentage%',
+                          '$salePercentage% OFF',
                           style: Theme.of(context)
                               .textTheme
                               .labelLarge!
