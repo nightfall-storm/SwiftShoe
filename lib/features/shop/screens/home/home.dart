@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shoes_store/common/widgets/shimmer/vertical_product_shimmer.dart';
-import 'package:shoes_store/features/shop/controllers/product_controller.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/containers/section_cotainer.dart';
 import '../../../../common/widgets/containers/search_container.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
+import '../../../../common/widgets/shimmer/vertical_product_shimmer.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/navigation_helper.dart';
 import '../../../personalization/controllers/user_controller.dart';
+import '../../controllers/product/product_controller.dart';
 import '../all_products/all_products.dart';
 import '../brand/all_brand.dart';
 import 'widgets/banner_slider.dart';
