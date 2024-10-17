@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
+import 'package:shoes_store/utils/popups/loaders.dart';
 
 import '../../../data/repositories/brands/brand_repository.dart';
 import '../models/brand_model.dart';
@@ -7,7 +7,6 @@ import '../models/brand_model.dart';
 class BrandController extends GetxController {
   static BrandController get instance => Get.find();
 
-  static Logger logger = Logger();
   final isLoading = false.obs;
   final _brandRepository = Get.put(BrandRepository());
   RxList<BrandModel> allBrands = <BrandModel>[].obs;
@@ -35,7 +34,7 @@ class BrandController extends GetxController {
       featuredBrands.assignAll(allBrands.where((brand) => brand.isFeatured ?? false).take(8).toList());
       
     } catch (e) {
-      logger.e(e.toString());
+      AkLoaders.errorSnackBar(title: 'Error fetching brand: ', message: e.toString());
     } finally {
       isLoading.value = false;
     }

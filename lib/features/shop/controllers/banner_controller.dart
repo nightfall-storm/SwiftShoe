@@ -2,12 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import 'package:shoes_store/features/shop/models/banner_model.dart';
 
+import '../../../utils/popups/loaders.dart';
+
 class BannerController extends GetxController {
-  // Initialize logger
-  final Logger logger = Logger();
 
   final isLoading = true.obs;
   final carouselCurrentIndex = 0.obs;
@@ -41,7 +40,7 @@ class BannerController extends GetxController {
         });
       }
     } catch (e) {
-      logger.e("Error fetching banners: $e");
+      AkLoaders.errorSnackBar(title: "Error fetching banners", message: e.toString());
     } finally {
       isLoading.value = false;
     }
