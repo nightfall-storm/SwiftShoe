@@ -11,60 +11,83 @@ class ImagesController extends GetxController {
   // Variables
   RxString selectedProductImage = ''.obs;
 
+  // Helper method to normalize Firebase Storage URLs
+  String _normalizeImageUrl(String url) {
+    // Extract the path without the token
+    return url.split('?').first;
+  }
+
+  // Helper method to check if URL is already in the list
+  bool _containsImage(List<String> images, String newImage) {
+    String normalizedNew = _normalizeImageUrl(newImage);
+    return images
+        .any((existing) => _normalizeImageUrl(existing) == normalizedNew);
+  }
+
   // Get All Images from product and Variations
   List<String> getAllProductImages(ProductModel product) {
-    // Use Set to add unique images only
-    Set<String> images = {};
+    List<String> images = [];
 
-    // Load Thumbnail image
-    images.add(product.thumbnail);
-
-    // Assign Thumbnail as Selected Image
-    selectedProductImage.value = product.thumbnail;
-
-    // Get all images from the Product model if not null
-    if (product.images != null) {
-      images.addAll(product.images!);
+    // 1. Handle thumbnail
+    if (product.thumbnail.isNotEmpty) {
+      images.add(product.thumbnail);
+      selectedProductImage.value = product.thumbnail;
     }
 
-    // Get all Images from the product Variations if not null
-    if (product.productVariations != null ||
+    // 2. Handle product images
+    if (product.images != null && product.images!.isNotEmpty) {
+      for (var image in product.images!) {
+        if (image.isNotEmpty && !_containsImage(images, image)) {
+          images.add(image);
+        }
+      }
+    }
+
+    // 3. Handle variation images
+    if (product.productVariations != null &&
         product.productVariations!.isNotEmpty) {
-      images.addAll(
-          product.productVariations!.map((variation) => variation.image));
+      for (var variation in product.productVariations!) {
+        if (variation.image.isNotEmpty &&
+            !_containsImage(images, variation.image)) {
+          images.add(variation.image);
+        }
+      }
     }
 
-    return images.toList();
+    return images;
   }
 
   // Show Image Popup
   void showEnLargedImage(String image) {
     Get.to(
-        fullscreenDialog: true,
-        () => Dialog.fullscreen(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: AkSizes.defaultSpace * 2,
-                        horizontal: AkSizes.defaultSpace),
-                    child: CachedNetworkImage(imageUrl: image),
-                  ),
-                  const SizedBox(height: AkSizes.spaceBtwSections),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: SizedBox(
-                      width: 150,
-                      child: OutlinedButton(
-                          onPressed: () => Get.back(),
-                          child: const Text('Close')),
-                    ),
-                  )
-                ],
+      fullscreenDialog: true,
+      () => Dialog.fullscreen(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: AkSizes.defaultSpace * 2,
+                horizontal: AkSizes.defaultSpace,
               ),
-            ));
+              child: CachedNetworkImage(imageUrl: image),
+            ),
+            const SizedBox(height: AkSizes.spaceBtwSections),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: SizedBox(
+                width: 150,
+                child: OutlinedButton(
+                  onPressed: () => Get.back(),
+                  child: const Text('Close'),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
